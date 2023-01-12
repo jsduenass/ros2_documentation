@@ -465,7 +465,7 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 
 
 <span class="k">class</span> <span class="nc">StaticFramePublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Broadcast transforms that never change.</span>
 
 <span class="sd">    This example publishes transforms from `world` to a static turtle frame.</span>
@@ -586,9 +586,9 @@ Before passing the actual transform values we need to give it the appropriate me
 <p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">src/learning_tf2_py</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files have been created for you.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> with your text editor.</p>
 <p>As mentioned in the <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">Create a package</span></a> tutorial, make sure to fill in the <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;maintainer&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> tags:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Learning tf2 with rclpy<span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
-<span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Learning<span class="w"> </span>tf2<span class="w"> </span>with<span class="w"> </span>rclpy<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<span class="nt">&lt;license&gt;</span>Apache<span class="w"> </span>License<span class="w"> </span>2.0<span class="nt">&lt;/license&gt;</span>
 </pre></div>
 </div>
 <p>After the lines above, add the following dependencies corresponding to your node’s import statements:</p>

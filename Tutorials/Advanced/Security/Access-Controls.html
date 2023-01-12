@@ -383,10 +383,10 @@ This can be done by modifying the permissions file by hand, or by using XML temp
 <div class="section" id="modify-permissions-xml">
 <h3><a class="toc-backref" href="#id2">Modify <code class="docutils literal notranslate"><span class="pre">permissions.xml</span></code></a><a class="headerlink" href="#modify-permissions-xml" title="Enlazar permanentemente con este título"></a></h3>
 <p>Begin by making a backup of your permissions files, and open <code class="docutils literal notranslate"><span class="pre">permissions.xml</span></code> for editing:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sros2_demo/demo_keys/enclaves/talker_listener/talker
-mv permissions.p7s permissions.p7s~
-mv permissions.xml permissions.xml~
-vi permissions.xml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/sros2_demo/demo_keys/enclaves/talker_listener/talker
+mv<span class="w"> </span>permissions.p7s<span class="w"> </span>permissions.p7s~
+mv<span class="w"> </span>permissions.xml<span class="w"> </span>permissions.xml~
+vi<span class="w"> </span>permissions.xml
 </pre></div>
 </div>
 <p>We will be modifying the <code class="docutils literal notranslate"><span class="pre">&lt;allow_rule&gt;</span></code> for <code class="docutils literal notranslate"><span class="pre">&lt;publish&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;subscribe&gt;</span></code>.
@@ -394,51 +394,51 @@ The topics in this XML file use the DDS naming format, not the ROS name.
 Find details on mapping topic names between ROS and DDS in the <a class="reference external" href="https://design.ros2.org/articles/topic_and_service_names.html#mapping-of-ros-2-topic-and-service-names-to-dds-concepts">Topic and Service Names design document</a>.</p>
 <p>Paste the following XML content into <code class="docutils literal notranslate"><span class="pre">permission.xml</span></code>, save the file and exit the text editor.
 This shows the <code class="docutils literal notranslate"><span class="pre">chatter</span></code> and <code class="docutils literal notranslate"><span class="pre">rosout</span></code> ROS topics renamed to the DDS <code class="docutils literal notranslate"><span class="pre">rt/chatter</span></code> and <code class="docutils literal notranslate"><span class="pre">rt/rosout</span></code> topics, respectively:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dds</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_permissions.xsd&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;permissions&gt;</span>
-    <span class="nt">&lt;grant</span> <span class="na">name=</span><span class="s">&quot;/talker_listener/talker&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;subject_name&gt;</span>CN=/talker_listener/talker<span class="nt">&lt;/subject_name&gt;</span>
-      <span class="nt">&lt;validity&gt;</span>
-        <span class="nt">&lt;not_before&gt;</span>2021-06-01T16:57:53<span class="nt">&lt;/not_before&gt;</span>
-        <span class="nt">&lt;not_after&gt;</span>2031-05-31T16:57:53<span class="nt">&lt;/not_after&gt;</span>
-      <span class="nt">&lt;/validity&gt;</span>
-      <span class="nt">&lt;allow_rule&gt;</span>
-        <span class="nt">&lt;domains&gt;</span>
-          <span class="nt">&lt;id&gt;</span>0<span class="nt">&lt;/id&gt;</span>
-        <span class="nt">&lt;/domains&gt;</span>
-        <span class="nt">&lt;publish&gt;</span>
-          <span class="nt">&lt;topics&gt;</span>
-<span class="hll">            <span class="nt">&lt;topic&gt;</span>rt/chatter<span class="nt">&lt;/topic&gt;</span>
-</span><span class="hll">            <span class="nt">&lt;topic&gt;</span>rt/rosout<span class="nt">&lt;/topic&gt;</span>
-</span><span class="hll">            <span class="nt">&lt;topic&gt;</span>rt/parameter_events<span class="nt">&lt;/topic&gt;</span>
-</span><span class="hll">            <span class="nt">&lt;topic&gt;</span>*/talker/*<span class="nt">&lt;/topic&gt;</span>
-</span>          <span class="nt">&lt;/topics&gt;</span>
-        <span class="nt">&lt;/publish&gt;</span>
-        <span class="nt">&lt;subscribe&gt;</span>
-          <span class="nt">&lt;topics&gt;</span>
-<span class="hll">            <span class="nt">&lt;topic&gt;</span>rt/parameter_events<span class="nt">&lt;/topic&gt;</span>
-</span><span class="hll">            <span class="nt">&lt;topic&gt;</span>*/talker/*<span class="nt">&lt;/topic&gt;</span>
-</span>          <span class="nt">&lt;/topics&gt;</span>
-        <span class="nt">&lt;/subscribe&gt;</span>
-      <span class="nt">&lt;/allow_rule&gt;</span>
-      <span class="nt">&lt;allow_rule&gt;</span>
-        <span class="nt">&lt;domains&gt;</span>
-          <span class="nt">&lt;id&gt;</span>0<span class="nt">&lt;/id&gt;</span>
-        <span class="nt">&lt;/domains&gt;</span>
-        <span class="nt">&lt;publish&gt;</span>
-          <span class="nt">&lt;topics&gt;</span>
-            <span class="nt">&lt;topic&gt;</span>ros_discovery_info<span class="nt">&lt;/topic&gt;</span>
-          <span class="nt">&lt;/topics&gt;</span>
-        <span class="nt">&lt;/publish&gt;</span>
-        <span class="nt">&lt;subscribe&gt;</span>
-          <span class="nt">&lt;topics&gt;</span>
-            <span class="nt">&lt;topic&gt;</span>ros_discovery_info<span class="nt">&lt;/topic&gt;</span>
-          <span class="nt">&lt;/topics&gt;</span>
-        <span class="nt">&lt;/subscribe&gt;</span>
-      <span class="nt">&lt;/allow_rule&gt;</span>
-      <span class="nt">&lt;default&gt;</span>DENY<span class="nt">&lt;/default&gt;</span>
-    <span class="nt">&lt;/grant&gt;</span>
-  <span class="nt">&lt;/permissions&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dds</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_permissions.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;permissions&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grant</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;/talker_listener/talker&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;subject_name&gt;</span>CN=/talker_listener/talker<span class="nt">&lt;/subject_name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;validity&gt;</span>
+<span class="w">        </span><span class="nt">&lt;not_before&gt;</span>2021-06-01T16:57:53<span class="nt">&lt;/not_before&gt;</span>
+<span class="w">        </span><span class="nt">&lt;not_after&gt;</span>2031-05-31T16:57:53<span class="nt">&lt;/not_after&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/validity&gt;</span>
+<span class="w">      </span><span class="nt">&lt;allow_rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;domains&gt;</span>
+<span class="w">          </span><span class="nt">&lt;id&gt;</span>0<span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/domains&gt;</span>
+<span class="w">        </span><span class="nt">&lt;publish&gt;</span>
+<span class="w">          </span><span class="nt">&lt;topics&gt;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>rt/chatter<span class="nt">&lt;/topic&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>rt/rosout<span class="nt">&lt;/topic&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>rt/parameter_events<span class="nt">&lt;/topic&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>*/talker/*<span class="nt">&lt;/topic&gt;</span>
+</span><span class="w">          </span><span class="nt">&lt;/topics&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/publish&gt;</span>
+<span class="w">        </span><span class="nt">&lt;subscribe&gt;</span>
+<span class="w">          </span><span class="nt">&lt;topics&gt;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>rt/parameter_events<span class="nt">&lt;/topic&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;topic&gt;</span>*/talker/*<span class="nt">&lt;/topic&gt;</span>
+</span><span class="w">          </span><span class="nt">&lt;/topics&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/subscribe&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/allow_rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;allow_rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;domains&gt;</span>
+<span class="w">          </span><span class="nt">&lt;id&gt;</span>0<span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/domains&gt;</span>
+<span class="w">        </span><span class="nt">&lt;publish&gt;</span>
+<span class="w">          </span><span class="nt">&lt;topics&gt;</span>
+<span class="w">            </span><span class="nt">&lt;topic&gt;</span>ros_discovery_info<span class="nt">&lt;/topic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/topics&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/publish&gt;</span>
+<span class="w">        </span><span class="nt">&lt;subscribe&gt;</span>
+<span class="w">          </span><span class="nt">&lt;topics&gt;</span>
+<span class="w">            </span><span class="nt">&lt;topic&gt;</span>ros_discovery_info<span class="nt">&lt;/topic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/topics&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/subscribe&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/allow_rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;default&gt;</span>DENY<span class="nt">&lt;/default&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/grant&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/permissions&gt;</span>
 <span class="nt">&lt;/dds&gt;</span>
 </pre></div>
 </div>
@@ -451,21 +451,21 @@ Discovery permissions remain unchanged from the original template.</p>
 <p>This next command creates the new S/MIME signed policy file <code class="docutils literal notranslate"><span class="pre">permissions.p7s</span></code> from the updated XML file <code class="docutils literal notranslate"><span class="pre">permissions.xml</span></code>.
 The file must be signed with the Permissions CA certificate, <strong>which requires access to the Permission CA private key</strong>.
 If the private key has been protected, additional steps may be required to unlock and use it accoring to your security plan.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl smime -sign -text -in permissions.xml -out permissions.p7s <span class="se">\</span>
-  --signer permissions_ca.cert.pem <span class="se">\</span>
-  -inkey ~/sros2_demo/demo_keys/private/permissions_ca.key.pem
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl<span class="w"> </span>smime<span class="w"> </span>-sign<span class="w"> </span>-text<span class="w"> </span>-in<span class="w"> </span>permissions.xml<span class="w"> </span>-out<span class="w"> </span>permissions.p7s<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--signer<span class="w"> </span>permissions_ca.cert.pem<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-inkey<span class="w"> </span>~/sros2_demo/demo_keys/private/permissions_ca.key.pem
 </pre></div>
 </div>
 </div>
 <div class="section" id="launch-the-node">
 <h3><a class="toc-backref" href="#id4">Launch the node</a><a class="headerlink" href="#launch-the-node" title="Enlazar permanentemente con este título"></a></h3>
 <p>With the updated permissions in place, we can launch the node successfully using the same command used in prior tutorials:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args --enclave /talker_listener/talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/talker
 </pre></div>
 </div>
 <p>However, attempting to remap the <code class="docutils literal notranslate"><span class="pre">chatter</span></code> topic prevents the node from launching (note that this requires the <code class="docutils literal notranslate"><span class="pre">ROS_SECURITY_STRATEGY</span></code> set to <code class="docutils literal notranslate"><span class="pre">Enforce</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args --enclave /talker_listener/talker <span class="se">\</span>
-  --remap chatter:<span class="o">=</span>not_chatter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/talker<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--remap<span class="w"> </span>chatter:<span class="o">=</span>not_chatter
 </pre></div>
 </div>
 </div>
@@ -475,31 +475,31 @@ If the private key has been protected, additional steps may be required to unloc
 Do this by using the <a class="reference external" href="https://github.com/ros2/sros2/blob/rolling/sros2/test/policies/sample.policy.xml#L1">sample policy file</a> provided in the <code class="docutils literal notranslate"><span class="pre">sros2</span></code> repository.
 Let’s creates a policy for both the <code class="docutils literal notranslate"><span class="pre">talker</span></code> and the <code class="docutils literal notranslate"><span class="pre">listener</span></code> to only use the <code class="docutils literal notranslate"><span class="pre">chatter</span></code> topic.</p>
 <p>Begin by downloading the <code class="docutils literal notranslate"><span class="pre">sros2</span></code> repository with the sample policy files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/ros2/sros2.git /tmp/sros2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros2/sros2.git<span class="w"> </span>/tmp/sros2
 </pre></div>
 </div>
 <p>Then use the <code class="docutils literal notranslate"><span class="pre">create_permission</span></code> verb while pointing to the sample policy to generate the XML permission files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 security create_permission demo_keystore <span class="se">\</span>
-  /talker_listener/talker <span class="se">\</span>
-  /tmp/sros2/sros2/test/policies/sample.policy.xml
-ros2 security create_permission demo_keystore <span class="se">\</span>
-  /talker_listener/listener <span class="se">\</span>
-  /tmp/sros2/sros2/test/policies/sample.policy.xml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>security<span class="w"> </span>create_permission<span class="w"> </span>demo_keystore<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/talker_listener/talker<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/tmp/sros2/sros2/test/policies/sample.policy.xml
+ros2<span class="w"> </span>security<span class="w"> </span>create_permission<span class="w"> </span>demo_keystore<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/talker_listener/listener<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/tmp/sros2/sros2/test/policies/sample.policy.xml
 </pre></div>
 </div>
 <p>These permission files allow nodes to only publish or subscribe to the <code class="docutils literal notranslate"><span class="pre">chatter</span></code> topic, and enable communications required for parameters.</p>
 <p>In one terminal with security enabled as in previous security tutorials, run the <code class="docutils literal notranslate"><span class="pre">talker</span></code> demo program:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args -e /talker_listener/talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>-e<span class="w"> </span>/talker_listener/talker
 </pre></div>
 </div>
 <p>In another terminal do the same with the <code class="docutils literal notranslate"><span class="pre">listener</span></code> program:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener --ros-args -e /talker_listener/listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener<span class="w"> </span>--ros-args<span class="w"> </span>-e<span class="w"> </span>/talker_listener/listener
 </pre></div>
 </div>
 <p>At this point, your <code class="docutils literal notranslate"><span class="pre">talker</span></code> and <code class="docutils literal notranslate"><span class="pre">listener</span></code> nodes will be communicating securely using explicit access control lists.
 However, the following attempt for the <code class="docutils literal notranslate"><span class="pre">listener</span></code> node to subscribe to a topic other than <code class="docutils literal notranslate"><span class="pre">chatter</span></code> will fail:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener --ros-args --enclave /talker_listener/listener <span class="se">\</span>
-  --remap chatter:<span class="o">=</span>not_chatter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/listener<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--remap<span class="w"> </span>chatter:<span class="o">=</span>not_chatter
 </pre></div>
 </div>
 </div>

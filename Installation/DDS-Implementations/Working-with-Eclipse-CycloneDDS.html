@@ -366,7 +366,7 @@ Consulta también: <a class="reference external" href="https://projects.eclipse.
 <div class="section" id="instalar-paquetes">
 <h2>Instalar paquetes<a class="headerlink" href="#instalar-paquetes" title="Enlazar permanentemente con este título"></a></h2>
 <p>La forma más fácil es instalar desde el repositorio apt de ROS 2.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-rolling-rmw-cyclonedds-cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-rolling-rmw-cyclonedds-cpp
 </pre></div>
 </div>
 </div>
@@ -374,25 +374,25 @@ Consulta también: <a class="reference external" href="https://projects.eclipse.
 <h2>Compilar a partir del código fuente<a class="headerlink" href="#compilar-a-partir-del-codigo-fuente" title="Enlazar permanentemente con este título"></a></h2>
 <p>Compilar a partir del código fuente también es otra forma de instalar.</p>
 <p>Primero, clona Cyclone DDS y rmw_cyclonedds en el directorio src del espacio de trabajo de ROS 2.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ros2_ws/src
-git clone https://github.com/ros2/rmw_cyclonedds ros2/rmw_cyclonedds -b rolling
-git clone https://github.com/eclipse-cyclonedds/cyclonedds eclipse-cyclonedds/cyclonedds
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>ros2_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros2/rmw_cyclonedds<span class="w"> </span>ros2/rmw_cyclonedds<span class="w"> </span>-b<span class="w"> </span>rolling
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eclipse-cyclonedds/cyclonedds<span class="w"> </span>eclipse-cyclonedds/cyclonedds
 </pre></div>
 </div>
 <p>Luego, instala los paquetes necesarios para Cyclone DDS.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
-rosdep install --from src -i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+rosdep<span class="w"> </span>install<span class="w"> </span>--from<span class="w"> </span>src<span class="w"> </span>-i
 </pre></div>
 </div>
 <p>Finalmente, ejecute colcon build.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --symlink-install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
 </pre></div>
 </div>
 </div>
 <div class="section" id="cambiar-a-rmw-cyclonedds">
 <h2>Cambiar a rmw_cyclonedds<a class="headerlink" href="#cambiar-a-rmw-cyclonedds" title="Enlazar permanentemente con este título"></a></h2>
 <p>Cambie de otro rmw a rmw_cyclonedds especificando la variable de entorno.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_cyclonedds_cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_cyclonedds_cpp
 </pre></div>
 </div>
 <p>Consulta también: <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">Trabajar con varias implementaciones de RMW</span></a></p>
@@ -400,10 +400,10 @@ rosdep install --from src -i
 <div class="section" id="ejecuta-el-talker-y-el-listener">
 <h2>Ejecuta el talker y el listener<a class="headerlink" href="#ejecuta-el-talker-y-el-listener" title="Enlazar permanentemente con este título"></a></h2>
 <p>Ahora ejecuta <code class="docutils literal notranslate"><span class="pre">talker</span></code> y <code class="docutils literal notranslate"><span class="pre">listener</span></code> para probar Cyclone DDS.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>listener
 </pre></div>
 </div>
 </div>

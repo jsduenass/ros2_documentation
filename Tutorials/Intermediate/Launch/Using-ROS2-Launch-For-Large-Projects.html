@@ -571,11 +571,11 @@ Defining arguments and parameters in YAML files make it easy to store and load a
 In addition, YAML files can be easily exported from the current <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> list.
 To learn how to do that, refer to the <a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">Understand parameters</span></a> tutorial.</p>
 <p>Let’s now create a configuration file, <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>, in the <code class="docutils literal notranslate"><span class="pre">/config</span></code> folder of our package, which will be loaded by our launch file.</p>
-<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim2/sim</span><span class="p">:</span><span class="w"></span>
-<span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span><span class="w"></span>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim2/sim</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span>
+<span class="w">      </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span>
+<span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span>
 </pre></div>
 </div>
 <p>If we now start the <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> launch file, we will start the <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> with preconfigured background colors.</p>
@@ -609,11 +609,11 @@ The reason is that its parameters are stored under another namespace as shown be
 <p>Therefore, instead of creating a new configuration for the same node that use the same parameters, we can use wildcards syntax.
 <code class="docutils literal notranslate"><span class="pre">/**</span></code> will assign all the parameters in every node, despite differences in node names and namespaces.</p>
 <p>We will now update the <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>, in the <code class="docutils literal notranslate"><span class="pre">/config</span></code> folder in the following manner:</p>
-<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/**</span><span class="p">:</span><span class="w"></span>
-<span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span><span class="w"></span>
-<span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span><span class="w"></span>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/**</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span>
+<span class="w">      </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span>
+<span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span>
 </pre></div>
 </div>
 <p>Now include the <code class="docutils literal notranslate"><span class="pre">turtlesim_world_3.launch.py</span></code> launch description in our main launch file.

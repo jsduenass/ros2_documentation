@@ -619,90 +619,90 @@ For example, everyone should have a PEP8 checker built into their editor to cut 
 <div class="section" id="examples">
 <h4>Examples<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título"></a></h4>
 <p>This is OK:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 
 <span class="c1">// Long condition; open brace</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 
 <span class="c1">// Short function call</span>
-<span class="n">call_func</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span><span class="w"></span>
+<span class="n">call_func</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span>
 
 <span class="c1">// Long function call; wrap at the open parenthesis</span>
-<span class="n">call_func</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span><span class="w"></span>
+<span class="n">call_func</span><span class="p">(</span>
+<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span>
+<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span>
 
 <span class="c1">// Very long function argument; separate it for readability</span>
-<span class="n">call_func</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">bang</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">fooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">bat</span><span class="p">);</span><span class="w"></span>
+<span class="n">call_func</span><span class="p">(</span>
+<span class="w">  </span><span class="n">bang</span><span class="p">,</span>
+<span class="w">  </span><span class="n">fooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</span><span class="p">,</span>
+<span class="w">  </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">bat</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This is <strong>not</strong> OK:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
-<span class="w">    </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
-<span class="w">    </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span><span class="n">that</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Use open braces rather than excessive indention, e.g. for distinguishing constructor code from constructor initializer lists</p>
 <p>This is OK:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span>
 <span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 2 space indent</span>
-<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w">  </span><span class="c1">// 2 space indent</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 
-<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="w"></span>
-<span class="o">:</span><span class="w"> </span><span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span>
+<span class="o">:</span><span class="w"> </span><span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span>
+<span class="w">  </span><span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>This is <strong>not</strong> OK, even weird (the google way?):</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span>
 <span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 4 space indent</span>
-<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w">  </span><span class="c1">// 2 space indent</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 
-<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="w"></span>
+<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span>
 <span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="w">             </span><span class="c1">// 4 space indent</span>
 <span class="w">      </span><span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// lined up</span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>

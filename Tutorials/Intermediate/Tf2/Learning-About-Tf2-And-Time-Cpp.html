@@ -389,10 +389,10 @@ This tutorial will teach you how to get a transform at a specific time.</p>
 <p>So let’s go back to where we ended in the <a class="reference internal" href="Adding-A-Frame-Cpp.html"><span class="doc">adding a frame tutorial</span></a>.
 Go to <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package.
 Open <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code> and take a look at the <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> call:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>You can see that we specified a time equal to 0 by calling <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero</span></code>.</p>
@@ -404,11 +404,11 @@ Many APIs in the package <code class="docutils literal notranslate"><span class=
 </div>
 <p>For tf2, time 0 means «the latest available» transform in the buffer.
 Now, change this line to get the transform at the current time, <code class="docutils literal notranslate"><span class="pre">this-&gt;get_clock()-&gt;now()</span></code>:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">now</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">now</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Now try to run the launch file.</p>
@@ -432,12 +432,12 @@ As a result, when you request a frame transform at time «now», you should wait
 <p>tf2 provides a nice tool that will wait until a transform becomes available.
 You use this by adding a timeout parameter to <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code>.
 To fix this, edit your code as shown below (add the last timeout parameter):</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">now</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">   </span><span class="n">now</span><span class="p">,</span>
+<span class="w">   </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> can take four arguments, where the last one is an optional timeout.

@@ -400,17 +400,17 @@ La mayoría de la gente querrá usar una distribución ROS estable.</p>
 <h2><a class="toc-backref" href="#id2">Añadir el repositorio apt de ROS 2</a><a class="headerlink" href="#anadir-el-repositorio-apt-de-ros-2" title="Enlazar permanentemente con este título"></a></h2>
 <p>Debes agregar el repositorio apt de ROS 2 a tu sistema.</p>
 <p>Primero asegúrate que el repositorio <a class="reference external" href="https://help.ubuntu.com/community/Repositories/Ubuntu">Ubuntu Universe</a> esté habilitado.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install software-properties-common
-sudo add-apt-repository universe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>universe
 </pre></div>
 </div>
 <p>Ahora agrega la clave GPG de ROS 2 con apt.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install curl
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl
+sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
 </pre></div>
 </div>
 <p>Luego añade el repositorio a tu lista de fuentes.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>. /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 </pre></div>
 </div>
 </div>
@@ -425,9 +425,9 @@ En su lugar, puede descargar <a class="reference internal" href="../Testing.html
 </ul>
 </li>
 <li><p>Descomprímelo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/ros2_rolling
-<span class="nb">cd</span> ~/ros2_rolling
-tar xf ~/Downloads/ros2-package-linux-x86_64.tar.bz2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ros2_rolling
+<span class="nb">cd</span><span class="w"> </span>~/ros2_rolling
+tar<span class="w"> </span>xf<span class="w"> </span>~/Downloads/ros2-package-linux-x86_64.tar.bz2
 </pre></div>
 </div>
 </li>
@@ -435,10 +435,10 @@ tar xf ~/Downloads/ros2-package-linux-x86_64.tar.bz2
 </div>
 <div class="section" id="instalar-e-inicializar-rosdep">
 <h2><a class="toc-backref" href="#id4">Instalar e inicializar rosdep</a><a class="headerlink" href="#instalar-e-inicializar-rosdep" title="Enlazar permanentemente con este título"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
-sudo apt install -y python3-rosdep
-sudo rosdep init
-rosdep update
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-rosdep
+sudo<span class="w"> </span>rosdep<span class="w"> </span>init
+rosdep<span class="w"> </span>update
 </pre></div>
 </div>
 </div>
@@ -446,18 +446,18 @@ rosdep update
 <span id="linux-install-binary-install-missing-dependencies"></span><h2><a class="toc-backref" href="#id5">Instalar las dependencias que faltan</a><a class="headerlink" href="#instalar-las-dependencias-que-faltan" title="Enlazar permanentemente con este título"></a></h2>
 <p>Los paquetes de ROS 2 se basan en sistemas Ubuntu que se actualizan con frecuencia.
 Siempre se recomienda que te asegures que tu sistema esté actualizado antes de instalar nuevos paquetes.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt upgrade
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
 </pre></div>
 </div>
 <p>Configura tu rosdistro de acuerdo con la versión que descargaste.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths ~/ros2_rolling/ros2-linux/share --ignore-src -y --skip-keys <span class="s2">&quot;cyclonedds fastcdr fastrtps rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>~/ros2_rolling/ros2-linux/share<span class="w"> </span>--ignore-src<span class="w"> </span>-y<span class="w"> </span>--skip-keys<span class="w"> </span><span class="s2">&quot;cyclonedds fastcdr fastrtps rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
 </pre></div>
 </div>
 <p><strong>Nota</strong>: si estás utilizando una distribución basada en Ubuntu (como Linux Mint) pero no se identifica como tal, recibirás un mensaje de error como <code class="docutils literal notranslate"><span class="pre">Sistema</span> <span class="pre">operativo</span> <span class="pre">no</span> <span class="pre">compatible</span> <span class="pre">[mint]</span></code>. En este caso, agrega <code class="docutils literal notranslate"><span class="pre">--os=ubuntu:jammy</span></code> al comando anterior.</p>
 <div class="section" id="instalar-herramientas-de-desarrollo-opcional">
 <h3><a class="toc-backref" href="#id6">Instalar herramientas de desarrollo (opcional)</a><a class="headerlink" href="#instalar-herramientas-de-desarrollo-opcional" title="Enlazar permanentemente con este título"></a></h3>
 <p>Si vas a crear paquetes ROS o desarrollar de otro modo, también puedes instalar las herramientas de desarrollo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-dev-tools
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-dev-tools
 </pre></div>
 </div>
 </div>
@@ -473,7 +473,7 @@ Siempre se recomienda que te asegures que tu sistema esté actualizado antes de 
 <p>Configura tu entorno ejecutando <code class="docutils literal notranslate"><span class="pre">source</span></code> con el siguiente archivo.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reemplaza &quot;.bash&quot; en tu shell si no está usando bash</span>
 <span class="c1"># Los valores posibles son: setup.bash, setup.sh, setup.zsh</span>
-<span class="nb">source</span> /opt/ros/rolling/setup.bash
+<span class="nb">source</span><span class="w"> </span>/opt/ros/rolling/setup.bash
 </pre></div>
 </div>
 </div>
@@ -481,13 +481,13 @@ Siempre se recomienda que te asegures que tu sistema esté actualizado antes de 
 <div class="section" id="prueba-algunos-ejemplos">
 <h2><a class="toc-backref" href="#id10">Prueba algunos ejemplos</a><a class="headerlink" href="#prueba-algunos-ejemplos" title="Enlazar permanentemente con este título"></a></h2>
 <p>En una terminal, ejecuta el archivo de setup y luego ejecuta un <code class="docutils literal notranslate"><span class="pre">talker</span></code> de C++:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/ros2_rolling/ros2-linux/setup.bash
-ros2 run demo_nodes_cpp talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>~/ros2_rolling/ros2-linux/setup.bash
+ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker
 </pre></div>
 </div>
 <p>En otra fuente de terminal, ejecuta el archivo de setup y luego ejecuta un <code class="docutils literal notranslate"><span class="pre">listener</span></code> en Python:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/ros2_rolling/ros2-linux/setup.bash
-ros2 run demo_nodes_py listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>~/ros2_rolling/ros2-linux/setup.bash
+ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener
 </pre></div>
 </div>
 <p>Deberías ver al <code class="docutils literal notranslate"><span class="pre">talker</span></code> diciendo que está publicando (<code class="docutils literal notranslate"><span class="pre">Publishing</span></code>) mensajes y al <code class="docutils literal notranslate"><span class="pre">listener</span></code> diciendo que oye (<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">heard</span></code>) esos mensajes.
@@ -520,7 +520,7 @@ Consulta la <a class="reference internal" href="../../How-To-Guides/Working-with
 </dl>
 </li>
 <li><p>Si también está intentando liberar espacio, puede eliminar todo el directorio del espacio de trabajo con:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf ~/ros2_rolling
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>~/ros2_rolling
 </pre></div>
 </div>
 </li>

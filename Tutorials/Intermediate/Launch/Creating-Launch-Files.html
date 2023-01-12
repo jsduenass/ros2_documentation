@@ -439,41 +439,41 @@ As mentioned above, this can either be in Python, XML, or YAML.</p>
 </div>
 </div><div aria-labelledby="tab-0-WE1M" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-WE1M" name="WE1M" role="tabpanel" tabindex="0"><p>Copy and paste the complete code into the <code class="docutils literal notranslate"><span class="pre">launch/turtlesim_mimic_launch.xml</span></code> file:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;mimic&quot;</span> <span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/node&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;mimic&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/node&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><p>Copy and paste the complete code into the <code class="docutils literal notranslate"><span class="pre">launch/turtlesim_mimic_launch.yaml</span></code> file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">remap</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">remap</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span>
 </pre></div>
 </div>
 </div></div>
@@ -531,43 +531,43 @@ In other words, <code class="docutils literal notranslate"><span class="pre">tur
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-WE1M" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-WE1M" name="WE1M" role="tabpanel" tabindex="0"><p>The first two actions launch the two turtlesim windows:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 <p>The final action launches the mimic node with the remaps:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;mimic&quot;</span> <span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;mimic&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/node&gt;</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><p>The first two actions launch the two turtlesim windows:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span>
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span>
 </pre></div>
 </div>
 <p>The final action launches the mimic node with the remaps:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">remap</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">remap</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span>
 </pre></div>
 </div>
 </div></div>

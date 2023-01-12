@@ -425,50 +425,50 @@ Recall that this is the directory in any CMake package where the source files co
 </div></div>
 <p>Now there will be a new file named <code class="docutils literal notranslate"><span class="pre">publisher_member_function.cpp</span></code>.
 Open the file using your preferred text editor.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 
 <span class="cm">/* This example creates a subclass of Node and uses std::bind() to register a</span>
-<span class="cm">* member function as a callback from the timer. */</span><span class="w"></span>
+<span class="cm">* member function as a callback from the timer. */</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">MinimalPublisher</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">MinimalPublisher</span><span class="p">()</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">      </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+<span class="w">      </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">      </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="w">      </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span>
+<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">      </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
@@ -478,62 +478,62 @@ After the standard C++ headers is the <code class="docutils literal notranslate"
 Last is <code class="docutils literal notranslate"><span class="pre">std_msgs/msg/string.hpp</span></code>, which includes the built-in message type you will use to publish data.</p>
 <p>These lines represent the node’s dependencies.
 Recall that dependencies have to be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>, which you’ll do in the next section.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The next line creates the node class <code class="docutils literal notranslate"><span class="pre">MinimalPublisher</span></code> by inheriting from <code class="docutils literal notranslate"><span class="pre">rclcpp::Node</span></code>.
 Every <code class="docutils literal notranslate"><span class="pre">this</span></code> in the code is referring to the node.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
 </pre></div>
 </div>
 <p>The public constructor names the node <code class="docutils literal notranslate"><span class="pre">minimal_publisher</span></code> and initializes <code class="docutils literal notranslate"><span class="pre">count_</span></code> to 0.
 Inside the constructor, the publisher is initialized with the <code class="docutils literal notranslate"><span class="pre">String</span></code> message type, the topic name <code class="docutils literal notranslate"><span class="pre">topic</span></code>, and the required queue size to limit messages in the event of a backup.
 Next, <code class="docutils literal notranslate"><span class="pre">timer_</span></code> is initialized, which causes the <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> function to be executed twice a second.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">MinimalPublisher</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">MinimalPublisher</span><span class="p">()</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+<span class="w">    </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> function is where the message data is set and the messages are actually published.
 The <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> macro ensures every published message is printed to the console.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Last is the declaration of the timer, publisher, and counter fields.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span><span class="w"></span>
-<span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Following the <code class="docutils literal notranslate"><span class="pre">MinimalPublisher</span></code> class is <code class="docutils literal notranslate"><span class="pre">main</span></code>, where the node actually executes.
 <code class="docutils literal notranslate"><span class="pre">rclcpp::init</span></code> initializes ROS 2, and <code class="docutils literal notranslate"><span class="pre">rclcpp::spin</span></code> starts processing data from the node, including callbacks from the timer.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -542,9 +542,9 @@ The <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</sp
 <p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/cpp_pubsub</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files have been created for you.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> with your text editor.</p>
 <p>As mentioned in the <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">previous tutorial</span></a>, make sure to fill in the <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;maintainer&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> tags:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Examples of minimal publisher/subscriber using rclcpp<span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
-<span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Examples<span class="w"> </span>of<span class="w"> </span>minimal<span class="w"> </span>publisher/subscriber<span class="w"> </span>using<span class="w"> </span>rclcpp<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<span class="nt">&lt;license&gt;</span>Apache<span class="w"> </span>License<span class="w"> </span>2.0<span class="nt">&lt;/license&gt;</span>
 </pre></div>
 </div>
 <p>Add a new line after the <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> buildtool dependency and paste the following dependencies corresponding to your node’s include statements:</p>
@@ -578,7 +578,7 @@ Below the existing dependency <code class="docutils literal notranslate"><span c
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cmake_minimum_required(VERSION 3.5)</span>
 <span class="go">project(cpp_pubsub)</span>
 
-<span class="gp"># </span>Default to C++14
+<span class="gp"># </span>Default<span class="w"> </span>to<span class="w"> </span>C++14
 <span class="go">if(NOT CMAKE_CXX_STANDARD)</span>
 <span class="go">  set(CMAKE_CXX_STANDARD 14)</span>
 <span class="go">endif()</span>
@@ -629,37 +629,37 @@ Enter the following code in your terminal:</p>
 </pre></div>
 </div>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">subscriber_member_function.cpp</span></code> with your text editor.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
-<span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">MinimalSubscriber</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">MinimalSubscriber</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_subscriber&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MinimalSubscriber</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">MinimalSubscriber</span><span class="p">()</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_subscriber&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">      </span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">subscription_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">subscription_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalSubscriber</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalSubscriber</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -667,24 +667,24 @@ Enter the following code in your terminal:</p>
 <p>The subscriber node’s code is nearly identical to the publisher’s.
 Now the node is named <code class="docutils literal notranslate"><span class="pre">minimal_subscriber</span></code>, and the constructor uses the node’s <code class="docutils literal notranslate"><span class="pre">create_subscription</span></code> class to execute the callback.</p>
 <p>There is no timer because the subscriber simply responds whenever data is published to the <code class="docutils literal notranslate"><span class="pre">topic</span></code> topic.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">MinimalSubscriber</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_subscriber&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">MinimalSubscriber</span><span class="p">()</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_subscriber&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Recall from the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topic tutorial</span></a> that the topic name and message type used by the publisher and subscriber must match to allow them to communicate.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">topic_callback</span></code> function receives the string message data published over the topic, and simply writes it to the console using the <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> macro.</p>
 <p>The only field declaration in this class is the subscription.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">subscription_</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">subscription_</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> function is exactly the same, except now it spins the <code class="docutils literal notranslate"><span class="pre">MinimalSubscriber</span></code> node.

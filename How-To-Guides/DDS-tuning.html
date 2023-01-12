@@ -436,13 +436,13 @@ Until then, we’ve come up with the following solution (debugged using <a class
 </div></blockquote>
 <p>Next, to set the minimum socket receive buffer size that Cyclone requests, write out a configuration file for Cyclone to use while starting, like so:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
-<span class="nt">&lt;CycloneDDS</span> <span class="na">xmlns=</span><span class="s">&quot;https://cdds.io/config&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://cdds.io/config</span>
+<span class="nt">&lt;CycloneDDS</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;https://cdds.io/config&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://cdds.io/config</span>
 <span class="s">https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Domain</span> <span class="na">id=</span><span class="s">&quot;any&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;Internal&gt;</span>
-            <span class="nt">&lt;MinimumSocketReceiveBufferSize&gt;</span>10MB<span class="nt">&lt;/MinimumSocketReceiveBufferSize&gt;</span>
-        <span class="nt">&lt;/Internal&gt;</span>
-    <span class="nt">&lt;/Domain&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Domain</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;any&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Internal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;MinimumSocketReceiveBufferSize&gt;</span>10MB<span class="nt">&lt;/MinimumSocketReceiveBufferSize&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Internal&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Domain&gt;</span>
 <span class="nt">&lt;/CycloneDDS&gt;</span>
 </pre></div>
 </div>

@@ -398,7 +398,7 @@ Since many of the operations done in the demo to optimize performance or OS-spec
 <p><strong>Before you run make sure you have at least 8Gb of RAM free. With the memory locking, swap will not work anymore.</strong></p>
 <p>Source your ROS 2 setup.bash.</p>
 <p>Run the demo binary, and redirect the output. You may want to use <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in case you get permission error:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pendulum_demo &gt; output.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pendulum_demo<span class="w"> </span>&gt;<span class="w"> </span>output.txt
 </pre></div>
 </div>
 </div>
@@ -535,11 +535,11 @@ This demo will attempt to run the control loop at priority 98.</p>
 </tbody>
 </table>
 <p>Run the demo again with a filename to save results:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pendulum_demo -f pendulum_demo_results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pendulum_demo<span class="w"> </span>-f<span class="w"> </span>pendulum_demo_results
 </pre></div>
 </div>
 <p>Then run the <code class="docutils literal notranslate"><span class="pre">rttest_plot</span></code> script on the resulting file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rttest_plot pendulum_demo_results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rttest_plot<span class="w"> </span>pendulum_demo_results
 </pre></div>
 </div>
 <p>This script will produce three files:</p>

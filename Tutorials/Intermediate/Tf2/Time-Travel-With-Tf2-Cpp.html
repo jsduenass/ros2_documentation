@@ -384,12 +384,12 @@ We will use that time travel feature to look up transforms back in time and prog
 Go to your <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package.</p>
 <p>Now, instead of making the second turtle go to where the carrot is now, we will make the second turtle go to where the first carrot was 5 seconds ago.
 Edit the <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> call in <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code> file to</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">when</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">    </span><span class="n">toFrameRel</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">    </span><span class="n">when</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Now if you run this, during the first 5 seconds, the second turtle would not know where to go because we do not yet have a 5-second history of poses of the carrot.
@@ -409,15 +409,15 @@ But what happens after these 5 seconds? Let’s just give it a try:</p>
 <p>To ask the tf2 that particular question, we will use an advanced API that gives us the power to say explicitly when to acquire the specified transformations.
 This is done by calling the <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> method with additional parameters.
 Your code now would look like this:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">now</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">when</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">    </span><span class="n">toFrameRel</span><span class="p">,</span>
+<span class="w">    </span><span class="n">now</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">    </span><span class="n">when</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;world&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The advanced API for <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> takes six arguments:</p>

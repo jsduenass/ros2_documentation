@@ -372,33 +372,33 @@ A medida que se compilan los paquetes dependientes, un proceso automático sincr
 <li><p>Edita (con sudo) el archivo <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2-latest.list</span></code> y cambia <code class="docutils literal notranslate"><span class="pre">ros2</span></code> por <code class="docutils literal notranslate"><span class="pre">ros2-testing</span></code>.
 Por ejemplo, en Ubuntu Jammy, el contenido debería tener el siguiente aspecto:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># deb http://packages.ros.org/ros2/ubuntu jammy main</span>
-deb http://packages.ros.org/ros2-testing/ubuntu jammy main
+deb<span class="w"> </span>http://packages.ros.org/ros2-testing/ubuntu<span class="w"> </span>jammy<span class="w"> </span>main
 </pre></div>
 </div>
 </li>
 <li><p>Actualiza el índice <code class="docutils literal notranslate"><span class="pre">apt</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt update
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </pre></div>
 </div>
 </li>
 <li><p>Ahora puedes instalar paquetes individuales desde el repositorio de prueba, por ejemplo:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-rolling-my-just-released-package
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-rolling-my-just-released-package
 </pre></div>
 </div>
 </li>
 <li><p>Alternativamente, puedes mover toda su instalación de ROS 2 al repositorio de prueba:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt dist-upgrade
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>dist-upgrade
 </pre></div>
 </div>
 </li>
 <li><p>Una vez que hayas terminado de probar, puedes volver al repositorio normal cambiando el contenido de <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2-latest.list</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>deb http://packages.ros.org/ros2/ubuntu jammy main
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>deb<span class="w"> </span>http://packages.ros.org/ros2/ubuntu<span class="w"> </span>jammy<span class="w"> </span>main
 <span class="c1"># deb http://packages.ros.org/ros2-testing/ubuntu jammy main</span>
 </pre></div>
 </div>
 <p>y haciendo un update y upgrade:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt update
-sudo apt dist-upgrade
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>dist-upgrade
 </pre></div>
 </div>
 </li>
@@ -415,10 +415,10 @@ Estos trabajos de empaquetado producen archivos con binarios precompilados que s
 <li><p>Descarga y extráe el archivo a tu sistema de archivos.</p></li>
 <li><p>Para usar la instalación binaria pesada, obtén el archivo <code class="docutils literal notranslate"><span class="pre">setup.*</span></code> que se puede encontrar en la raíz del archivo.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tab" tabindex="0">Ubuntu Linux and RHEL</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" class="sphinx-tabs-panel group-tab" id="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> path/to/extracted/archive/setup.bash
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tab" tabindex="0">Ubuntu Linux and RHEL</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" class="sphinx-tabs-panel group-tab" id="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>path/to/extracted/archive/setup.bash
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>call path<span class="se">\t</span>o<span class="se">\e</span>xtracted<span class="se">\a</span>rchive<span class="se">\s</span>etup.bat
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span>path<span class="se">\t</span>o<span class="se">\e</span>xtracted<span class="se">\a</span>rchive<span class="se">\s</span>etup.bat
 </pre></div>
 </div>
 </div></div>
@@ -430,12 +430,12 @@ Estos trabajos de empaquetado producen archivos con binarios precompilados que s
 <p>Para Ubuntu Linux, también hay una imagen Docker nocturna basada en el archivo fat nocturno.</p>
 <ol class="arabic">
 <li><p>Extráe la imagen de Docker:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker pull osrf/ros2:nightly
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>osrf/ros2:nightly
 </pre></div>
 </div>
 </li>
 <li><p>Inicia un contenedor interactivo:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker run -it osrf/ros2:nightly
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>osrf/ros2:nightly
 </pre></div>
 </div>
 </li>

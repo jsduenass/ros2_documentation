@@ -399,23 +399,23 @@ However, if you intend to install from source or switch middleware implementatio
 <h3><a class="toc-backref" href="#id3">Installing from source</a><a class="headerlink" href="#installing-from-source" title="Enlazar permanentemente con este título"></a></h3>
 <p>Before installing from source, you will need to have a recent version openssl (1.0.2g or later) installed:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
-sudo apt install libssl-dev
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libssl-dev
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install openssl
+</div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>openssl
 </pre></div>
 </div>
 <p>You will need to have OpenSSL on your library path to run DDS-Security demos.
 Run the following command, and consider adding to your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DYLD_LIBRARY_PATH</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/lib:<span class="nv">$DYLD_LIBRARY_PATH</span>
-<span class="nb">export</span> <span class="nv">OPENSSL_ROOT_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DYLD_LIBRARY_PATH</span><span class="o">=</span><span class="sb">`</span>brew<span class="w"> </span>--prefix<span class="w"> </span>openssl<span class="sb">`</span>/lib:<span class="nv">$DYLD_LIBRARY_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENSSL_ROOT_DIR</span><span class="o">=</span><span class="sb">`</span>brew<span class="w"> </span>--prefix<span class="w"> </span>openssl<span class="sb">`</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>If you don’t have OpenSSL installed, please follow <a class="reference internal" href="../../../Installation/Windows-Install-Binary.html#windows-install-binary-installing-prerequisites"><span class="std std-ref">these instructions</span></a></p>
 </div></div>
 <p>Fast DDS requires an additional CMake flag to build the security plugins, so the colcon invocation needs to be modified to pass:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --symlink-install --cmake-args -DSECURITY<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--cmake-args<span class="w"> </span>-DSECURITY<span class="o">=</span>ON
 </pre></div>
 </div>
 </div>
@@ -434,10 +434,10 @@ See <a class="reference internal" href="../../../How-To-Guides/Working-with-mult
 <blockquote>
 <div><p>Begin by creating folder to store all the files necessary for this demo:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/sros2_demo
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/sros2_demo
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/sros2_demo
+</div><div aria-labelledby="tab-1-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/sros2_demo
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">md</span> C:\dev\ros2\sros2_demo
@@ -451,12 +451,12 @@ See <a class="reference internal" href="../../../How-To-Guides/Working-with-mult
 <p>Use the <code class="docutils literal notranslate"><span class="pre">sros2</span></code> utilities to create the keystore.
 Files in the keystore will be used to enable security for all the participants in the ROS 2 graph.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sros2_demo
-ros2 security create_keystore demo_keystore
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/sros2_demo
+ros2<span class="w"> </span>security<span class="w"> </span>create_keystore<span class="w"> </span>demo_keystore
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sros2_demo
-ros2 security create_keystore demo_keystore
+</div><div aria-labelledby="tab-2-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/sros2_demo
+ros2<span class="w"> </span>security<span class="w"> </span>create_keystore<span class="w"> </span>demo_keystore
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> sros2_demo
@@ -471,12 +471,12 @@ ros2 security create_keystore demo_keystore
 For our demo, that includes the talker and listener nodes.
 This command uses the <code class="docutils literal notranslate"><span class="pre">create_enclave</span></code> feature which is covered in more detail in the next tutorial.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 security create_enclave demo_keystore /talker_listener/talker
-ros2 security create_enclave demo_keystore /talker_listener/listener
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>security<span class="w"> </span>create_enclave<span class="w"> </span>demo_keystore<span class="w"> </span>/talker_listener/talker
+ros2<span class="w"> </span>security<span class="w"> </span>create_enclave<span class="w"> </span>demo_keystore<span class="w"> </span>/talker_listener/listener
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 security create_enclave demo_keystore /talker_listener/talker
-ros2 security create_enclave demo_keystore /talker_listener/listener
+</div><div aria-labelledby="tab-3-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>security<span class="w"> </span>create_enclave<span class="w"> </span>demo_keystore<span class="w"> </span>/talker_listener/talker
+ros2<span class="w"> </span>security<span class="w"> </span>create_enclave<span class="w"> </span>demo_keystore<span class="w"> </span>/talker_listener/listener
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>ros2 security create_enclave demo_keystore /talker_listener/talker
@@ -495,14 +495,14 @@ ros2 security create_enclave demo_keystore /talker_listener/listener
 <p>Three environment variables allow the middleware to locate encryption materials and enable (and possibly enforce) security.
 These and other security-related environment variables are described in the <a class="reference external" href="https://design.ros2.org/articles/ros2_dds_security.html">ROS 2 DDS-Security Integration design document</a>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-4-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_SECURITY_KEYSTORE</span><span class="o">=</span>~/sros2_demo/demo_keystore
-<span class="nb">export</span> <span class="nv">ROS_SECURITY_ENABLE</span><span class="o">=</span><span class="nb">true</span>
-<span class="nb">export</span> <span class="nv">ROS_SECURITY_STRATEGY</span><span class="o">=</span>Enforce
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-4-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_KEYSTORE</span><span class="o">=</span>~/sros2_demo/demo_keystore
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_ENABLE</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_STRATEGY</span><span class="o">=</span>Enforce
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-4-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_SECURITY_KEYSTORE</span><span class="o">=</span>~/sros2_demo/demo_keystore
-<span class="nb">export</span> <span class="nv">ROS_SECURITY_ENABLE</span><span class="o">=</span><span class="nb">true</span>
-<span class="nb">export</span> <span class="nv">ROS_SECURITY_STRATEGY</span><span class="o">=</span>Enforce
+</div><div aria-labelledby="tab-4-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_KEYSTORE</span><span class="o">=</span>~/sros2_demo/demo_keystore
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_ENABLE</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_SECURITY_STRATEGY</span><span class="o">=</span>Enforce
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">ROS_SECURITY_KEYSTORE</span><span class="p">=</span><span class="nv">%cd%</span>/demo_keystore
@@ -517,12 +517,12 @@ For convenience you can add them to your boot environment.</p>
 <div class="section" id="run-the-talker-listener-demo">
 <h3><a class="toc-backref" href="#id10">5. Run the <code class="docutils literal notranslate"><span class="pre">talker/listener</span></code> demo</a><a class="headerlink" href="#run-the-talker-listener-demo" title="Enlazar permanentemente con este título"></a></h3>
 <p>Begin the demo by launching the talker node.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args --enclave /talker_listener/talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/talker
 </pre></div>
 </div>
 <p>In another terminal, do the same to launch the <code class="docutils literal notranslate"><span class="pre">listener</span></code> node.
 The environment variables in this terminal must be properly set as described in step 4 above.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener --ros-args --enclave /talker_listener/listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/listener
 </pre></div>
 </div>
 <p>These nodes will be communicating using authentication and encryption!

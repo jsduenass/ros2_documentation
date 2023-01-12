@@ -373,19 +373,19 @@ This provides a migration path for users who still depend on ROS 1, but desire m
 The version of <code class="docutils literal notranslate"><span class="pre">catkin-pkg-modules</span></code> available in the Ubuntu repository conflicts with that in the ROS 2 package repository.</p>
 <p>If the ROS 2 apt repository is in the available apt repositories (<code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d</span></code>), no ROS 1 packages will be installable.
 The error will be:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ apt install ros-core-dev
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-Some packages could not be installed. This may mean that you have
-requested an impossible situation or <span class="k">if</span> you are using the unstable
-distribution that some required packages have not yet been created
-or been moved out of Incoming.
-The following information may <span class="nb">help</span> to resolve the situation:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-core-dev
+Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
+Building<span class="w"> </span>dependency<span class="w"> </span>tree...<span class="w"> </span>Done
+Reading<span class="w"> </span>state<span class="w"> </span>information...<span class="w"> </span>Done
+Some<span class="w"> </span>packages<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>installed.<span class="w"> </span>This<span class="w"> </span>may<span class="w"> </span>mean<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>have
+requested<span class="w"> </span>an<span class="w"> </span>impossible<span class="w"> </span>situation<span class="w"> </span>or<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>unstable
+distribution<span class="w"> </span>that<span class="w"> </span>some<span class="w"> </span>required<span class="w"> </span>packages<span class="w"> </span>have<span class="w"> </span>not<span class="w"> </span>yet<span class="w"> </span>been<span class="w"> </span>created
+or<span class="w"> </span>been<span class="w"> </span>moved<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span>Incoming.
+The<span class="w"> </span>following<span class="w"> </span>information<span class="w"> </span>may<span class="w"> </span><span class="nb">help</span><span class="w"> </span>to<span class="w"> </span>resolve<span class="w"> </span>the<span class="w"> </span>situation:
 
-The following packages have unmet dependencies:
- ros-core-dev : Depends: catkin but it is not installable
-E: Unable to correct problems, you have held broken packages.
+The<span class="w"> </span>following<span class="w"> </span>packages<span class="w"> </span>have<span class="w"> </span>unmet<span class="w"> </span>dependencies:
+<span class="w"> </span>ros-core-dev<span class="w"> </span>:<span class="w"> </span>Depends:<span class="w"> </span>catkin<span class="w"> </span>but<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>installable
+E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>correct<span class="w"> </span>problems,<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>held<span class="w"> </span>broken<span class="w"> </span>packages.
 </pre></div>
 </div>
 <p>To correct this, remove packages.ros.org from your <code class="docutils literal notranslate"><span class="pre">sources.list</span></code>.
@@ -400,53 +400,53 @@ The substantial deviation is that we skip using the ROS 2 apt repositories becau
 <div class="section" id="install-development-tools-and-ros-tools">
 <h3>Install development tools and ROS tools<a class="headerlink" href="#install-development-tools-and-ros-tools" title="Enlazar permanentemente con este título"></a></h3>
 <p>Since we aren’t using the ROS 2 apt repositories, <code class="docutils literal notranslate"><span class="pre">colcon</span></code> must be installed via <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install -y <span class="se">\</span>
-  build-essential <span class="se">\</span>
-  cmake <span class="se">\</span>
-  git <span class="se">\</span>
-  python3-flake8 <span class="se">\</span>
-  python3-flake8-blind-except <span class="se">\</span>
-  python3-flake8-builtins <span class="se">\</span>
-  python3-flake8-class-newline <span class="se">\</span>
-  python3-flake8-comprehensions <span class="se">\</span>
-  python3-flake8-deprecated <span class="se">\</span>
-  python3-flake8-docstrings <span class="se">\</span>
-  python3-flake8-import-order <span class="se">\</span>
-  python3-flake8-quotes <span class="se">\</span>
-  python3-pip <span class="se">\</span>
-  python3-pytest <span class="se">\</span>
-  python3-pytest-cov <span class="se">\</span>
-  python3-pytest-repeat <span class="se">\</span>
-  python3-pytest-rerunfailures <span class="se">\</span>
-  python3-rosdep <span class="se">\</span>
-  python3-setuptools <span class="se">\</span>
-  wget
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-blind-except<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-builtins<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-class-newline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-comprehensions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-deprecated<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-docstrings<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-import-order<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-quotes<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-cov<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-repeat<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-rerunfailures<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-rosdep<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-setuptools<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget
 
 <span class="c1"># Install colcon from PyPI, rather than apt packages</span>
-python3 -m pip install -U colcon-common-extensions vcstool
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>colcon-common-extensions<span class="w"> </span>vcstool
 </pre></div>
 </div>
 <p>From here, continue with the <a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">source install guide</span></a> to build ROS 2.</p>
 </div>
 <div class="section" id="install-ros-1-from-ubuntu-packages">
 <h3>Install ROS 1 from Ubuntu packages<a class="headerlink" href="#install-ros-1-from-ubuntu-packages" title="Enlazar permanentemente con este título"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install -y ros-core-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-core-dev
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-ros1-bridge">
 <h3>Build <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code><a class="headerlink" href="#build-ros1-bridge" title="Enlazar permanentemente con este título"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a workspace for the ros1_bridge</span>
-mkdir -p ~/ros1_bridge/src
-<span class="nb">cd</span> ~/ros1_bridge/src
-git clone https://github.com/ros2/ros1_bridge
-<span class="nb">cd</span> ~/ros1_bridge
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/ros1_bridge/src
+<span class="nb">cd</span><span class="w"> </span>~/ros1_bridge/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros2/ros1_bridge
+<span class="nb">cd</span><span class="w"> </span>~/ros1_bridge
 
 <span class="c1"># Source the ROS 2 workspace</span>
-. ~/ros2_humble/install/local_setup.bash
+.<span class="w"> </span>~/ros2_humble/install/local_setup.bash
 
 <span class="c1"># Build</span>
-colcon build
+colcon<span class="w"> </span>build
 </pre></div>
 </div>
 <p>After building all of <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code>, the remainder of the <a class="reference external" href="https://github.com/ros2/ros1_bridge#example-1-run-the-bridge-and-the-example-talker-and-listener">ros1_bridge examples</a> should work with your new installation</p>

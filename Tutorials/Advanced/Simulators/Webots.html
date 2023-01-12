@@ -574,10 +574,10 @@ This conversion depends on the structure of the robot, more specifically on the 
 This will allow the <code class="docutils literal notranslate"><span class="pre">webots_ros2_driver</span></code> ROS node to launch the plugin.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">my_package/resource</span></code> folder create a text file named <code class="docutils literal notranslate"><span class="pre">my_robot.urdf</span></code> with this contents:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;My robot&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;webots&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&quot;my_package.my_robot_driver.MyRobotDriver&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/webots&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;My robot&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;webots&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;my_package.my_robot_driver.MyRobotDriver&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/webots&gt;</span>
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
 </div>
@@ -781,22 +781,22 @@ Close also the topic command with <code class="docutils literal notranslate"><sp
 <p>You have to modify the URDF file in order to enable the sensors.
 In <code class="docutils literal notranslate"><span class="pre">my_robot.urdf</span></code> replace the whole contents with:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;My robot&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;webots&gt;</span>
-        <span class="nt">&lt;device</span> <span class="na">reference=</span><span class="s">&quot;ds0&quot;</span> <span class="na">type=</span><span class="s">&quot;DistanceSensor&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ros&gt;</span>
-                <span class="nt">&lt;topicName&gt;</span>/left_sensor<span class="nt">&lt;/topicName&gt;</span>
-                <span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
-            <span class="nt">&lt;/ros&gt;</span>
-        <span class="nt">&lt;/device&gt;</span>
-        <span class="nt">&lt;device</span> <span class="na">reference=</span><span class="s">&quot;ds1&quot;</span> <span class="na">type=</span><span class="s">&quot;DistanceSensor&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ros&gt;</span>
-                <span class="nt">&lt;topicName&gt;</span>/right_sensor<span class="nt">&lt;/topicName&gt;</span>
-                <span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
-            <span class="nt">&lt;/ros&gt;</span>
-        <span class="nt">&lt;/device&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">type=</span><span class="s">&quot;my_package.my_robot_driver.MyRobotDriver&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/webots&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;My robot&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;webots&gt;</span>
+<span class="w">        </span><span class="nt">&lt;device</span><span class="w"> </span><span class="na">reference=</span><span class="s">&quot;ds0&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;DistanceSensor&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ros&gt;</span>
+<span class="w">                </span><span class="nt">&lt;topicName&gt;</span>/left_sensor<span class="nt">&lt;/topicName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ros&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/device&gt;</span>
+<span class="w">        </span><span class="nt">&lt;device</span><span class="w"> </span><span class="na">reference=</span><span class="s">&quot;ds1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;DistanceSensor&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ros&gt;</span>
+<span class="w">                </span><span class="nt">&lt;topicName&gt;</span>/right_sensor<span class="nt">&lt;/topicName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ros&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/device&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;my_package.my_robot_driver.MyRobotDriver&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/webots&gt;</span>
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
 </div>

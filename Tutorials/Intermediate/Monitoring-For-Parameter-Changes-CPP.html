@@ -408,9 +408,9 @@ So, navigate into <code class="docutils literal notranslate"><span class="pre">r
 <h4>1.1 Update <code class="docutils literal notranslate"><span class="pre">package.xml</span></code><a class="headerlink" href="#update-package-xml" title="Enlazar permanentemente con este título"></a></h4>
 <p>Because you used the <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> option during package creation, you don’t have to manually add dependencies to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> or <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.
 As always, though, make sure to add the description, maintainer email and name, and license information to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>C++ parameter events client tutorial<span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
-<span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>C++<span class="w"> </span>parameter<span class="w"> </span>events<span class="w"> </span>client<span class="w"> </span>tutorial<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<span class="nt">&lt;license&gt;</span>Apache<span class="w"> </span>License<span class="w"> </span>2.0<span class="nt">&lt;/license&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -418,46 +418,46 @@ As always, though, make sure to add the description, maintainer email and name, 
 <div class="section" id="write-the-c-node">
 <h3><a class="toc-backref" href="#id5">2 Write the C++ node</a><a class="headerlink" href="#write-the-c-node" title="Enlazar permanentemente con este título"></a></h3>
 <p>Inside the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/cpp_parameter_event_handler/src</span></code> directory, create a new file called <code class="docutils literal notranslate"><span class="pre">parameter_event_handler.cpp</span></code> and paste the following code within:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">SampleNodeWithParameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">SampleNodeWithParameters</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;node_with_parameters&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SampleNodeWithParameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">SampleNodeWithParameters</span><span class="p">()</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;node_with_parameters&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create a parameter subscriber that can be used to monitor parameter changes</span>
 <span class="w">    </span><span class="c1">// (for this node&#39;s parameters as well as other nodes&#39; parameters)</span>
-<span class="w">    </span><span class="n">param_subscriber_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">param_subscriber_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Set a callback for this node&#39;s integer parameter, &quot;an_int_param&quot;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type %s: </span><span class="se">\&quot;</span><span class="s">%ld</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">as_int</span><span class="p">());</span><span class="w"></span>
-<span class="w">      </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="n">cb_handle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">          </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type %s: </span><span class="se">\&quot;</span><span class="s">%ld</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">          </span><span class="n">p</span><span class="p">.</span><span class="n">as_int</span><span class="p">());</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="n">cb_handle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterCallbackHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cb_handle_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterCallbackHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cb_handle_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SampleNodeWithParameters</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SampleNodeWithParameters</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
@@ -472,36 +472,36 @@ Finally, the code creates a lambda function and sets it as the callback to invok
 <p class="admonition-title">Nota</p>
 <p>It is very important to save the handle that is returned by <code class="docutils literal notranslate"><span class="pre">add_parameter_callback</span></code>; otherwise, the callback will not be properly registered.</p>
 </div>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">SampleNodeWithParameters</span><span class="p">()</span><span class="w"></span>
-<span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;node_with_parameters&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">SampleNodeWithParameters</span><span class="p">()</span>
+<span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;node_with_parameters&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Create a parameter subscriber that can be used to monitor parameter changes</span>
 <span class="w">  </span><span class="c1">// (for this node&#39;s parameters as well as other nodes&#39; parameters)</span>
-<span class="w">  </span><span class="n">param_subscriber_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">param_subscriber_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Set a callback for this node&#39;s integer parameter, &quot;an_int_param&quot;</span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type %s: </span><span class="se">\&quot;</span><span class="s">%ld</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">as_int</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="n">cb_handle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type %s: </span><span class="se">\&quot;</span><span class="s">%ld</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">as_int</span><span class="p">());</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="n">cb_handle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="s">&quot;an_int_param&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Following the <code class="docutils literal notranslate"><span class="pre">SampleNodeWithParameters</span></code> is a typical <code class="docutils literal notranslate"><span class="pre">main</span></code> function which initializes ROS, spins the sample node so that it can send and receive messages, and then shuts down after the user enters ^C at the console.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SampleNodeWithParameters</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SampleNodeWithParameters</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -568,24 +568,24 @@ We will use the parameter_blackboard demo application to host a double parameter
 <p>First update the constructor to add the following code after the existing code:</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Now, add a callback to monitor any changes to the remote node&#39;s parameter. In this</span>
 <span class="c1">// case, we supply the remote node name.</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">cb2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb2: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type: %s: </span><span class="se">\&quot;</span><span class="s">%.02lf</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
-<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">as_double</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="k">auto</span><span class="w"> </span><span class="n">remote_node_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;parameter_blackboard&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="k">auto</span><span class="w"> </span><span class="n">remote_param_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;a_double_param&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="n">cb_handle2_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="n">remote_param_name</span><span class="p">,</span><span class="w"> </span><span class="n">cb2</span><span class="p">,</span><span class="w"> </span><span class="n">remote_node_name</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">cb2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;cb2: Received an update to parameter </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> of type: %s: </span><span class="se">\&quot;</span><span class="s">%.02lf</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">get_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">get_type_name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
+<span class="w">      </span><span class="n">p</span><span class="p">.</span><span class="n">as_double</span><span class="p">());</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">remote_node_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;parameter_blackboard&quot;</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">remote_param_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;a_double_param&quot;</span><span class="p">);</span>
+<span class="n">cb_handle2_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="o">-&gt;</span><span class="n">add_parameter_callback</span><span class="p">(</span><span class="n">remote_param_name</span><span class="p">,</span><span class="w"> </span><span class="n">cb2</span><span class="p">,</span><span class="w"> </span><span class="n">remote_node_name</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Then add another member variable, <code class="docutils literal notranslate"><span class="pre">cb_handle2</span></code> for the additional callback handle:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterCallbackHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cb_handle_</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterEventHandler</span><span class="o">&gt;</span><span class="w"> </span><span class="n">param_subscriber_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterCallbackHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cb_handle_</span><span class="p">;</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterCallbackHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cb_handle2_</span><span class="p">;</span><span class="w">  </span><span class="c1">// Add this</span>
-<span class="p">};</span><span class="w"></span>
+<span class="p">};</span>
 </pre></div>
 </div>
 <p>In a terminal, navigate back to the root of your workspace, <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, and build your updated package as before:</p>

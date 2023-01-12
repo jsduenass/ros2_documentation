@@ -362,25 +362,25 @@
 The main difference in ROS 2 is that node names must be used to address parameters.
 In addition to the fully qualified node name, we use the key «ros__parameters» to signal the start of parameters for the node.</p>
 <p>For example, here is a parameters file in ROS 1:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">lidar_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"></span>
-<span class="nt">lidar_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
-<span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">11312</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11311</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">21311</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">lidar_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">lidar_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">11312</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11311</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">21311</span><span class="p p-Indicator">]</span>
+<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 <p>Let’s assume that the first two parameters are for a node named <code class="docutils literal notranslate"><span class="pre">/lidar_ns/lidar_node_name</span></code>, the next parameter is for a node named <code class="docutils literal notranslate"><span class="pre">/imu</span></code>, and the last parameter we want to set on both nodes.</p>
 <p>We would construct our ROS 2 parameters file as follows:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/lidar_ns</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">lidar_node_name</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">lidar_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"></span>
-<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
-<span class="nt">imu</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2438</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2439</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2440</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="nt">/**</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/lidar_ns</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">lidar_node_name</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">lidar_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="nt">imu</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2438</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2439</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2440</span><span class="p p-Indicator">]</span>
+<span class="nt">/**</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 <p>Note the use of wildcards (<code class="docutils literal notranslate"><span class="pre">/**</span></code>) to indicate that the parameter <code class="docutils literal notranslate"><span class="pre">debug</span></code> should be set on any node in any namespace.</p>

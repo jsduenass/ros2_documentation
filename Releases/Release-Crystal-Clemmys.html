@@ -411,12 +411,12 @@
 <li><p>geometry2 - <code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> API Change</p>
 <p><code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> now uses <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code>, with the constructor requiring a <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> to a <code class="docutils literal notranslate"><span class="pre">rclcpp::Clock</span></code> instance.
 See <a class="reference external" href="https://github.com/ros2/geometry2/pull/67">https://github.com/ros2/geometry2/pull/67</a> for details, with example usage:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_ros/transform_listener.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
-<span class="p">...</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_ros/transform_listener.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span>
+<span class="p">...</span>
 <span class="cp"># Assuming you have a rclcpp::Node my_node</span>
-<span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="w"> </span><span class="n">buffer</span><span class="p">(</span><span class="n">my_node</span><span class="p">.</span><span class="n">get_clock</span><span class="p">());</span><span class="w"></span>
-<span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="w"> </span><span class="nf">tf_listener</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w"></span>
+<span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="w"> </span><span class="n">buffer</span><span class="p">(</span><span class="n">my_node</span><span class="p">.</span><span class="n">get_clock</span><span class="p">());</span>
+<span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="w"> </span><span class="nf">tf_listener</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>

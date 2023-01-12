@@ -382,11 +382,11 @@ We will then simulate a lossy network connection between them and show how diffe
 See the <a class="reference external" href="http://docs.opencv.org/doc/tutorials/introduction/table_of_content_introduction/table_of_content_introduction.html#table-of-content-introduction">OpenCV documentation</a> for its installation instructions.
 You will also need the ROS package <code class="docutils literal notranslate"><span class="pre">image_tools</span></code>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXggQmluYXJpZXM=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tab" tabindex="0">Linux Binaries</button><button aria-controls="panel-0-RnJvbSBTb3VyY2U=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RnJvbSBTb3VyY2U=" name="RnJvbSBTb3VyY2U=" role="tab" tabindex="-1">From Source</button></div><div aria-labelledby="tab-0-TGludXggQmluYXJpZXM=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ros-rolling-image-tools
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXggQmluYXJpZXM=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tab" tabindex="0">Linux Binaries</button><button aria-controls="panel-0-RnJvbSBTb3VyY2U=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RnJvbSBTb3VyY2U=" name="RnJvbSBTb3VyY2U=" role="tab" tabindex="-1">From Source</button></div><div aria-labelledby="tab-0-TGludXggQmluYXJpZXM=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ros-rolling-image-tools
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-RnJvbSBTb3VyY2U=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RnJvbSBTb3VyY2U=" name="RnJvbSBTb3VyY2U=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone and build the demos repo using the branch that matches your installation</span>
-git clone https://github.com/ros2/demos.git -b rolling
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros2/demos.git<span class="w"> </span>-b<span class="w"> </span>rolling
 </pre></div>
 </div>
 </div></div>
@@ -396,18 +396,18 @@ git clone https://github.com/ros2/demos.git -b rolling
 <p>Before running the demo, make sure you have a working webcam connected to your computer.</p>
 <p>Once you’ve installed ROS 2, source your setup file:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. &lt;path to ROS <span class="m">2</span> install space&gt;/setup.bash
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>ROS<span class="w"> </span><span class="m">2</span><span class="w"> </span>install<span class="w"> </span>space&gt;/setup.bash
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. &lt;path to ROS <span class="m">2</span> install space&gt;/setup.bash
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>ROS<span class="w"> </span><span class="m">2</span><span class="w"> </span>install<span class="w"> </span>space&gt;/setup.bash
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call &lt;path to ROS <span class="m">2</span> install space&gt;/local_setup.bat
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>ROS<span class="w"> </span><span class="m">2</span><span class="w"> </span>install<span class="w"> </span>space&gt;/local_setup.bat
 </pre></div>
 </div>
 </div></div>
 <p>Then run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools showimage
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>showimage
 </pre></div>
 </div>
 <p>Nothing will happen yet.
@@ -415,34 +415,34 @@ git clone https://github.com/ros2/demos.git -b rolling
 <p>Note: you have to close the <code class="docutils literal notranslate"><span class="pre">showimage</span></code> process with <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> later.
 You can’t just close the window.</p>
 <p>In a separate terminal, source the install file and run the publisher node:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools cam2image
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>cam2image
 </pre></div>
 </div>
 <p>This will publish an image from your webcam.
 In case you don’t have a camera attached to your computer, there is a commandline option which publishes predefined images.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools cam2image --ros-args -p burger_mode:<span class="o">=</span>True
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>cam2image<span class="w"> </span>--ros-args<span class="w"> </span>-p<span class="w"> </span>burger_mode:<span class="o">=</span>True
 </pre></div>
 </div>
 <p>In this window, you’ll see terminal output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Publishing image <span class="c1">#1</span>
-Publishing image <span class="c1">#2</span>
-Publishing image <span class="c1">#3</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Publishing<span class="w"> </span>image<span class="w"> </span><span class="c1">#1</span>
+Publishing<span class="w"> </span>image<span class="w"> </span><span class="c1">#2</span>
+Publishing<span class="w"> </span>image<span class="w"> </span><span class="c1">#3</span>
 ...
 </pre></div>
 </div>
 <p>A window will pop up with the title «view» showing your camera feed.
 In the first window, you’ll see output from the subscriber:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Received image <span class="c1">#1</span>
-Received image <span class="c1">#2</span>
-Received image <span class="c1">#3</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Received<span class="w"> </span>image<span class="w"> </span><span class="c1">#1</span>
+Received<span class="w"> </span>image<span class="w"> </span><span class="c1">#2</span>
+Received<span class="w"> </span>image<span class="w"> </span><span class="c1">#3</span>
 ...
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>macOS users: If these examples do not work or you receive an error like <code class="docutils literal notranslate"><span class="pre">ddsi_conn_write</span> <span class="pre">failed</span> <span class="pre">-1</span></code> then you’ll need to increase your system wide UDP packet size:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo sysctl -w net.inet.udp.recvspace<span class="o">=</span><span class="m">209715</span>
-$ sudo sysctl -w net.inet.udp.maxdgram<span class="o">=</span><span class="m">65500</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.inet.udp.recvspace<span class="o">=</span><span class="m">209715</span>
+$<span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.inet.udp.maxdgram<span class="o">=</span><span class="m">65500</span>
 </pre></div>
 </div>
 <p>These changes will not persist a reboot. If you want the changes to persist, add these lines to <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.conf</span></code> (create the file if it doesn’t exist already):</p>
@@ -454,7 +454,7 @@ net.inet.udp.maxdgram<span class="o">=</span><span class="m">65500</span>
 <div class="section" id="command-line-options">
 <h3><a class="toc-backref" href="#id4">Command line options</a><a class="headerlink" href="#command-line-options" title="Enlazar permanentemente con este título"></a></h3>
 <p>In one of your terminals, add a -h flag to the original command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools showimage -h
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>showimage<span class="w"> </span>-h
 </pre></div>
 </div>
 </div>
@@ -472,7 +472,7 @@ Degrading the loopback interface throughput won’t affect shared memory, thus t
 <p>However, for macOS and Windows you can achieve a similar effect with the utilities «Network Link Conditioner» (part of the xcode tool suite) and «Clumsy» (<a class="reference external" href="http://jagt.github.io/clumsy/index.html">http://jagt.github.io/clumsy/index.html</a>), respectively, but they will not be covered in this tutorial.</p>
 </div>
 <p>We are going to use the Linux network traffic control utility, <code class="docutils literal notranslate"><span class="pre">tc</span></code> (<a class="reference external" href="http://linux.die.net/man/8/tc">http://linux.die.net/man/8/tc</a>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo tc qdisc add dev lo root netem loss <span class="m">5</span>%
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>tc<span class="w"> </span>qdisc<span class="w"> </span>add<span class="w"> </span>dev<span class="w"> </span>lo<span class="w"> </span>root<span class="w"> </span>netem<span class="w"> </span>loss<span class="w"> </span><span class="m">5</span>%
 </pre></div>
 </div>
 <p>This magical incantation will simulate 5% packet loss over the local loopback device.
@@ -486,7 +486,7 @@ The publisher will now just attempt to deliver the network packets, and don’t 
 We see now that some of the frames on the <code class="docutils literal notranslate"><span class="pre">showimage</span></code> side were dropped, so the frame numbers in the shell running <code class="docutils literal notranslate"><span class="pre">showimage</span></code> won’t be consecutive anymore:</p>
 <a class="reference external image-reference" href="https://raw.githubusercontent.com/ros2/demos/rolling/image_tools/doc/qos-best-effort.png"><img alt="Best effort image transfer" src="https://raw.githubusercontent.com/ros2/demos/rolling/image_tools/doc/qos-best-effort.png" /></a>
 <p>When you’re done, remember to delete the queueing discipline:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo tc qdisc delete dev lo root netem loss <span class="m">5</span>%
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>tc<span class="w"> </span>qdisc<span class="w"> </span>delete<span class="w"> </span>dev<span class="w"> </span>lo<span class="w"> </span>root<span class="w"> </span>netem<span class="w"> </span>loss<span class="w"> </span><span class="m">5</span>%
 </pre></div>
 </div>
 </div>

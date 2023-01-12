@@ -368,17 +368,17 @@ Follow these instructions before proceeding with <a class="reference internal" h
 PySide2 may be supported in the future.</p>
 <div class="section" id="install-dependencies">
 <h3>Install dependencies<a class="headerlink" href="#install-dependencies" title="Enlazar permanentemente con este título"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brew install sip pyqt5
-$ brew install graphviz
-$ python3 -m pip install pygraphviz pydot
-$ brew link --force qt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>sip<span class="w"> </span>pyqt5
+$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>graphviz
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pygraphviz<span class="w"> </span>pydot
+$<span class="w"> </span>brew<span class="w"> </span>link<span class="w"> </span>--force<span class="w"> </span>qt
 </pre></div>
 </div>
 <p>This is the quickest solution but may cause issues when upgrading Qt or if other packages are expecting Qt 4.
 Another option is to update your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to include the Qt install location:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew --prefix qt<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-$ <span class="nb">export</span> <span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew --prefix qt<span class="k">)</span><span class="s2">:</span><span class="nv">$CMAKE_PREFIX_PATH</span><span class="s2">&quot;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>qt<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>qt<span class="k">)</span><span class="s2">:</span><span class="nv">$CMAKE_PREFIX_PATH</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>

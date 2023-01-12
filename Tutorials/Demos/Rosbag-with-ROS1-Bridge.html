@@ -364,7 +364,7 @@
 <p>In this example, we’ll be using the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> demo program that comes with ROS 2 and a Python script to emulate a simple turtlebot-like robot’s sensor data so that we can bridge it to ROS 1 and use rosbag to record it.</p>
 <p>First we’ll run a ROS 1 <code class="docutils literal notranslate"><span class="pre">roscore</span></code> in a new shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell A:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
 roscore
@@ -372,14 +372,14 @@ roscore
 </div>
 <p>Then we’ll run the ROS 1 &lt;=&gt; ROS 2 <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code> with the <code class="docutils literal notranslate"><span class="pre">--bridge-all-topics</span></code> option (so we can do <code class="docutils literal notranslate"><span class="pre">rostopic</span> <span class="pre">list</span></code> and see them) in another shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell B:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
-. /opt/ros/ardent/setup.bash
+.<span class="w"> </span>/opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
 <span class="c1"># . &lt;workspace-with-bridge&gt;/install/setup.bash</span>
-<span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
-ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
+ros2<span class="w"> </span>run<span class="w"> </span>ros1_bridge<span class="w"> </span>dynamic_bridge<span class="w"> </span>--bridge-all-topics
 </pre></div>
 </div>
 <p>Remember to replace <code class="docutils literal notranslate"><span class="pre">&lt;workspace-with-bridge&gt;</span></code> with the path to where you either extracted the ROS 2 binary or where you built ROS 2 from source.</p>
@@ -387,10 +387,10 @@ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 <p>Now we can start up the ROS 2 programs that will emulate our turtlebot-like robot.
 First we’ll run the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> program with the <code class="docutils literal notranslate"><span class="pre">-b</span></code> option so it doesn’t require a camera to work:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell C:</span>
-. /opt/ros/ardent/setup.bash
+.<span class="w"> </span>/opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
 <span class="c1"># . &lt;workspace-with-bridge&gt;/install/setup.bash</span>
-ros2 run image_tools cam2image -- -b
+ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>cam2image<span class="w"> </span>--<span class="w"> </span>-b
 </pre></div>
 </div>
 <p>TODO: use namespaced topic names</p>
@@ -439,19 +439,19 @@ Place this script in a file called <code class="docutils literal notranslate"><s
 </div>
 <p>You can run this python script in a new ROS 2 shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell D:</span>
-. /opt/ros/ardent/setup.bash
+.<span class="w"> </span>/opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
 <span class="c1"># . &lt;workspace-with-bridge&gt;/install/setup.bash</span>
-python3 emulate_kobuki_node.py
+python3<span class="w"> </span>emulate_kobuki_node.py
 </pre></div>
 </div>
 <hr class="docutils" />
 <p>Now that all the data sources and the dynamic bridge are running, we can look at the available topics in a new ROS 1 shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell E:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
-rostopic list
+rostopic<span class="w"> </span>list
 </pre></div>
 </div>
 <p>You should see something like this:</p>
@@ -465,13 +465,13 @@ rostopic list
 </div>
 <p>We can now record this data with <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">record</span></code> in the same shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell E:</span>
-rosbag record /image /imu_data /odom
+rosbag<span class="w"> </span>record<span class="w"> </span>/image<span class="w"> </span>/imu_data<span class="w"> </span>/odom
 </pre></div>
 </div>
 <p>After a few seconds you can <code class="docutils literal notranslate"><span class="pre">Ctrl-c</span></code> the <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> command and do an <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lh</span></code> to see how big the file is, you might see something like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>% ls -lh
-total <span class="m">0</span>
--rw-rw-r-- <span class="m">1</span> william william  12M Feb <span class="m">23</span> <span class="m">16</span>:59 <span class="m">2017</span>-02-23-16-59-47.bag
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>ls<span class="w"> </span>-lh
+total<span class="w"> </span><span class="m">0</span>
+-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>william<span class="w"> </span>william<span class="w">  </span>12M<span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">16</span>:59<span class="w"> </span><span class="m">2017</span>-02-23-16-59-47.bag
 </pre></div>
 </div>
 <p>Though the file name will be different for your bag (since it is derived from the date and time).</p>
@@ -483,7 +483,7 @@ However, we can also playback bag data into ROS 2 using <code class="docutils li
 <p>First close out all the shells you opened for the previous tutorial, stopping any running programs.</p>
 <p>Then in a new shell start the <code class="docutils literal notranslate"><span class="pre">roscore</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell P:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
 roscore
@@ -491,33 +491,33 @@ roscore
 </div>
 <p>Then run the <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code> in another shell:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell Q:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
-. /opt/ros/ardent/setup.bash
+.<span class="w"> </span>/opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
 <span class="c1"># . &lt;workspace-with-bridge&gt;/install/setup.bash</span>
-<span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
-ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span>http://localhost:11311
+ros2<span class="w"> </span>run<span class="w"> </span>ros1_bridge<span class="w"> </span>dynamic_bridge<span class="w"> </span>--bridge-all-topics
 </pre></div>
 </div>
 <p>Then play the bag data back with <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">play</span></code> in another new shell, using the <code class="docutils literal notranslate"><span class="pre">--loop</span></code> option so that we don’t have to keep restarting it for short bags:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell R:</span>
-. /opt/ros/kinetic/setup.bash
+.<span class="w"> </span>/opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
 <span class="c1"># . ~/ros_catkin_ws/install_isolated/setup.bash</span>
-rosbag play --loop path/to/bag_file
+rosbag<span class="w"> </span>play<span class="w"> </span>--loop<span class="w"> </span>path/to/bag_file
 </pre></div>
 </div>
 <p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">path/to/bag_file</span></code> with the path to the bag file you want to playback.</p>
 <hr class="docutils" />
 <p>Now that the data is being played back and the bridge is running we can see the data coming across in ROS 2.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell S:</span>
-. /opt/ros/ardent/setup.bash
+.<span class="w"> </span>/opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
 <span class="c1"># . &lt;workspace-with-bridge&gt;/install/setup.bash</span>
-ros2 topic list
-ros2 topic <span class="nb">echo</span> /odom
+ros2<span class="w"> </span>topic<span class="w"> </span>list
+ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom
 </pre></div>
 </div>
 <p>You should see something like:</p>
@@ -530,7 +530,7 @@ ros2 topic <span class="nb">echo</span> /odom
 </pre></div>
 </div>
 <p>You can also see the image being played from the bag by using the <code class="docutils literal notranslate"><span class="pre">showimage</span></code> tool:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools showimage
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>image_tools<span class="w"> </span>showimage
 </pre></div>
 </div>
 </div>

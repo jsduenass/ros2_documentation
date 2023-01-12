@@ -413,14 +413,14 @@ La lista exacta de paquetes se describe en los repositorios enumerados en <a cla
 <div class="section" id="instalar-python">
 <h3><a class="toc-backref" href="#id6">Instalar Python</a><a class="headerlink" href="#instalar-python" title="Enlazar permanentemente con este título"></a></h3>
 <p>Abre un símbolo del sistema y escriba lo siguiente para instalar Python a través de Chocolatey:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y python --version <span class="m">3</span>.8.3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python<span class="w"> </span>--version<span class="w"> </span><span class="m">3</span>.8.3
 </pre></div>
 </div>
 </div>
 <div class="section" id="instalar-redistribuibles-de-visual-c">
 <h3><a class="toc-backref" href="#id7">Instalar redistribuibles de Visual C++</a><a class="headerlink" href="#instalar-redistribuibles-de-visual-c" title="Enlazar permanentemente con este título"></a></h3>
 <p>Abre un símbolo del sistema y escriba lo siguiente para instalarlos a través de Chocolatey:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y vcredist2013 vcredist140
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>vcredist2013<span class="w"> </span>vcredist140
 </pre></div>
 </div>
 </div>
@@ -431,7 +431,7 @@ Desplázate hasta la parte inferior de la página y descarga <em>Win64 OpenSSL v
 No descargues las versiones Win32 o Light, o los instaladores v3.X.Y.</p>
 <p>Ejecuta el instalador con los parámetros predeterminados, ya que los siguientes comandos asumen que usaste el directorio de instalación predeterminado.</p>
 <p>Este comando establece una variable de entorno que persiste durante las sesiones:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx /m OPENSSL_CONF <span class="s2">&quot;C:\Program Files\OpenSSL-Win64\bin\openssl.cfg&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx<span class="w"> </span>/m<span class="w"> </span>OPENSSL_CONF<span class="w"> </span><span class="s2">&quot;C:\Program Files\OpenSSL-Win64\bin\openssl.cfg&quot;</span>
 </pre></div>
 </div>
 <p>Deberá agregar la carpeta bin OpenSSL-Win64 a su PATH.
@@ -459,7 +459,7 @@ En el cuadro de diálogo resultante, haga clic en «Variables de entorno», lueg
 <p>Algunos de los ejemplos requieren la instalación de OpenCV.</p>
 <p>Puedes descargar una versión precompilada de OpenCV 3.4.6 desde <a class="reference external" href="https://github.com/ros2/ros2/releases/download/opencv-archives/opencv-3.4.6-vc16.VS2019.zip">https://github.com/ros2/ros2/releases/download/opencv-archives/opencv-3.4.6-vc16.VS2019.zip</a> .</p>
 <p>Suponiendo que lo descomprimiste en <code class="docutils literal notranslate"><span class="pre">C:\opencv</span></code>, escribe lo siguiente en un símbolo del sistema (requiere privilegios de administrador):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx /m OpenCV_DIR C:<span class="se">\o</span>pencv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx<span class="w"> </span>/m<span class="w"> </span>OpenCV_DIR<span class="w"> </span>C:<span class="se">\o</span>pencv
 </pre></div>
 </div>
 <p>Dado que está utilizando una versión ROS precompilada, debemos indicarle dónde encontrar las bibliotecas de OpenCV.
@@ -470,7 +470,7 @@ Tienes que extender la variable <code class="docutils literal notranslate"><span
 <p>Hay algunas dependencias que no están disponibles en la base de datos del paquete Chocolatey.
 Para facilitar el proceso de instalación manual, proporcionamos los paquetes Chocolatey necesarios.</p>
 <p>Como algunos paquetes chocolatosos dependen de él, comenzamos instalando CMake</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y cmake
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake
 </pre></div>
 </div>
 <p>Deberás agregar la carpeta bin de CMake <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\CMake\bin</span></code> a tu PATH.</p>
@@ -484,16 +484,16 @@ Para facilitar el proceso de instalación manual, proporcionamos los paquetes Ch
 <li><p>tinyxml2.6.0.0.nupkg</p></li>
 </ul>
 <p>Una vez que se descargan estos paquetes, abre un shell administrativo y ejecuta el siguiente comando:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y -s &lt;PATH<span class="se">\T</span>O<span class="se">\D</span>OWNLOADS<span class="se">\&gt;</span> asio cunit eigen tinyxml-usestl tinyxml2 bullet
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-s<span class="w"> </span>&lt;PATH<span class="se">\T</span>O<span class="se">\D</span>OWNLOADS<span class="se">\&gt;</span><span class="w"> </span>asio<span class="w"> </span>cunit<span class="w"> </span>eigen<span class="w"> </span>tinyxml-usestl<span class="w"> </span>tinyxml2<span class="w"> </span>bullet
 </pre></div>
 </div>
 <p>Reemplace <code class="docutils literal notranslate"><span class="pre">&lt;PATH\TO\DOWNLOADS&gt;</span></code> con la carpeta en la que descargó los paquetes.</p>
 <p>Primero actualiza pip y setuptools:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U pip <span class="nv">setuptools</span><span class="o">==</span><span class="m">59</span>.6.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pip<span class="w"> </span><span class="nv">setuptools</span><span class="o">==</span><span class="m">59</span>.6.0
 </pre></div>
 </div>
 <p>Ahora instala algunas dependencias de Python adicionales:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U catkin_pkg cryptography empy importlib-metadata <span class="nv">lark</span><span class="o">==</span><span class="m">1</span>.1.1 lxml matplotlib netifaces numpy opencv-python PyQt5 pillow psutil pycairo pydot <span class="nv">pyparsing</span><span class="o">==</span><span class="m">2</span>.4.7 pyyaml rosdistro
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>catkin_pkg<span class="w"> </span>cryptography<span class="w"> </span>empy<span class="w"> </span>importlib-metadata<span class="w"> </span><span class="nv">lark</span><span class="o">==</span><span class="m">1</span>.1.1<span class="w"> </span>lxml<span class="w"> </span>matplotlib<span class="w"> </span>netifaces<span class="w"> </span>numpy<span class="w"> </span>opencv-python<span class="w"> </span>PyQt5<span class="w"> </span>pillow<span class="w"> </span>psutil<span class="w"> </span>pycairo<span class="w"> </span>pydot<span class="w"> </span><span class="nv">pyparsing</span><span class="o">==</span><span class="m">2</span>.4.7<span class="w"> </span>pyyaml<span class="w"> </span>rosdistro
 </pre></div>
 </div>
 </div>
@@ -504,8 +504,8 @@ Ejecuta el instalador.
 Asegúrate de seleccionar el componente <code class="docutils literal notranslate"><span class="pre">MSVC</span> <span class="pre">2017</span> <span class="pre">64-bit</span></code> en el árbol <code class="docutils literal notranslate"><span class="pre">Qt</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Qt</span> <span class="pre">5.12.12</span></code>.</p>
 <p>Finalmente, en una ventana de administrador <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> configura estas variables de entorno.
 Los siguientes comandos asumen que lo instalaste en la ubicación predeterminada de <code class="docutils literal notranslate"><span class="pre">C:\Qt</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx /m Qt5_DIR C:<span class="se">\Q</span>t<span class="se">\Q</span>t5.12.12<span class="se">\5</span>.12.12<span class="se">\m</span>svc2017_64
-setx /m QT_QPA_PLATFORM_PLUGIN_PATH C:<span class="se">\Q</span>t<span class="se">\Q</span>t5.12.12<span class="se">\5</span>.12.12<span class="se">\m</span>svc2017_64<span class="se">\p</span>lugins<span class="se">\p</span>latforms
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>setx<span class="w"> </span>/m<span class="w"> </span>Qt5_DIR<span class="w"> </span>C:<span class="se">\Q</span>t<span class="se">\Q</span>t5.12.12<span class="se">\5</span>.12.12<span class="se">\m</span>svc2017_64
+setx<span class="w"> </span>/m<span class="w"> </span>QT_QPA_PLATFORM_PLUGIN_PATH<span class="w"> </span>C:<span class="se">\Q</span>t<span class="se">\Q</span>t5.12.12<span class="se">\5</span>.12.12<span class="se">\m</span>svc2017_64<span class="se">\p</span>lugins<span class="se">\p</span>latforms
 </pre></div>
 </div>
 <div class="admonition note">
@@ -546,7 +546,7 @@ Luego continúa descargando <code class="docutils literal notranslate"><span cla
 <div class="section" id="configuracion-del-entorno">
 <h2><a class="toc-backref" href="#id16">Configuración del entorno</a><a class="headerlink" href="#configuracion-del-entorno" title="Enlazar permanentemente con este título"></a></h2>
 <p>Inicia una shell de comandos y obtén el archivo de configuración de ROS 2 para configurar el espacio de trabajo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call C:<span class="se">\d</span>ev<span class="se">\r</span>os2_rolling<span class="se">\l</span>ocal_setup.bat
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span>C:<span class="se">\d</span>ev<span class="se">\r</span>os2_rolling<span class="se">\l</span>ocal_setup.bat
 </pre></div>
 </div>
 <p>Es normal que el comando anterior, si nada más salió mal, muestre «El sistema no puede encontrar la ruta especificada». Exactamente una vez.</p>
@@ -554,11 +554,11 @@ Luego continúa descargando <code class="docutils literal notranslate"><span cla
 <div class="section" id="prueba-algunos-ejemplos">
 <h2><a class="toc-backref" href="#id17">Prueba algunos ejemplos</a><a class="headerlink" href="#prueba-algunos-ejemplos" title="Enlazar permanentemente con este título"></a></h2>
 <p>En un shell de comandos, configure el entorno ROS 2 como se describe arriba y luego ejecute un <code class="docutils literal notranslate"><span class="pre">talker</span></code> de C++:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker
 </pre></div>
 </div>
 <p>Abre otro shell de comandos y ejecuta un <code class="docutils literal notranslate"><span class="pre">listener</span></code> Python:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener
 </pre></div>
 </div>
 <p>Deberías ver al <code class="docutils literal notranslate"><span class="pre">talker</span></code> diciendo que está publicando (<code class="docutils literal notranslate"><span class="pre">Publishing</span></code>) mensajes y al <code class="docutils literal notranslate"><span class="pre">listener</span></code> diciendo que oye (<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">heard</span></code>) esos mensajes.
@@ -587,7 +587,7 @@ Consulta la <a class="reference internal" href="../How-To-Guides/Working-with-mu
 </dl>
 </li>
 <li><p>Si también está intentando liberar espacio, puede eliminar todo el directorio del espacio de trabajo con:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rmdir /s /q <span class="se">\r</span>os2_rolling
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rmdir<span class="w"> </span>/s<span class="w"> </span>/q<span class="w"> </span><span class="se">\r</span>os2_rolling
 </pre></div>
 </div>
 </li>
@@ -626,33 +626,33 @@ Esta sección explica cómo instalar ROS 2 desde este canal.</p>
 <div class="section" id="instalar-compilaciones-de-ros-2">
 <h3><a class="toc-backref" href="#id24">Instalar compilaciones de ROS 2</a><a class="headerlink" href="#instalar-compilaciones-de-ros-2" title="Enlazar permanentemente con este título"></a></h3>
 <p>En un símbolo del sistema administrativo, ejecute los siguientes comandos.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
-<span class="nb">set</span> <span class="nv">PYTHONNOUSERSITE</span><span class="o">=</span><span class="m">1</span>
-<span class="nb">set</span> <span class="nv">ChocolateyInstall</span><span class="o">=</span>c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
-choco <span class="nb">source</span> add -n<span class="o">=</span>ros-win -s<span class="o">=</span><span class="s2">&quot;https://aka.ms/ros/public&quot;</span> --priority<span class="o">=</span><span class="m">1</span>
-choco upgrade ros-foxy-desktop -y --execution-timeout<span class="o">=</span><span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
+<span class="nb">set</span><span class="w"> </span><span class="nv">PYTHONNOUSERSITE</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">ChocolateyInstall</span><span class="o">=</span>c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
+choco<span class="w"> </span><span class="nb">source</span><span class="w"> </span>add<span class="w"> </span>-n<span class="o">=</span>ros-win<span class="w"> </span>-s<span class="o">=</span><span class="s2">&quot;https://aka.ms/ros/public&quot;</span><span class="w"> </span>--priority<span class="o">=</span><span class="m">1</span>
+choco<span class="w"> </span>upgrade<span class="w"> </span>ros-foxy-desktop<span class="w"> </span>-y<span class="w"> </span>--execution-timeout<span class="o">=</span><span class="m">0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id25">Configuración del entorno</a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título"></a></h3>
 <p>Inicia un símbolo del sistema administrativo y ejecuta <code class="docutils literal notranslate"><span class="pre">source</span></code> con archivo de configuración de ROS 2 para configurar el espacio de trabajo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call C:<span class="se">\o</span>pt<span class="se">\r</span>os<span class="se">\f</span>oxy<span class="se">\x</span><span class="m">64</span><span class="se">\l</span>ocal_setup.bat
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span>C:<span class="se">\o</span>pt<span class="se">\r</span>os<span class="se">\f</span>oxy<span class="se">\x</span><span class="m">64</span><span class="se">\l</span>ocal_setup.bat
 </pre></div>
 </div>
 </div>
 <div class="section" id="estar-al-dia">
 <h3><a class="toc-backref" href="#id26">Estar al día</a><a class="headerlink" href="#estar-al-dia" title="Enlazar permanentemente con este título"></a></h3>
 <p>Para mantenerse actualizado con las últimas compilaciones, ejecute:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="nv">ChocolateyInstall</span><span class="o">=</span>c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
-choco upgrade all -y --execution-timeout<span class="o">=</span><span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">ChocolateyInstall</span><span class="o">=</span>c:<span class="se">\o</span>pt<span class="se">\c</span>hocolatey
+choco<span class="w"> </span>upgrade<span class="w"> </span>all<span class="w"> </span>-y<span class="w"> </span>--execution-timeout<span class="o">=</span><span class="m">0</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id27">Desinstalar</a><a class="headerlink" href="#id2" title="Enlazar permanentemente con este título"></a></h3>
 <p>Si deseas eliminar por completo el entorno descargado anteriormente, ejecuta este comando:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rmdir /s /q C:<span class="se">\o</span>pt<span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rmdir<span class="w"> </span>/s<span class="w"> </span>/q<span class="w"> </span>C:<span class="se">\o</span>pt<span class="se">\</span>
 </pre></div>
 </div>
 </div>

@@ -390,11 +390,11 @@ La compilación de ROS 2 creará soporte automáticamente para los proveedores q
 <h4>Paquetes Debian provistos en los repositorios apt de ROS 2<a class="headerlink" href="#paquetes-debian-provistos-en-los-repositorios-apt-de-ros-2" title="Enlazar permanentemente con este título"></a></h4>
 <p>Puedes instalar un paquete Debian de RTI Connext disponible en los repositorios apt de ROS 2.
 Deberás aceptar una licencia de RTI.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install -q -y rti-connext-dds-6.0.1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>-y<span class="w"> </span>rti-connext-dds-6.0.1
 </pre></div>
 </div>
 <p>Ejecuta <code class="docutils literal notranslate"><span class="pre">source</span></code> sobre el fichero de configuraciónpara establecer la variable de entorno <code class="docutils literal notranslate"><span class="pre">NDDSHOME</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/rti.com/rti_connext_dds-6.0.1/resource/scripts <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span> <span class="nb">cd</span> -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/opt/rti.com/rti_connext_dds-6.0.1/resource/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-
 </pre></div>
 </div>
 <p>Nota: al usar <code class="docutils literal notranslate"><span class="pre">zsh</span></code>, debe estar en el directorio del script al ejecutar <code class="docutils literal notranslate"><span class="pre">source</span></code> para que funcione correctamente.</p>
@@ -408,11 +408,11 @@ Ten en cuenta que si está instalando en un directorio del sistema, usa además 
 <p>La ubicación predeterminada es <code class="docutils literal notranslate"><span class="pre">~/rti_connext_dds-6.0.1</span></code></p>
 <p>Después de la instalación, ejecuta el launcher de RTI y diríjelo a tu archivo de licencia (obtenido de RTI).</p>
 <p>Agrega la siguiente línea a su archivo <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> apuntando a tu copia de la licencia.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RTI_LICENSE_FILE</span><span class="o">=</span>path/to/rti_license.dat
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">RTI_LICENSE_FILE</span><span class="o">=</span>path/to/rti_license.dat
 </pre></div>
 </div>
 <p>Ejecuta <code class="docutils literal notranslate"><span class="pre">source</span></code> con el archivo de configuración para configurar la variable de entorno <code class="docutils literal notranslate"><span class="pre">NDDSHOME</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/rti_connext_dds-6.0.1/resource/scripts <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span> <span class="nb">cd</span> -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/rti_connext_dds-6.0.1/resource/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-
 </pre></div>
 </div>
 <p>Ahora puedes compilar con normalidad y también se compilará soporte para RTI.</p>
@@ -427,16 +427,16 @@ Ten en cuenta que si está instalando en un directorio del sistema, usa además 
 o puedes instalar un paquete Debian con únicamente las bibliotecas de RTI Connext 6.0.1, disponible en el repositorio OSRF Apt
 bajo una <a class="reference external" href="https://www.rti.com/ncl">licencia no comercial</a>.</p>
 <p>Para instalar el paquete Debian únicamente con bibliotecas:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install -q -y rti-connext-dds-6.0.1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>-y<span class="w"> </span>rti-connext-dds-6.0.1
 </pre></div>
 </div>
 <p>Deberás aceptar un acuerdo de licencia de RTI y encontrar un archivo “rti_license.dat” en la instalación.</p>
 <p>Agrega la siguiente línea a su archivo <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> apuntando a tu copia de la licencia (y ejecyta <code class="xref any docutils literal notranslate"><span class="pre">source</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RTI_LICENSE_FILE</span><span class="o">=</span>path/to/rti_license.dat
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">RTI_LICENSE_FILE</span><span class="o">=</span>path/to/rti_license.dat
 </pre></div>
 </div>
 <p>Todas las opciones necesitan que ejecutes <code class="docutils literal notranslate"><span class="pre">source</span></code> son el archivo de configuración para establecer la variable de entorno <code class="docutils literal notranslate"><span class="pre">NDDSHOME</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/rti.com/rti_connext_dds-6.0.1/resource/scripts <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span> <span class="nb">cd</span> -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/opt/rti.com/rti_connext_dds-6.0.1/resource/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>./rtisetenv_x64Linux4gcc7.3.0.bash<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>-
 </pre></div>
 </div>
 <p>Nota: lo anterior puede necesitar modificaciones para que coincida con su ubicación de instalación de RTI</p>
@@ -451,7 +451,7 @@ bajo una <a class="reference external" href="https://www.rti.com/ncl">licencia n
 <p>También necesitas un entorno de ejecución Java instalado para ejecutar el generador de código RTI, que puedes obtener <a class="reference external" href="https://support.apple.com/kb/DL1572?locale=en_US">aquí</a>.</p>
 <p>Después de la instalación, ejecuta el launcher de RTI y diríjelo a tu archivo de licencia.</p>
 <p>Ejecuta <code class="docutils literal notranslate"><span class="pre">source</span></code> con el archivo de configuración para configurar la variable de entorno <code class="docutils literal notranslate"><span class="pre">NDDSHOME</span></code> antes de compilar tu workspace.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /Applications/rti_connext_dds-6.0.1/resource/scripts/rtisetenv_x64Darwin17clang9.0.bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/Applications/rti_connext_dds-6.0.1/resource/scripts/rtisetenv_x64Darwin17clang9.0.bash
 </pre></div>
 </div>
 <p>Es posible que debas aumentar los recursos de memoria compartida siguiendo <a class="reference external" href="https://community.rti.com/kb/osx510">https://community.rti.com/kb/osx510</a></p>
@@ -465,7 +465,7 @@ bajo una <a class="reference external" href="https://www.rti.com/ncl">licencia n
 <p>Para usar RTI Connext DDS hay opciones disponibles para <a class="reference internal" href="DDS-Implementations/Install-Connext-University-Eval.html"><span class="doc">universidad, compra o evaluación</span></a></p>
 <p>Después de la instalación, ejecuta el launcher de RTI y diríjelo a tu archivo de licencia.</p>
 <p>Ejecuta <code class="docutils literal notranslate"><span class="pre">source</span></code> con el archivo de configuración para configurar la variable de entorno <code class="docutils literal notranslate"><span class="pre">NDDSHOME</span></code> antes de compilar tu workspace.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /Applications/rti_connext_dds-6.0.1/resource/scripts/rtisetenv_x64Darwin17clang9.0.bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/Applications/rti_connext_dds-6.0.1/resource/scripts/rtisetenv_x64Darwin17clang9.0.bash
 </pre></div>
 </div>
 <p>Es posible que debas aumentar los recursos de memoria compartida siguiendo <a class="reference external" href="https://community.rti.com/kb/osx510">https://community.rti.com/kb/osx510</a></p>
@@ -479,7 +479,7 @@ bajo una <a class="reference external" href="https://www.rti.com/ncl">licencia n
 <p>Si deseas compilar también con RTI Connext DDS, hay opciones disponibles para <a class="reference internal" href="DDS-Implementations/Install-Connext-University-Eval.html"><span class="doc">universidad, compra o evaluación</span></a></p>
 <p>Después de la instalación, ejecuta el launcher de RTI y diríjelo a tu archivo de licencia.</p>
 <p>Luego, antes de compilar ROS 2, configura el entorno Connext:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call <span class="s2">&quot;C:\Program Files\rti_connext_dds-6.0.1\resource\scripts\rtisetenv_x64Win64VS2017.bat&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span><span class="s2">&quot;C:\Program Files\rti_connext_dds-6.0.1\resource\scripts\rtisetenv_x64Win64VS2017.bat&quot;</span>
 </pre></div>
 </div>
 <p>Tenga en cuenta que es posible que esta ruta deba modificarse ligeramente en función de dónde seleccionaste instalar RTI Connext DDS y qué versión de Visual Studio se seleccionó.
@@ -494,7 +494,7 @@ La ruta anterior es la ruta predeterminada actual a partir de la versión 6.0.1,
 <p>Para usar RTI Connext DDS hay opciones disponibles para <a class="reference internal" href="DDS-Implementations/Install-Connext-University-Eval.html"><span class="doc">universidad, compra o evaluación</span></a></p>
 <p>Después de la instalación, ejecuta el launcher de RTI y diríjelo a tu archivo de licencia.</p>
 <p>Luego, antes de usar ROS 2, configura el entorno Connext:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call <span class="s2">&quot;C:\Program Files\rti_connext_dds-6.0.1\resource\scripts\rtisetenv_x64Win64VS2017.bat&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call<span class="w"> </span><span class="s2">&quot;C:\Program Files\rti_connext_dds-6.0.1\resource\scripts\rtisetenv_x64Win64VS2017.bat&quot;</span>
 </pre></div>
 </div>
 <p>Si deseas instalar los complementos de Connext DDS-Security, consultea <a class="reference internal" href="DDS-Implementations/Install-Connext-Security-Plugins.html"><span class="doc">esta página</span></a>.</p>

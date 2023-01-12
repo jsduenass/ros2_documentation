@@ -378,23 +378,23 @@ Para mantener actualizada los fuentes obtenidos, deberá actualizar periódicame
 <h3><a class="toc-backref" href="#id2">Ramas más recientes de ROS 2 Rolling</a><a class="headerlink" href="#ramas-mas-recientes-de-ros-2-rolling" title="Enlazar permanentemente con este título"></a></h3>
 <p>Si deseas obtener el código más reciente para ROS 2 Rolling, puedes obtener la lista de repositorios correspondiente ejecutando:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_rolling
-mv -i ros2.repos ros2.repos.old
-wget https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_rolling
+mv<span class="w"> </span>-i<span class="w"> </span>ros2.repos<span class="w"> </span>ros2.repos.old
+wget<span class="w"> </span>https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_rolling
-mv -i ros2.repos ros2.repos.old
-wget https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_rolling
+mv<span class="w"> </span>-i<span class="w"> </span>ros2.repos<span class="w"> </span>ros2.repos.old
+wget<span class="w"> </span>https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># CMD</span>
-<span class="nb">cd</span> <span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
-curl -sk https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos -o ros2.repos
+<span class="nb">cd</span><span class="w"> </span><span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
+curl<span class="w"> </span>-sk<span class="w"> </span>https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos<span class="w"> </span>-o<span class="w"> </span>ros2.repos
 
 <span class="c1"># PowerShell</span>
-<span class="nb">cd</span> <span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
-curl https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos -o ros2.repos
+<span class="nb">cd</span><span class="w"> </span><span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
+curl<span class="w"> </span>https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos<span class="w"> </span>-o<span class="w"> </span>ros2.repos
 </pre></div>
 </div>
 </div></div>
@@ -405,7 +405,7 @@ curl https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos -o ros2.repo
 <p>Notará que en el archivo <a class="reference external" href="https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos">ros2.repos</a>, cada repositorio tiene una <code class="docutils literal notranslate"><span class="pre">versión</span></code> asociada que apunta a un hash de commit, etiqueta o nombre de rama en particular.
 Es posible que estas versiones se refieran a nuevas etiquetas/ramas que tu copia local de los repositorios no reconocerá porque están desactualizadas.
 Debido a esto, debes actualizar los repositorios que ya has obtenido con el siguiente comando:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs custom --args remote update
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs<span class="w"> </span>custom<span class="w"> </span>--args<span class="w"> </span>remote<span class="w"> </span>update
 </pre></div>
 </div>
 </div>
@@ -413,21 +413,21 @@ Debido a esto, debes actualizar los repositorios que ya has obtenido con el sigu
 <h2><a class="toc-backref" href="#id4">Descarga el nuevo código fuente</a><a class="headerlink" href="#descarga-el-nuevo-codigo-fuente" title="Enlazar permanentemente con este título"></a></h2>
 <p>Ahora deberías poder descargar las fuentes asociadas con la nueva lista de repositorios con:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs import src &lt; ros2.repos
-vcs pull src
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>&lt;<span class="w"> </span>ros2.repos
+vcs<span class="w"> </span>pull<span class="w"> </span>src
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs import src &lt; ros2.repos
-vcs pull src
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>&lt;<span class="w"> </span>ros2.repos
+vcs<span class="w"> </span>pull<span class="w"> </span>src
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># CMD</span>
-vcs import src &lt; ros2.repos
-vcs pull src
+vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>&lt;<span class="w"> </span>ros2.repos
+vcs<span class="w"> </span>pull<span class="w"> </span>src
 
 <span class="c1"># PowerShell</span>
-vcs import --input ros2.repos src
-vcs pull src
+vcs<span class="w"> </span>import<span class="w"> </span>--input<span class="w"> </span>ros2.repos<span class="w"> </span>src
+vcs<span class="w"> </span>pull<span class="w"> </span>src
 </pre></div>
 </div>
 </div></div>
@@ -435,7 +435,7 @@ vcs pull src
 <div class="section" id="reocmpila-tu-worskpace">
 <h2><a class="toc-backref" href="#id5">Reocmpila tu worskpace</a><a class="headerlink" href="#reocmpila-tu-worskpace" title="Enlazar permanentemente con este título"></a></h2>
 <p>Ahora que el workspace está actualizado con las fuentes más recientes, elimina tu instalación anterior y recompila tu espacio de trabajo con, por ejemplo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --symlink-install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install
 </pre></div>
 </div>
 </div>
@@ -444,16 +444,16 @@ vcs pull src
 <p>Durante tu desarrollo, es posible que se haya desviado del estado original de tu workspacec cuando importaste la lista de repositorios.
 Si deseas conocer las versiones del conjunto de repositorios en tu workspace, puedes exportar la información mediante el siguiente comando:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_rolling
-vcs <span class="nb">export</span> src &gt; my_ros2.repos
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_rolling
+vcs<span class="w"> </span><span class="nb">export</span><span class="w"> </span>src<span class="w"> </span>&gt;<span class="w"> </span>my_ros2.repos
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_rolling
-vcs <span class="nb">export</span> src &gt; my_ros2.repos
+</div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_rolling
+vcs<span class="w"> </span><span class="nb">export</span><span class="w"> </span>src<span class="w"> </span>&gt;<span class="w"> </span>my_ros2.repos
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
-vcs <span class="nb">export</span> src &gt; my_ros2.repos
+</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="se">\d</span>ev<span class="se">\r</span>os2_rolling
+vcs<span class="w"> </span><span class="nb">export</span><span class="w"> </span>src<span class="w"> </span>&gt;<span class="w"> </span>my_ros2.repos
 </pre></div>
 </div>
 </div></div>

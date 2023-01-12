@@ -427,79 +427,79 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 </div>
 </div></div>
 <p>Open the file using your preferred text editor.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/LinearMath/Quaternion.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/static_transform_broadcaster.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/LinearMath/Quaternion.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/static_transform_broadcaster.h&quot;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">StaticFramePublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">StaticFramePublisher</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transformation</span><span class="p">[])</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;static_turtle_tf2_broadcaster&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">tf_static_broadcaster_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">StaticFramePublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">StaticFramePublisher</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transformation</span><span class="p">[])</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;static_turtle_tf2_broadcaster&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tf_static_broadcaster_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Publish static transforms once at startup</span>
-<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">make_transforms</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transformation</span><span class="p">[])</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">make_transforms</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transformation</span><span class="p">[])</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">child_frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">child_frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="n">tf2</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">q</span><span class="p">.</span><span class="n">setRPY</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span><span class="w"></span>
-<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span><span class="w"></span>
-<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]));</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">z</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">w</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">tf2</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="n">q</span><span class="p">;</span>
+<span class="w">    </span><span class="n">q</span><span class="p">.</span><span class="n">setRPY</span><span class="p">(</span>
+<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+<span class="w">      </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]));</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">();</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">();</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">z</span><span class="p">();</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">w</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">tf_static_broadcaster_</span><span class="o">-&gt;</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">tf_static_broadcaster_</span><span class="o">-&gt;</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_static_broadcaster_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_static_broadcaster_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;logger&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;logger&quot;</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Obtain parameters from command line arguments</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid number of parameters</span><span class="se">\n</span><span class="s">usage: &quot;</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;$ ros2 run learning_tf2_cpp static_turtle_tf2_broadcaster &quot;</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;child_frame_name x y z roll pitch yaw&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">      </span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid number of parameters</span><span class="se">\n</span><span class="s">usage: &quot;</span>
+<span class="w">      </span><span class="s">&quot;$ ros2 run learning_tf2_cpp static_turtle_tf2_broadcaster &quot;</span>
+<span class="w">      </span><span class="s">&quot;child_frame_name x y z roll pitch yaw&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// As the parent frame of the transform is `world`, it is</span>
 <span class="w">  </span><span class="c1">// necessary to check that the frame name passed is different</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your static turtle name cannot be &#39;world&#39;&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Your static turtle name cannot be &#39;world&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// Pass parameters and initialize node</span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">StaticFramePublisher</span><span class="o">&gt;</span><span class="p">(</span><span class="n">argv</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">StaticFramePublisher</span><span class="o">&gt;</span><span class="p">(</span><span class="n">argv</span><span class="p">));</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
@@ -507,24 +507,24 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 <p>Now let’s look at the code that is relevant to publishing the static turtle pose to tf2.
 The first lines include the required header files.
 First we include <code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/transform_stamped.hpp</span></code> to access the <code class="docutils literal notranslate"><span class="pre">TransformStamped</span></code> message type, which we will publish to the transformation tree.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span>
 </pre></div>
 </div>
 <p>Afterward, <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> is included so its <code class="docutils literal notranslate"><span class="pre">rclcpp::Node</span></code> class can be used.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">tf2::Quaternion</span></code> is a class for a quaternion that provides convenient functions for converting Euler angles to quaternions and vice versa.
 We also include <code class="docutils literal notranslate"><span class="pre">tf2_ros/static_transform_broadcaster.h</span></code> to use the <code class="docutils literal notranslate"><span class="pre">StaticTransformBroadcaster</span></code> to make the publishing of static transforms easy.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/LinearMath/Quaternion.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/static_transform_broadcaster.h&quot;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/LinearMath/Quaternion.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/static_transform_broadcaster.h&quot;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">StaticFramePublisher</span></code> class constructor initializes the node with the name <code class="docutils literal notranslate"><span class="pre">static_turtle_tf2_broadcaster</span></code>.
 Then, <code class="docutils literal notranslate"><span class="pre">StaticTransformBroadcaster</span></code> is created, which will send one static transformation upon the startup.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_static_broadcaster_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_static_broadcaster_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
-<span class="k">this</span><span class="o">-&gt;</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">);</span><span class="w"></span>
+<span class="k">this</span><span class="o">-&gt;</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Here we create a <code class="docutils literal notranslate"><span class="pre">TransformStamped</span></code> object, which will be the message we will send over once populated.
@@ -534,30 +534,30 @@ Before passing the actual transform values we need to give it the appropriate me
 <li><p>Then we need to set the name of the parent frame of the link we’re creating, in this case <code class="docutils literal notranslate"><span class="pre">world</span></code></p></li>
 <li><p>Finally, we need to set the name of the child frame of the link we’re creating</p></li>
 </ol>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 
-<span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">child_frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span>
+<span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">;</span>
+<span class="n">t</span><span class="p">.</span><span class="n">child_frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>Here we populate the 6D pose (translation and rotation) of the turtle.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
-<span class="n">tf2</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w"></span>
-<span class="n">q</span><span class="p">.</span><span class="n">setRPY</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span><span class="w"></span>
-<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span><span class="w"></span>
-<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]));</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">();</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">();</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">z</span><span class="p">();</span><span class="w"></span>
-<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">w</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+<span class="n">tf2</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="n">q</span><span class="p">;</span>
+<span class="n">q</span><span class="p">.</span><span class="n">setRPY</span><span class="p">(</span>
+<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span>
+<span class="w">  </span><span class="n">atof</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]));</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">();</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">();</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">z</span><span class="p">();</span>
+<span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">w</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>Finally, we broadcast static transform using the <code class="docutils literal notranslate"><span class="pre">sendTransform()</span></code> function.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_static_broadcaster_</span><span class="o">-&gt;</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_static_broadcaster_</span><span class="o">-&gt;</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -566,9 +566,9 @@ Before passing the actual transform values we need to give it the appropriate me
 <p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">src/learning_tf2_cpp</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files have been created for you.</p>
 <p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> with your text editor.</p>
 <p>As mentioned in the <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">Create a package</span></a> tutorial, make sure to fill in the <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;maintainer&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> tags:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Learning tf2 with rclcpp<span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
-<span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Learning<span class="w"> </span>tf2<span class="w"> </span>with<span class="w"> </span>rclcpp<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<span class="nt">&lt;license&gt;</span>Apache<span class="w"> </span>License<span class="w"> </span>2.0<span class="nt">&lt;/license&gt;</span>
 </pre></div>
 </div>
 <p>Make sure to save the file.</p>

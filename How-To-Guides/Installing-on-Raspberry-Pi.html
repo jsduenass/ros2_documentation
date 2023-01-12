@@ -375,7 +375,7 @@ Tier 1 support means distribution specific packages and binary archives are avai
 <p>You may choose from ros-core, ros-base, or ros-desktop. See <a class="reference external" href="https://www.ros.org/reps/rep-2001.html">here</a> for more information on these variants.</p>
 <p>Clone the <a class="reference external" href="https://github.com/osrf/docker_images">docker_images git repo</a> onto the Raspberry Pi, change in to the directory linked above, then to the directory with your preferred variant.</p>
 <p>Inside of the directory, build the container with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t ros_docker .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>ros_docker<span class="w"> </span>.
 </pre></div>
 </div>
 <p>On a supported system it will only take a minute or two to build the docker containers, as the source code is already built in to binaries.</p>

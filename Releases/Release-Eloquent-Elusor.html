@@ -455,12 +455,12 @@ See this pull request for more detail: <a class="reference external" href="https
 Therefore it was updated to return a <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS</span></code> instead.</p>
 <p>Existing code will need to use the <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS::get_rmw_qos_profile()</span></code> method if the rmw profile is still required.
 For example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rmw_qos_profile_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rmw_qos</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rmw_qos_profile_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rmw_qos</span><span class="p">);</span>
 
-<span class="cm">/* Previously: */</span><span class="w"></span>
+<span class="cm">/* Previously: */</span>
 <span class="c1">// my_func(some_pub-&gt;get_actual_qos());</span>
-<span class="cm">/* Now: */</span><span class="w"></span>
-<span class="n">my_func</span><span class="p">(</span><span class="n">some_pub</span><span class="o">-&gt;</span><span class="n">get_actual_qos</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_rmw_qos_profile</span><span class="p">());</span><span class="w"></span>
+<span class="cm">/* Now: */</span>
+<span class="n">my_func</span><span class="p">(</span><span class="n">some_pub</span><span class="o">-&gt;</span><span class="n">get_actual_qos</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_rmw_qos_profile</span><span class="p">());</span>
 </pre></div>
 </div>
 <p>The rationale for breaking this directly rather than doing a tick-tock is that it is a new function and is expected to be used infrequently by users.
@@ -525,14 +525,14 @@ has been renamed to <code class="docutils literal notranslate"><span class="pre"
 <p>TF2 buffers now have to be given a timer interface.</p>
 <p>If a timer interface is not given, an exception will be thrown.</p>
 <p>For example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">get_clock</span><span class="p">());</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">get_clock</span><span class="p">());</span>
 <span class="c1">// The next two lines are new in Eloquent</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">timer_interface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">CreateTimerROS</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_node_base_interface</span><span class="p">(),</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_node_timers_interface</span><span class="p">());</span><span class="w"></span>
-<span class="n">tf</span><span class="o">-&gt;</span><span class="n">setCreateTimerInterface</span><span class="p">(</span><span class="n">timer_interface</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">timer_interface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">CreateTimerROS</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_node_base_interface</span><span class="p">(),</span>
+<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_node_timers_interface</span><span class="p">());</span>
+<span class="n">tf</span><span class="o">-&gt;</span><span class="n">setCreateTimerInterface</span><span class="p">(</span><span class="n">timer_interface</span><span class="p">);</span>
 <span class="c1">// Pass the Buffer to the TransformListener as before</span>
-<span class="n">transform_listener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf</span><span class="p">);</span><span class="w"></span>
+<span class="n">transform_listener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

@@ -485,19 +485,19 @@ To save your current configuration of <code class="docutils literal notranslate"
 </div>
 <p>You will find a new file in the working directory your shell is running in.
 If you open this file, you’ll see the following content:</p>
-<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
-<span class="w">    </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span><span class="w"></span>
-<span class="w">    </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span><span class="w"></span>
-<span class="w">    </span><span class="nt">qos_overrides</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">/parameter_events</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">publisher</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"></span>
-<span class="w">          </span><span class="nt">durability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volatile</span><span class="w"></span>
-<span class="w">          </span><span class="nt">history</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep_last</span><span class="w"></span>
-<span class="w">          </span><span class="nt">reliability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reliable</span><span class="w"></span>
-<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span>
+<span class="w">    </span><span class="nt">background_g</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86</span>
+<span class="w">    </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span>
+<span class="w">    </span><span class="nt">qos_overrides</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">/parameter_events</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">publisher</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">          </span><span class="nt">durability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volatile</span>
+<span class="w">          </span><span class="nt">history</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep_last</span>
+<span class="w">          </span><span class="nt">reliability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reliable</span>
+<span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 <p>Dumping parameters comes in handy if you want to reload the node with the same parameters in the future.</p>

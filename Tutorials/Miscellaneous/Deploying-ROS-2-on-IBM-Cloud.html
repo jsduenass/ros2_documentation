@@ -425,30 +425,30 @@ following the following <a class="reference external" href="https://docs.docker.
 From the tutorial, you should have done some sanity checks to make sure
 docker is properly set-up. Just in case, however, let’s run the
 following command once again that uses the hello-world docker image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker run hello-world
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </pre></div>
 </div>
 <p>You should obtain the following output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
-This message shows that your installation appears to be working correctly.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Hello<span class="w"> </span>from<span class="w"> </span>Docker!
+This<span class="w"> </span>message<span class="w"> </span>shows<span class="w"> </span>that<span class="w"> </span>your<span class="w"> </span>installation<span class="w"> </span>appears<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>working<span class="w"> </span>correctly.
 
-To generate this message, Docker took the following steps:
- <span class="m">1</span>. The Docker client contacted the Docker daemon.
- <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
-    <span class="o">(</span>amd64<span class="o">)</span>
- <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+To<span class="w"> </span>generate<span class="w"> </span>this<span class="w"> </span>message,<span class="w"> </span>Docker<span class="w"> </span>took<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>steps:
+<span class="w"> </span><span class="m">1</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>client<span class="w"> </span>contacted<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>daemon.
+<span class="w"> </span><span class="m">2</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>pulled<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;hello-world&quot;</span><span class="w"> </span>image<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>Hub.
+<span class="w">    </span><span class="o">(</span>amd64<span class="o">)</span>
+<span class="w"> </span><span class="m">3</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>container<span class="w"> </span>from<span class="w"> </span>that<span class="w"> </span>image<span class="w"> </span>which<span class="w"> </span>runs<span class="w"> </span>the
+<span class="w">    </span>executable<span class="w"> </span>that<span class="w"> </span>produces<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>currently<span class="w"> </span>reading.
+<span class="w"> </span><span class="m">4</span>.<span class="w"> </span>The<span class="w"> </span>Docker<span class="w"> </span>daemon<span class="w"> </span>streamed<span class="w"> </span>that<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>Docker<span class="w"> </span>client,<span class="w"> </span>which<span class="w"> </span>sent<span class="w"> </span>it
+<span class="w">    </span>to<span class="w"> </span>your<span class="w"> </span>terminal.
 
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+To<span class="w"> </span>try<span class="w"> </span>something<span class="w"> </span>more<span class="w"> </span>ambitious,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>run<span class="w"> </span>an<span class="w"> </span>Ubuntu<span class="w"> </span>container<span class="w"> </span>with:
+<span class="w"> </span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>ubuntu<span class="w"> </span>bash
 
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
+Share<span class="w"> </span>images,<span class="w"> </span>automate<span class="w"> </span>workflows,<span class="w"> </span>and<span class="w"> </span>more<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>free<span class="w"> </span>Docker<span class="w"> </span>ID:
+<span class="w"> </span>https://hub.docker.com/
 
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
+For<span class="w"> </span>more<span class="w"> </span>examples<span class="w"> </span>and<span class="w"> </span>ideas,<span class="w"> </span>visit:
+<span class="w"> </span>https://docs.docker.com/get-started/
 </pre></div>
 </div>
 </div>
@@ -466,27 +466,27 @@ First, we create a new directory which will hold our Dockerfile and any
 other files we need later on and navigate to it. Using your favorite
 $EDITOR of choice, open a new file named <em>Dockerfile</em> (make sure the
 file naming is correct):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/ros2_docker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>~/ros2_docker
 
-$ <span class="nb">cd</span> ~/ros2_docker
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/ros2_docker
 
-$ <span class="nv">$EDITOR</span> Dockerfile
+$<span class="w"> </span><span class="nv">$EDITOR</span><span class="w"> </span>Dockerfile
 </pre></div>
 </div>
 <p>Insert the following in the <em>Dockerfile</em>, and save it (also found
 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile">here</a>):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM ros:foxy
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM<span class="w"> </span>ros:foxy
 
 <span class="c1"># install ros package</span>
-RUN apt-get update <span class="o">&amp;&amp;</span> apt-get install -y <span class="se">\</span>
-      ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-cpp <span class="se">\</span>
-      ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-py <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    rm -rf /var/lib/apt/lists/* <span class="o">&amp;&amp;</span> mkdir /ros2_home
+RUN<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>/ros2_home
 
-WORKDIR /ros2_home
+WORKDIR<span class="w"> </span>/ros2_home
 
 <span class="c1"># launch ros package</span>
-CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;ros2&quot;</span>,<span class="w"> </span><span class="s2">&quot;launch&quot;</span>,<span class="w"> </span><span class="s2">&quot;demo_nodes_cpp&quot;</span>,<span class="w"> </span><span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -507,36 +507,36 @@ wiki</a></p>
 is THAT easy!).</p>
 <p><strong>Note</strong>: if you have errors due to insufficient privileges or
 <em>permission denied</em>, try running the command with <em>sudo</em> privileges:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker build .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>.
 
 <span class="c1"># You will see a bunch of lines that execute the docker file instructions followed by:</span>
-Successfully built 0dc6ce7cb487
+Successfully<span class="w"> </span>built<span class="w"> </span>0dc6ce7cb487
 </pre></div>
 </div>
 <p><em>0dc6ce7cb487</em> will most probably be different for you, so keep note of
 it and copy it somewhere for reference. You can always go back and check
 the docker images you have on your system using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker ps -as
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-as
 </pre></div>
 </div>
 <p>Now, run the docker file using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it 0dc6ce7cb487
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: All log files can be found below /root/.ros/log/2020-10-28-02-41-45-177546-0b5d9ed123be-1
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: Default logging verbosity is <span class="nb">set</span> to INFO
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>talker-1<span class="o">]</span>: process started with pid <span class="o">[</span><span class="m">28</span><span class="o">]</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>listener-2<span class="o">]</span>: process started with pid <span class="o">[</span><span class="m">30</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852907</span>.249886590<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 1&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852907</span>.250964490<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">1</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852908</span>.249786312<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 2&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852908</span>.250453386<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">2</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852909</span>.249882257<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 3&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852909</span>.250536089<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">3</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852910</span>.249845718<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 4&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852910</span>.250509355<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">4</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852911</span>.249506058<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 5&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852911</span>.250152324<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">5</span><span class="o">]</span>
-<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852912</span>.249556670<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 6&#39;</span>
-<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852912</span>.250212678<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">6</span><span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>0dc6ce7cb487
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span>launch<span class="o">]</span>:<span class="w"> </span>All<span class="w"> </span>log<span class="w"> </span>files<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>found<span class="w"> </span>below<span class="w"> </span>/root/.ros/log/2020-10-28-02-41-45-177546-0b5d9ed123be-1
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span>launch<span class="o">]</span>:<span class="w"> </span>Default<span class="w"> </span>logging<span class="w"> </span>verbosity<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>INFO
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker-1<span class="o">]</span>:<span class="w"> </span>process<span class="w"> </span>started<span class="w"> </span>with<span class="w"> </span>pid<span class="w"> </span><span class="o">[</span><span class="m">28</span><span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener-2<span class="o">]</span>:<span class="w"> </span>process<span class="w"> </span>started<span class="w"> </span>with<span class="w"> </span>pid<span class="w"> </span><span class="o">[</span><span class="m">30</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852907</span>.249886590<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 1&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852907</span>.250964490<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852908</span>.249786312<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 2&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852908</span>.250453386<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">2</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852909</span>.249882257<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 3&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852909</span>.250536089<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">3</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852910</span>.249845718<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 4&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852910</span>.250509355<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852911</span>.249506058<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 5&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852911</span>.250152324<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">5</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852912</span>.249556670<span class="o">]</span><span class="w"> </span><span class="o">[</span>talker<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello World: 6&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span><span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1603852912</span>.250212678<span class="o">]</span><span class="w"> </span><span class="o">[</span>listener<span class="o">]</span>:<span class="w"> </span>I<span class="w"> </span>heard:<span class="w"> </span><span class="o">[</span>Hello<span class="w"> </span>World:<span class="w"> </span><span class="m">6</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>If it works correctly, you should see something similar to what is shown
@@ -552,17 +552,17 @@ ibmcloud CLI installed. If not, please check this
 out to get that done first.</p>
 <p>We also need to make sure that the CLI plug-in for the IBM Cloud
 Container Registry is installed by running the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud plugin install container-registry
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>container-registry
 </pre></div>
 </div>
 <p>Afterwards, login to your ibmcloud account through the terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud login --sso
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>login<span class="w"> </span>--sso
 </pre></div>
 </div>
 <p>From here, let’s create a container registry name-space. Make sure you
 use a unique name that is also descriptive as to what it is. Here, I
 used <em>ros2nasr</em>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr namespace-add ros2nasr
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>namespace-add<span class="w"> </span>ros2nasr
 </pre></div>
 </div>
 <p>IBM cloud has a lot of shortcuts that would help us get our container
@@ -572,16 +572,16 @@ you use the correct registry name you created and you are free to change
 the container name as you wish. The <strong>.</strong> at the end indicates that the
 <em>Dockerfile</em> is in the current directory (and it is important), if not,
 change it to point to the directory containing the Dockerfile.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr build --tag registry.bluemix.net/ros2nasr/ros2foxy:1 .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>registry.bluemix.net/ros2nasr/ros2foxy:1<span class="w"> </span>.
 </pre></div>
 </div>
 <p>You can now make sure that the container has been pushed to the registry
 you created by running the following command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr image-list
-Listing images...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>image-list
+Listing<span class="w"> </span>images...
 
-REPOSITORY               TAG   DIGEST         NAMESPACE   CREATED         SIZE     SECURITY STATUS
-us.icr.io/ros2nasr/ros2foxy   <span class="m">1</span>     031be29301e6   ros2nasr    <span class="m">36</span> seconds ago   <span class="m">120</span> MB   No Issues
+REPOSITORY<span class="w">               </span>TAG<span class="w">   </span>DIGEST<span class="w">         </span>NAMESPACE<span class="w">   </span>CREATED<span class="w">         </span>SIZE<span class="w">     </span>SECURITY<span class="w"> </span>STATUS
+us.icr.io/ros2nasr/ros2foxy<span class="w">   </span><span class="m">1</span><span class="w">     </span>031be29301e6<span class="w">   </span>ros2nasr<span class="w">    </span><span class="m">36</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span><span class="m">120</span><span class="w"> </span>MB<span class="w">   </span>No<span class="w"> </span>Issues
 
 OK
 </pre></div>
@@ -590,15 +590,15 @@ OK
 image. Again, if you face a <em>permission denied</em> error, perform the
 command with sudo privileges. Afterwards, run your docker file as shown
 below.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr login
-Logging <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
-Logged <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
-Logging <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>...
-Logged <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>login
+Logging<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
+Logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
+Logging<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;us.icr.io&#39;</span>...
+Logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;us.icr.io&#39;</span>.
 
 OK
 
-$ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:1
+$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span>-it<span class="w"> </span>registry.ng.bluemix.net/ros2nasr/ros2foxy:1
 </pre></div>
 </div>
 <p>Where <em>ros2nasr</em> is the name of the registry you created and
@@ -617,65 +617,65 @@ the example provided by ROS2 <a class="reference external" href="https://hub.doc
 Create a new directory with a new Dockerfile (or overwrite the existing
 one) and add the following in it (or download the file
 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">here</a>)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG <span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:foxy
-ARG <span class="nv">OVERLAY_WS</span><span class="o">=</span>/opt/ros/overlay_ws
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG<span class="w"> </span><span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:foxy
+ARG<span class="w"> </span><span class="nv">OVERLAY_WS</span><span class="o">=</span>/opt/ros/overlay_ws
 
 <span class="c1"># multi-stage for caching</span>
-FROM <span class="nv">$FROM_IMAGE</span> AS cacher
+FROM<span class="w"> </span><span class="nv">$FROM_IMAGE</span><span class="w"> </span>AS<span class="w"> </span>cacher
 
 <span class="c1"># clone overlay source</span>
-ARG OVERLAY_WS
-WORKDIR <span class="nv">$OVERLAY_WS</span>/src
-RUN <span class="nb">echo</span> <span class="s2">&quot;\</span>
+ARG<span class="w"> </span>OVERLAY_WS
+WORKDIR<span class="w"> </span><span class="nv">$OVERLAY_WS</span>/src
+RUN<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\</span>
 <span class="s2">repositories: \n\</span>
 <span class="s2">  ros2/demos: \n\</span>
 <span class="s2">    type: git \n\</span>
 <span class="s2">    url: https://github.com/ros2/demos.git \n\</span>
 <span class="s2">    version: </span><span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span><span class="s2"> \n\</span>
-<span class="s2">&quot;</span> &gt; ../overlay.repos
-RUN vcs import ./ &lt; ../overlay.repos
+<span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>../overlay.repos
+RUN<span class="w"> </span>vcs<span class="w"> </span>import<span class="w"> </span>./<span class="w"> </span>&lt;<span class="w"> </span>../overlay.repos
 
 <span class="c1"># copy manifests for caching</span>
-WORKDIR /opt
-RUN mkdir -p /tmp/opt <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    find ./ -name <span class="s2">&quot;package.xml&quot;</span> <span class="p">|</span> <span class="se">\</span>
-      xargs cp --parents -t /tmp/opt <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    find ./ -name <span class="s2">&quot;COLCON_IGNORE&quot;</span> <span class="p">|</span> <span class="se">\</span>
-      xargs cp --parents -t /tmp/opt <span class="o">||</span> <span class="nb">true</span>
+WORKDIR<span class="w"> </span>/opt
+RUN<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/opt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>find<span class="w"> </span>./<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;package.xml&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>xargs<span class="w"> </span>cp<span class="w"> </span>--parents<span class="w"> </span>-t<span class="w"> </span>/tmp/opt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>find<span class="w"> </span>./<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;COLCON_IGNORE&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>xargs<span class="w"> </span>cp<span class="w"> </span>--parents<span class="w"> </span>-t<span class="w"> </span>/tmp/opt<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 
 <span class="c1"># multi-stage for building</span>
-FROM <span class="nv">$FROM_IMAGE</span> AS builder
+FROM<span class="w"> </span><span class="nv">$FROM_IMAGE</span><span class="w"> </span>AS<span class="w"> </span>builder
 
 <span class="c1"># install overlay dependencies</span>
-ARG OVERLAY_WS
-WORKDIR <span class="nv">$OVERLAY_WS</span>
-COPY --from<span class="o">=</span>cacher /tmp/<span class="nv">$OVERLAY_WS</span>/src ./src
-RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    apt-get update <span class="o">&amp;&amp;</span> rosdep install -y <span class="se">\</span>
-      --from-paths <span class="se">\</span>
-        src/ros2/demos/demo_nodes_cpp <span class="se">\</span>
-        src/ros2/demos/demo_nodes_py <span class="se">\</span>
-      --ignore-src <span class="se">\</span>
-    <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
+ARG<span class="w"> </span>OVERLAY_WS
+WORKDIR<span class="w"> </span><span class="nv">$OVERLAY_WS</span>
+COPY<span class="w"> </span>--from<span class="o">=</span>cacher<span class="w"> </span>/tmp/<span class="nv">$OVERLAY_WS</span>/src<span class="w"> </span>./src
+RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--from-paths<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/ros2/demos/demo_nodes_cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/ros2/demos/demo_nodes_py<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--ignore-src<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 
 <span class="c1"># build overlay source</span>
-COPY --from<span class="o">=</span>cacher <span class="nv">$OVERLAY_WS</span>/src ./src
-ARG <span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
-RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    colcon build <span class="se">\</span>
-      --packages-select <span class="se">\</span>
-        demo_nodes_cpp <span class="se">\</span>
-        demo_nodes_py <span class="se">\</span>
-      --mixin <span class="nv">$OVERLAY_MIXINS</span>
+COPY<span class="w"> </span>--from<span class="o">=</span>cacher<span class="w"> </span><span class="nv">$OVERLAY_WS</span>/src<span class="w"> </span>./src
+ARG<span class="w"> </span><span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
+RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--packages-select<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>demo_nodes_cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>demo_nodes_py<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--mixin<span class="w"> </span><span class="nv">$OVERLAY_MIXINS</span>
 
 <span class="c1"># source entrypoint setup</span>
-ENV OVERLAY_WS <span class="nv">$OVERLAY_WS</span>
-RUN sed --in-place --expression <span class="se">\</span>
-      <span class="s1">&#39;$isource &quot;$OVERLAY_WS/install/setup.bash&quot;&#39;</span> <span class="se">\</span>
-      /ros_entrypoint.sh
+ENV<span class="w"> </span>OVERLAY_WS<span class="w"> </span><span class="nv">$OVERLAY_WS</span>
+RUN<span class="w"> </span>sed<span class="w"> </span>--in-place<span class="w"> </span>--expression<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;$isource &quot;$OVERLAY_WS/install/setup.bash&quot;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>/ros_entrypoint.sh
 
 <span class="c1"># run launch file</span>
-CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;ros2&quot;</span>,<span class="w"> </span><span class="s2">&quot;launch&quot;</span>,<span class="w"> </span><span class="s2">&quot;demo_nodes_cpp&quot;</span>,<span class="w"> </span><span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>Going through the lines shown, we can see how we can add custom packages
@@ -683,53 +683,53 @@ from github in 4 steps:</p>
 <ol class="arabic simple">
 <li><p>Create an overlay with custom packages cloned from Github:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG OVERLAY_WS
-WORKDIR <span class="nv">$OVERLAY_WS</span>/src
-RUN <span class="nb">echo</span> <span class="s2">&quot;\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG<span class="w"> </span>OVERLAY_WS
+WORKDIR<span class="w"> </span><span class="nv">$OVERLAY_WS</span>/src
+RUN<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\</span>
 <span class="s2">repositories: \n\</span>
 <span class="s2">  ros2/demos: \n\</span>
 <span class="s2">    type: git \n\</span>
 <span class="s2">    url: https://github.com/ros2/demos.git \n\</span>
 <span class="s2">    version: </span><span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span><span class="s2"> \n\</span>
-<span class="s2">&quot;</span> &gt; ../overlay.repos
-RUN vcs import ./ &lt; ../overlay.repos
+<span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>../overlay.repos
+RUN<span class="w"> </span>vcs<span class="w"> </span>import<span class="w"> </span>./<span class="w"> </span>&lt;<span class="w"> </span>../overlay.repos
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Install package dependencies using rosdep</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install overlay dependencies</span>
-ARG OVERLAY_WS
-WORKDIR <span class="nv">$OVERLAY_WS</span>
-COPY --from<span class="o">=</span>cacher /tmp/<span class="nv">$OVERLAY_WS</span>/src ./src
-RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    apt-get update <span class="o">&amp;&amp;</span> rosdep install -y <span class="se">\</span>
-      --from-paths <span class="se">\</span>
-        src/ros2/demos/demo_nodes_cpp <span class="se">\</span>
-        src/ros2/demos/demo_nodes_py <span class="se">\</span>
-      --ignore-src <span class="se">\</span>
-    <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
+ARG<span class="w"> </span>OVERLAY_WS
+WORKDIR<span class="w"> </span><span class="nv">$OVERLAY_WS</span>
+COPY<span class="w"> </span>--from<span class="o">=</span>cacher<span class="w"> </span>/tmp/<span class="nv">$OVERLAY_WS</span>/src<span class="w"> </span>./src
+RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--from-paths<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/ros2/demos/demo_nodes_cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/ros2/demos/demo_nodes_py<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--ignore-src<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Build the packages <em>you need</em></p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># build overlay source</span>
-COPY --from<span class="o">=</span>cacher <span class="nv">$OVERLAY_WS</span>/src ./src
-ARG <span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
-RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
-    colcon build <span class="se">\</span>
-      --packages-select <span class="se">\</span>
-        demo_nodes_cpp <span class="se">\</span>
-        demo_nodes_py <span class="se">\</span>
-      --mixin <span class="nv">$OVERLAY_MIXINS</span>
+COPY<span class="w"> </span>--from<span class="o">=</span>cacher<span class="w"> </span><span class="nv">$OVERLAY_WS</span>/src<span class="w"> </span>./src
+ARG<span class="w"> </span><span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
+RUN<span class="w"> </span>.<span class="w"> </span>/opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>colcon<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--packages-select<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>demo_nodes_cpp<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>demo_nodes_py<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--mixin<span class="w"> </span><span class="nv">$OVERLAY_MIXINS</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>Running the launch file</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># run launch file</span>
-CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;ros2&quot;</span>,<span class="w"> </span><span class="s2">&quot;launch&quot;</span>,<span class="w"> </span><span class="s2">&quot;demo_nodes_cpp&quot;</span>,<span class="w"> </span><span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>Likewise, we can change the packages used, install their dependencies,
@@ -741,20 +741,20 @@ we’re logged in to IBM Cloud, we directly build our new Dockerfile.
 Notice how I kept the tag the same but changed the version, this way I
 can update the docker image created previously. (You are free to create
 a completely new one if you want)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr build --tag registry.bluemix.net/ros2nasr/ros2foxy:2 .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>registry.bluemix.net/ros2nasr/ros2foxy:2<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Then, make sure you are logged in to the registry and run the new docker
 image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr login
-Logging <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
-Logged <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
-Logging <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>...
-Logged <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ibmcloud<span class="w"> </span>cr<span class="w"> </span>login
+Logging<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
+Logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
+Logging<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;us.icr.io&#39;</span>...
+Logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;us.icr.io&#39;</span>.
 
 OK
 
-$ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:2
+$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span>-it<span class="w"> </span>registry.ng.bluemix.net/ros2nasr/ros2foxy:2
 </pre></div>
 </div>
 <p>You should see, again, the same output. However, this time we did it
@@ -770,13 +770,13 @@ from IBM Cloud, this is how you should go about it!</p>
 <em>registry.ng.bluemix.net/ros2nasr/ros2foxy:2</em> (in my case). Then
 delete them using their <em>NAMES</em></p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rm your_docker_NAMES
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>your_docker_NAMES
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Delete the docker image from IBM Cloud using its <em>IMAGE</em> name</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rmi registry.ng.bluemix.net/ros2nasr/ros2foxy:2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>registry.ng.bluemix.net/ros2nasr/ros2foxy:2
 </pre></div>
 </div>
 </div>
@@ -836,50 +836,50 @@ reach this screen from the IBM Cloud Console inside the Kubernetes.</p>
 <em>ros2-deployment.yaml</em> using your favorite $EDITOR and insert the
 following in it:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
-kind: Deployment
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion:<span class="w"> </span>apps/v1
+kind:<span class="w"> </span>Deployment
 metadata:
-  name: &lt;deployment&gt;
+<span class="w">  </span>name:<span class="w"> </span>&lt;deployment&gt;
 spec:
-  replicas: &lt;number_of_replicas&gt;
-  selector:
-    matchLabels:
-      app: &lt;app_name&gt;
-  template:
-    metadata:
-      labels:
-        app: &lt;app_name&gt;
-    spec:
-      containers:
-      - name: &lt;app_name&gt;
-        image: &lt;region&gt;.icr.io/&lt;namespace&gt;/&lt;image&gt;:&lt;tag&gt;
+<span class="w">  </span>replicas:<span class="w"> </span>&lt;number_of_replicas&gt;
+<span class="w">  </span>selector:
+<span class="w">    </span>matchLabels:
+<span class="w">      </span>app:<span class="w"> </span>&lt;app_name&gt;
+<span class="w">  </span>template:
+<span class="w">    </span>metadata:
+<span class="w">      </span>labels:
+<span class="w">        </span>app:<span class="w"> </span>&lt;app_name&gt;
+<span class="w">    </span>spec:
+<span class="w">      </span>containers:
+<span class="w">      </span>-<span class="w"> </span>name:<span class="w"> </span>&lt;app_name&gt;
+<span class="w">        </span>image:<span class="w"> </span>&lt;region&gt;.icr.io/&lt;namespace&gt;/&lt;image&gt;:&lt;tag&gt;
 </pre></div>
 </div>
 <p>You should replace the tags shown between <em>«&lt;» «&gt;»</em> as described
 <a class="reference external" href="https://cloud.ibm.com/docs/containers?topic=containers-images#namespace">here</a>.
 The file in my case would look something like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
-kind: Deployment
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion:<span class="w"> </span>apps/v1
+kind:<span class="w"> </span>Deployment
 metadata:
-  name: ros2-deployment
+<span class="w">  </span>name:<span class="w"> </span>ros2-deployment
 spec:
-  replicas: <span class="m">1</span>
-  selector:
-    matchLabels:
-      app: ros2-ibmcloud
-  template:
-    metadata:
-      labels:
-        app: ros2-ibmcloud
-    spec:
-      containers:
-      - name: ros2-ibmcloud
-        image: us.icr.io/ros2nasr/ros2foxy:2
+<span class="w">  </span>replicas:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>selector:
+<span class="w">    </span>matchLabels:
+<span class="w">      </span>app:<span class="w"> </span>ros2-ibmcloud
+<span class="w">  </span>template:
+<span class="w">    </span>metadata:
+<span class="w">      </span>labels:
+<span class="w">        </span>app:<span class="w"> </span>ros2-ibmcloud
+<span class="w">    </span>spec:
+<span class="w">      </span>containers:
+<span class="w">      </span>-<span class="w"> </span>name:<span class="w"> </span>ros2-ibmcloud
+<span class="w">        </span>image:<span class="w"> </span>us.icr.io/ros2nasr/ros2foxy:2
 </pre></div>
 </div>
 <p>Deploy the file using the following command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kubectl apply -f ros2-deployment.yaml
-deployment.apps/ros2-deployment created
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>ros2-deployment.yaml
+deployment.apps/ros2-deployment<span class="w"> </span>created
 </pre></div>
 </div>
 <p>Now your docker image is fully deployed on your cluster!</p>
@@ -899,8 +899,8 @@ parameters of your cluster as well as its CPU and Memory Usage.</p>
 </ol>
 <p>Now you are inside your docker image! You can source your workspace (if
 needed) and run ROS2! For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# . install/setup.sh
-root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# ros2 launch demo_nodes_cpp talker_listener.launch.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws#<span class="w"> </span>.<span class="w"> </span>install/setup.sh
+root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws#<span class="w"> </span>ros2<span class="w"> </span>launch<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker_listener.launch.py
 </pre></div>
 </div>
 </div>

@@ -470,8 +470,8 @@ You wouldn’t want a build to fail after a long wait because of missing depende
 <p>From the root of your workspace (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>), run the following command:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd if you&#39;re still in the ``src`` directory with the ``ros_tutorials`` clone</span>
-<span class="nb">cd</span> ..
-rosdep install -i --from-path src --rosdistro rolling -y
+<span class="nb">cd</span><span class="w"> </span>..
+rosdep<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>--from-path<span class="w"> </span>src<span class="w"> </span>--rosdistro<span class="w"> </span>rolling<span class="w"> </span>-y
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you can skip ahead to section «5 Build the workspace with colcon».</p>
@@ -480,7 +480,7 @@ rosdep install -i --from-path src --rosdistro rolling -y
 <p>If you installed ROS 2 on Linux from source or the «fat» archive, you will need to use the rosdep command from their installation instructions.
 Here are the <a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Development-Setup.html#linux-development-setup-install-dependencies-using-rosdep"><span class="std std-ref">from-source rosdep section</span></a> and the <a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Install-Binary.html#linux-install-binary-install-missing-dependencies"><span class="std std-ref">«fat» archive rosdep section</span></a>.</p>
 <p>If you already have all your dependencies, the console will return:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>All required rosdeps installed successfully
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>All<span class="w"> </span>required<span class="w"> </span>rosdeps<span class="w"> </span>installed<span class="w"> </span>successfully
 </pre></div>
 </div>
 <p>Packages declare their dependencies in the package.xml file (you will learn more about packages in the next tutorial).

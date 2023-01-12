@@ -420,18 +420,18 @@ In general, there are two files of interest: <code class="docutils literal notra
 This is the key to put in a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p>
 <p>For example, imagine a package had a dependency on <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> because it is a great piece of software that cares about quality documentation (hint hint).
 We would search <code class="docutils literal notranslate"><span class="pre">base.yaml</span></code> for <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> and come across:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">doxygen</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">arch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">debian</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">fedora</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">freebsd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">gentoo</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">app-doc/doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">macports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">nixos</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">openembedded</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen@meta-oe</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">opensuse</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">rhel</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ubuntu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">doxygen</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">arch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">debian</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">fedora</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">freebsd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">gentoo</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">app-doc/doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">macports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">nixos</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">openembedded</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen@meta-oe</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">opensuse</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">rhel</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">ubuntu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>That means our rosdep key is <code class="docutils literal notranslate"><span class="pre">doxygen</span></code>, which would resolve to those various names in different operating system’s package managers for installation.</p>
@@ -447,8 +447,8 @@ If for some reason these may not be contributed openly, it is possible to fork r
 <h2><a class="toc-backref" href="#id6">How do I use the rosdep tool?</a><a class="headerlink" href="#how-do-i-use-the-rosdep-tool" title="Enlazar permanentemente con este título"></a></h2>
 <p>Now that we have some understanding of <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>, <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>, and <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code>, we’re ready to use the utility itself!
 Firstly, if this is the first time using <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>, it must be initialized via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rosdep init
-rosdep update
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rosdep<span class="w"> </span>init
+rosdep<span class="w"> </span>update
 </pre></div>
 </div>
 <p>This will initialize rosdep and <code class="docutils literal notranslate"><span class="pre">update</span></code> will update the locally cached rosdistro index.
@@ -456,7 +456,7 @@ It is a good idea to <code class="docutils literal notranslate"><span class="pre
 <p>Finally, we can run <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">install</span></code> to install dependencies.
 Typically, this is run over a workspace with many packages in a single call to install all dependencies.
 A call for that would appear as the following, if in the root of the workspace with directory <code class="docutils literal notranslate"><span class="pre">src</span></code> containing source code.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths src -y --ignore-src
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>-y<span class="w"> </span>--ignore-src
 </pre></div>
 </div>
 <p>Breaking that down:</p>

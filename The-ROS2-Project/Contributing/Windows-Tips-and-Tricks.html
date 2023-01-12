@@ -449,9 +449,9 @@ In another library, <code class="docutils literal notranslate"><span class="pre"
 </div>
 <p>For a complete example of this header, see <a class="reference external" href="https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp">rviz_rendering</a>.</p>
 <p>To use the macro, add <code class="docutils literal notranslate"><span class="pre">MY_LIB_PUBLIC</span></code> before symbols which need to be visible to external libraries. For example:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Class</span><span class="w"> </span><span class="n">MY_LIB_PUBLIC</span><span class="w"> </span><span class="n">example_class</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Class</span><span class="w"> </span><span class="n">MY_LIB_PUBLIC</span><span class="w"> </span><span class="n">example_class</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="n">MY_LIB_PUBLIC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">example_function</span><span class="w"> </span><span class="p">(){}</span><span class="w"></span>
+<span class="n">MY_LIB_PUBLIC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">example_function</span><span class="w"> </span><span class="p">(){}</span>
 </pre></div>
 </div>
 <p>In order to build your library with correctly exported symbols, you will need to add the following to your CMakeLists.txt file:</p>
@@ -473,10 +473,10 @@ The property can be implemented by adding the following to the CMakeLists file:<
 If a binary exports more than that, you will get an error and should use the visibility_control headers.
 There is an exception to this method in the case of global data symbols.
 For example, a global static data member like the one below.</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Example_class</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Global_data_num</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Example_class</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Global_data_num</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>In these cases dllimprort/dllexport must be applied explicitly.

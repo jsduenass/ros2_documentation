@@ -455,24 +455,24 @@ It could be made more sophisticated.</p></li>
 <h4>Variation: Building ROS packages with <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code><a class="headerlink" href="#variation-building-ros-packages-with-ament-build" title="Enlazar permanentemente con este título"></a></h4>
 <p>Let’s say that you love the new <code class="docutils literal notranslate"><span class="pre">ament</span></code> tool and want to use it to build your existing ROS packages that use <code class="docutils literal notranslate"><span class="pre">catkin</span></code> internally.
 Here’s an example of how to do that, by doing a minimal installation of <code class="docutils literal notranslate"><span class="pre">ament</span></code> and then using it to build a workspace full of ROS <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/ament_ws/src
-<span class="nb">cd</span> ~/ament_ws/src
-git clone https://github.com/osrf/osrf_pycommon.git
-git clone https://github.com/ament/ament_package.git
-<span class="nb">cd</span> ament_package
-git checkout catkin
-<span class="nb">cd</span> ..
-git clone https://github.com/ament/ament_tools.git
-<span class="nb">cd</span> ament_tools
-git checkout catkin
-<span class="nb">cd</span> ../..
- ./src/ament_tools/scripts/ament.py build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ament_ws/src
+<span class="nb">cd</span><span class="w"> </span>~/ament_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/osrf/osrf_pycommon.git
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ament/ament_package.git
+<span class="nb">cd</span><span class="w"> </span>ament_package
+git<span class="w"> </span>checkout<span class="w"> </span>catkin
+<span class="nb">cd</span><span class="w"> </span>..
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ament/ament_tools.git
+<span class="nb">cd</span><span class="w"> </span>ament_tools
+git<span class="w"> </span>checkout<span class="w"> </span>catkin
+<span class="nb">cd</span><span class="w"> </span>../..
+<span class="w"> </span>./src/ament_tools/scripts/ament.py<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Now build the ROS packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. <span class="nv">$HOME</span>/ament_ws/install/setup.bash
-<span class="nb">cd</span> ~/ros_catkin_ws
-ament build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span><span class="nv">$HOME</span>/ament_ws/install/setup.bash
+<span class="nb">cd</span><span class="w"> </span>~/ros_catkin_ws
+ament<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Voila: you used the <code class="docutils literal notranslate"><span class="pre">ament</span></code> build tool to build your <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages, without having to migrate them.</p>
@@ -483,18 +483,18 @@ ament build
 <p>To make this work, we need a Python3 installation of <code class="docutils literal notranslate"><span class="pre">catkin</span></code> (the binary debians use Python2.7).
 Here’s an example of doing that, installing to <code class="docutils literal notranslate"><span class="pre">$HOME/catkin</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install catkin_pkg</span>
-git clone https://github.com/ros-infrastructure/catkin_pkg.git
-<span class="nb">cd</span> catkin_pkg
-git checkout ament
-python3 setup.py install --prefix <span class="nv">$HOME</span>/catkin --single-version-externally-managed --record foo --install-layout deb
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-infrastructure/catkin_pkg.git
+<span class="nb">cd</span><span class="w"> </span>catkin_pkg
+git<span class="w"> </span>checkout<span class="w"> </span>ament
+python3<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="nv">$HOME</span>/catkin<span class="w"> </span>--single-version-externally-managed<span class="w"> </span>--record<span class="w"> </span>foo<span class="w"> </span>--install-layout<span class="w"> </span>deb
 <span class="c1"># install catkin</span>
-git clone https://github.com/ros/catkin.git
-<span class="nb">cd</span> catkin
-git checkout ament
-mkdir build
-<span class="nb">cd</span> build
-<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$HOME</span>/catkin/lib/python3/dist-packages/ cmake .. -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/catkin -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
-make install
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros/catkin.git
+<span class="nb">cd</span><span class="w"> </span>catkin
+git<span class="w"> </span>checkout<span class="w"> </span>ament
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$HOME</span>/catkin/lib/python3/dist-packages/<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/catkin<span class="w"> </span>-DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
+make<span class="w"> </span>install
 </pre></div>
 </div>
 <p>To use that version of catkin, you just need to source the <code class="docutils literal notranslate"><span class="pre">$HOME/catkin/setup.bash</span></code> file.</p>
@@ -502,9 +502,9 @@ make install
 Add to that workspace the <code class="docutils literal notranslate"><span class="pre">image_tools_catkin</span></code> package from <a class="reference external" href="https://github.com/gerkey/catment">https://github.com/gerkey/catment</a>.
 It’s a simple port of the ROS 2 <code class="docutils literal notranslate"><span class="pre">image_tools</span></code> package, taking it from the <code class="docutils literal notranslate"><span class="pre">ament</span></code> API to the <code class="docutils literal notranslate"><span class="pre">catkin</span></code> API.
 To build it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_ws
-. <span class="nv">$HOME</span>/catkin/setup.bash
-./src/ament/ament_tools/scripts/ament.py build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+.<span class="w"> </span><span class="nv">$HOME</span>/catkin/setup.bash
+./src/ament/ament_tools/scripts/ament.py<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Voila: when adding new packages atop ROS 2, you’re free to choose which CMake API you prefer inside your package.</p>
@@ -532,42 +532,42 @@ Also in this patch, we add the <code class="docutils literal notranslate"><span 
 Also in this patch, we add the <code class="docutils literal notranslate"><span class="pre">buildtool_export_depend</span></code> packages to the set that are considered when computing the topological order.</p></li>
 </ul>
 <p>Because we’re going to call out to <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code>, we will also need a minimal installation of <code class="docutils literal notranslate"><span class="pre">ament</span></code>, as done in a previous example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/ament_ws/src
-<span class="nb">cd</span> ~/ament_ws/src
-git clone https://github.com/osrf/osrf_pycommon.git
-git clone https://github.com/ament/ament_package.git
-<span class="nb">cd</span> ament_package
-git checkout catkin
-<span class="nb">cd</span> ..
-git clone https://github.com/ament/ament_tools.git
-<span class="nb">cd</span> ament_tools
-git checkout catkin
-<span class="nb">cd</span> ../..
- ./src/ament_tools/scripts/ament.py build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ament_ws/src
+<span class="nb">cd</span><span class="w"> </span>~/ament_ws/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/osrf/osrf_pycommon.git
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ament/ament_package.git
+<span class="nb">cd</span><span class="w"> </span>ament_package
+git<span class="w"> </span>checkout<span class="w"> </span>catkin
+<span class="nb">cd</span><span class="w"> </span>..
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ament/ament_tools.git
+<span class="nb">cd</span><span class="w"> </span>ament_tools
+git<span class="w"> </span>checkout<span class="w"> </span>catkin
+<span class="nb">cd</span><span class="w"> </span>../..
+<span class="w"> </span>./src/ament_tools/scripts/ament.py<span class="w"> </span>build
 </pre></div>
 </div>
 <p>Then we need to install the modified version of catkin somewhere:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install catkin_pkg</span>
-git clone https://github.com/ros-infrastructure/catkin_pkg.git
-<span class="nb">cd</span> catkin_pkg
-git checkout ament
-python3 setup.py install --prefix <span class="nv">$HOME</span>/catkin --single-version-externally-managed --record foo --install-layout deb
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-infrastructure/catkin_pkg.git
+<span class="nb">cd</span><span class="w"> </span>catkin_pkg
+git<span class="w"> </span>checkout<span class="w"> </span>ament
+python3<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="nv">$HOME</span>/catkin<span class="w"> </span>--single-version-externally-managed<span class="w"> </span>--record<span class="w"> </span>foo<span class="w"> </span>--install-layout<span class="w"> </span>deb
 <span class="c1"># install catkin</span>
-git clone https://github.com/ros/catkin.git
-<span class="nb">cd</span> catkin
-git checkout ament
-mkdir build
-<span class="nb">cd</span> build
-<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$HOME</span>/catkin/lib/python3/dist-packages/ cmake .. -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/catkin -DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
-make install
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros/catkin.git
+<span class="nb">cd</span><span class="w"> </span>catkin
+git<span class="w"> </span>checkout<span class="w"> </span>ament
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$HOME</span>/catkin/lib/python3/dist-packages/<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/catkin<span class="w"> </span>-DPYTHON_EXECUTABLE<span class="o">=</span>/usr/bin/python3
+make<span class="w"> </span>install
 </pre></div>
 </div>
 <p>Now build the ROS 2 packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. <span class="nv">$HOME</span>/catkin/setup.bash
-. <span class="nv">$HOME</span>/ament_ws/install/setup.bash
-<span class="nb">cd</span> ~/ros2_ws
-touch src/eProsima/AMENT_IGNORE
-<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/home/gerkey/ros2_ws_catkin/install_isolated/lib/python3.5/site-packages catkin_make_isolated --install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span><span class="nv">$HOME</span>/catkin/setup.bash
+.<span class="w"> </span><span class="nv">$HOME</span>/ament_ws/install/setup.bash
+<span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+touch<span class="w"> </span>src/eProsima/AMENT_IGNORE
+<span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/home/gerkey/ros2_ws_catkin/install_isolated/lib/python3.5/site-packages<span class="w"> </span>catkin_make_isolated<span class="w"> </span>--install
 </pre></div>
 </div>
 <p>Voila: you’ve built ROS 2 using the tools that you’re familiar with.</p>

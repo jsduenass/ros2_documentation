@@ -460,7 +460,7 @@ Here’s the simplest use case:</p>
 </div>
 <p>It will generate a header with version info from the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and make it available to targets that link against the <code class="docutils literal notranslate"><span class="pre">my_lib</span></code> library.</p>
 <p>How to include the header:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;my_project/version.h&gt;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;my_project/version.h&gt;</span>
 </pre></div>
 </div>
 <p>Where the header is installed to:</p>
@@ -477,11 +477,11 @@ Here’s the simplest use case:</p>
 <p>For example, in the following launch files the executed processe will echo the value <code class="docutils literal notranslate"><span class="pre">1</span></code> (before Humble it would echo <code class="docutils literal notranslate"><span class="pre">2</span></code>):</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-WE1M" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-WE1M" name="WE1M" role="tab" tabindex="0">XML</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-WE1M" class="sphinx-tabs-panel group-tab" id="panel-0-WE1M" name="WE1M" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;set_env</span> <span class="na">name=</span><span class="s">&quot;FOO&quot;</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;group&gt;</span>
-    <span class="nt">&lt;set_env</span> <span class="na">name=</span><span class="s">&quot;FOO&quot;</span> <span class="na">value=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
-  <span class="nt">&lt;executable</span> <span class="na">cmd=</span><span class="s">&quot;echo $FOO&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span> <span class="na">shell=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;set_env</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FOO&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;group&gt;</span>
+<span class="w">    </span><span class="nt">&lt;set_env</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;FOO&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/group&gt;</span>
+<span class="w">  </span><span class="nt">&lt;executable</span><span class="w"> </span><span class="na">cmd=</span><span class="s">&quot;echo $FOO&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="w"> </span><span class="na">shell=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
@@ -519,7 +519,7 @@ Here’s the simplest use case:</p>
 <p>Inside <code class="docutils literal notranslate"><span class="pre">PythonExpression</span></code> substitutions (<code class="docutils literal notranslate"><span class="pre">eval</span></code>) we can now use symbols from Python’s math module.
 For example,</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;$(eval &#39;ceil(pi)&#39;)&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;log</span><span class="w"> </span><span class="na">message=</span><span class="s">&quot;$(eval &#39;ceil(pi)&#39;)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
@@ -529,17 +529,17 @@ For example,</p>
 <h4>Boolean substitutions<a class="headerlink" href="#boolean-substitutions" title="Enlazar permanentemente con este título"></a></h4>
 <p>New substitutions <code class="docutils literal notranslate"><span class="pre">NotSubstitution</span></code>, <code class="docutils literal notranslate"><span class="pre">AndSubstitution</span></code>, and <code class="docutils literal notranslate"><span class="pre">OrSubstitution</span></code> provide a convenient way to perform logical operations, for example</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;let</span> <span class="na">name=</span><span class="s">&quot;p&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;let</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="na">value=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(or $(var p) $(var q))&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;The first condition is true&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
-  <span class="nt">&lt;group</span> <span class="na">unless=</span><span class="s">&quot;$(and $(var p) $(var q))&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;The second condition is false&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
-  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(not $(var q))&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;The third condition is true&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
+<span class="w">  </span><span class="nt">&lt;let</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;p&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;let</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;q&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;group</span><span class="w"> </span><span class="na">if=</span><span class="s">&quot;$(or $(var p) $(var q))&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;log</span><span class="w"> </span><span class="na">message=</span><span class="s">&quot;The first condition is true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/group&gt;</span>
+<span class="w">  </span><span class="nt">&lt;group</span><span class="w"> </span><span class="na">unless=</span><span class="s">&quot;$(and $(var p) $(var q))&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;log</span><span class="w"> </span><span class="na">message=</span><span class="s">&quot;The second condition is false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/group&gt;</span>
+<span class="w">  </span><span class="nt">&lt;group</span><span class="w"> </span><span class="na">if=</span><span class="s">&quot;$(not $(var q))&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;log</span><span class="w"> </span><span class="na">message=</span><span class="s">&quot;The third condition is true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/group&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
@@ -568,15 +568,15 @@ For example,</p>
 <p>It is now possible to provide <a class="reference internal" href="../How-To-Guides/Node-arguments.html"><span class="doc">ROS-specific node arguments</span></a> directly, without needing to use <code class="docutils literal notranslate"><span class="pre">args</span></code> with a leading <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> flag:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-WE1M" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-WE1M" name="WE1M" role="tab" tabindex="0">XML</button><button aria-controls="panel-1-WUFNTA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-WUFNTA==" name="WUFNTA==" role="tab" tabindex="-1">YAML</button></div><div aria-labelledby="tab-1-WE1M" class="sphinx-tabs-panel group-tab" id="panel-1-WE1M" name="WE1M" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;demo_nodes_cpp&quot;</span> <span class="na">exec=</span><span class="s">&quot;talker&quot;</span> <span class="na">ros_args=</span><span class="s">&quot;--log-level debug&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;demo_nodes_cpp&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;talker&quot;</span><span class="w"> </span><span class="na">ros_args=</span><span class="s">&quot;--log-level debug&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_nodes_cpp</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">talker</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ros_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--log-level</span><span class="nv"> </span><span class="s">debug&#39;</span><span class="w"></span>
+</div><div aria-labelledby="tab-1-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_nodes_cpp</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">talker</span>
+<span class="w">    </span><span class="nt">ros_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--log-level</span><span class="nv"> </span><span class="s">debug&#39;</span>
 </pre></div>
 </div>
 </div></div>
@@ -601,31 +601,31 @@ For example,</p>
 <p>We can now start node containers and load components into them from frontend launch files, for example:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-WE1M" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-WE1M" name="WE1M" role="tab" tabindex="0">XML</button><button aria-controls="panel-2-WUFNTA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-WUFNTA==" name="WUFNTA==" role="tab" tabindex="-1">YAML</button></div><div aria-labelledby="tab-2-WE1M" class="sphinx-tabs-panel group-tab" id="panel-2-WE1M" name="WE1M" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;node_container</span> <span class="na">pkg=</span><span class="s">&quot;rclcpp_components&quot;</span> <span class="na">exec=</span><span class="s">&quot;component_container&quot;</span> <span class="na">name=</span><span class="s">&quot;my_container&quot;</span> <span class="na">namespace=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;composable_node</span> <span class="na">pkg=</span><span class="s">&quot;composition&quot;</span> <span class="na">plugin=</span><span class="s">&quot;composition::Talker&quot;</span> <span class="na">name=</span><span class="s">&quot;talker&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/node_container&gt;</span>
-  <span class="nt">&lt;load_composable_node</span> <span class="na">target=</span><span class="s">&quot;my_container&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;composable_node</span> <span class="na">pkg=</span><span class="s">&quot;composition&quot;</span> <span class="na">plugin=</span><span class="s">&quot;composition::Listener&quot;</span> <span class="na">name=</span><span class="s">&quot;listener&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/load_composable_node&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node_container</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;rclcpp_components&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;component_container&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;my_container&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;composable_node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;composition&quot;</span><span class="w"> </span><span class="na">plugin=</span><span class="s">&quot;composition::Talker&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;talker&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/node_container&gt;</span>
+<span class="w">  </span><span class="nt">&lt;load_composable_node</span><span class="w"> </span><span class="na">target=</span><span class="s">&quot;my_container&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;composable_node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;composition&quot;</span><span class="w"> </span><span class="na">plugin=</span><span class="s">&quot;composition::Listener&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;listener&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/load_composable_node&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node_container</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rclcpp_components</span><span class="w"></span>
-<span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component_container</span><span class="w"></span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_container</span><span class="w"></span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">composable_node</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition</span><span class="w"></span>
-<span class="w">          </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition::Talker</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">talker</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">load_composable_node</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_container</span><span class="w"></span>
-<span class="w">      </span><span class="nt">composable_node</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition</span><span class="w"></span>
-<span class="w">          </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition::Listener</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">listener</span><span class="w"></span>
+</div><div aria-labelledby="tab-2-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node_container</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rclcpp_components</span>
+<span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component_container</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_container</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">composable_node</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition</span>
+<span class="w">          </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition::Talker</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">talker</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">load_composable_node</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_container</span>
+<span class="w">      </span><span class="nt">composable_node</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition</span>
+<span class="w">          </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composition::Listener</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">listener</span>
 </pre></div>
 </div>
 </div></div>
@@ -636,8 +636,8 @@ For example,</p>
 <p>The new <code class="docutils literal notranslate"><span class="pre">ParameterSubstitution</span></code> lets you substitute the value of a parameter set previously in launch with the <code class="docutils literal notranslate"><span class="pre">SetParameter</span></code> action.
 For example,</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
-  <span class="nt">&lt;set_parameter</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;bar&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;Parameter foo has value $(param foo)&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;set_parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;foo&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;bar&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;log</span><span class="w"> </span><span class="na">message=</span><span class="s">&quot;Parameter foo has value $(param foo)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
@@ -782,12 +782,12 @@ A new configuration property called «Far Plane Distance» in the rviz camera pl
 <span class="c1"># a format acceptable to (resource retriever)[https://index.ros.org/p/resource_retriever/]</span>
 <span class="c1"># or an embedded texture via a string matching the format:</span>
 <span class="c1">#   &quot;embedded://texture_name&quot;</span>
-string texture_resource
+string<span class="w"> </span>texture_resource
 <span class="c1"># An image to be loaded into the rendering engine as the texture for this marker.</span>
 <span class="c1"># This will be used iff texture_resource is set to embedded.</span>
-sensor_msgs/CompressedImage texture
+sensor_msgs/CompressedImage<span class="w"> </span>texture
 <span class="c1"># Location of each vertex within the texture; in the range: [0.0-1.0]</span>
-UVCoordinate<span class="o">[]</span> uv_coordinates
+UVCoordinate<span class="o">[]</span><span class="w"> </span>uv_coordinates
 </pre></div>
 </div>
 <p>RViz will fully support texture rendering through the embedded format.</p>
@@ -797,10 +797,10 @@ In the interest of being able to record all data in a rosbag, the ability to emb
 <p><strong>Meshes</strong> were modified in a similar way to add the ability to embed a raw Mesh file for the purpose of recording and are modified in a similar way. The Meshfile message has two fields:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The filename is used for both debug purposes and to provide a file extension</span>
 <span class="c1"># for whatever parser is used.</span>
-string filename
+string<span class="w"> </span>filename
 
 <span class="c1"># This stores the raw text of the mesh file.</span>
-uint8<span class="o">[]</span> data
+uint8<span class="o">[]</span><span class="w"> </span>data
 </pre></div>
 </div>
 <p>The embedded <code class="docutils literal notranslate"><span class="pre">Meshfile</span></code> message is not yet supported in implementation.</p>
@@ -852,49 +852,49 @@ For more details, see the guide <a class="reference internal" href="../How-To-Gu
 <p>After defining a type adapter, custom data structures can be used directly by publishers and subscribers, which helps to avoid additional work for the programmer and potential sources of errors.
 This is especially useful when working with complex data types, such as when converting OpenCV’s <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code> to ROS’s <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Image</span></code> type.</p>
 <p>Here is an example of a type adapter that converts <code class="docutils literal notranslate"><span class="pre">std_msgs::msg::String</span></code> to <code class="docutils literal notranslate"><span class="pre">std::string</span></code>:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"></span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">rclcpp</span><span class="o">::</span><span class="n">TypeAdapter</span><span class="o">&lt;</span><span class="w"></span>
-<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"></span>
-<span class="w">   </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"></span>
-<span class="o">&gt;</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">is_specialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">true_type</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">custom_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">rclcpp</span><span class="o">::</span><span class="n">TypeAdapter</span><span class="o">&lt;</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
+<span class="w">   </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span>
+<span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">is_specialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">true_type</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">custom_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">static</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"></span>
-<span class="w">  </span><span class="nf">convert_to_ros_message</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">custom_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">destination</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">destination</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span>
+<span class="w">  </span><span class="kt">void</span>
+<span class="w">  </span><span class="nf">convert_to_ros_message</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">custom_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">destination</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">destination</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">static</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"></span>
-<span class="w">  </span><span class="nf">convert_to_custom</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">custom_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">destination</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span>
+<span class="w">  </span><span class="kt">void</span>
+<span class="w">  </span><span class="nf">convert_to_custom</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ros_message_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
+<span class="w">    </span><span class="n">custom_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">destination</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 </pre></div>
 </div>
 <p>And an example of how the type adapter can be used:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">MyAdaptedType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeAdapter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">MyAdaptedType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeAdapter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="c1">// Publish a std::string</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">MyAdaptedType</span><span class="o">&gt;</span><span class="p">(...);</span><span class="w"></span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">custom_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My std::string&quot;</span><span class="w"></span>
-<span class="n">pub</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">custom_msg</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">MyAdaptedType</span><span class="o">&gt;</span><span class="p">(...);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">custom_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My std::string&quot;</span>
+<span class="n">pub</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">custom_msg</span><span class="p">);</span>
 
 <span class="c1">// Pass a std::string to a subscription&#39;s callback</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">MyAdaptedType</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">MyAdaptedType</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;topic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span>
 </pre></div>
 </div>
 <p>To learn more, see the <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_publisher/member_function_with_type_adapter.cpp">publisher</a> and <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_subscriber/member_function_with_type_adapter.cpp">subscription</a> examples, as well as a more complex <a class="reference external" href="https://github.com/ros2/demos/pull/482">demo</a>.
@@ -907,20 +907,20 @@ This breaks API, as <code class="docutils literal notranslate"><span class="pre"
 That means, if that method is called for a second time it will throw an exception.
 That doesn’t happen with a <code class="docutils literal notranslate"><span class="pre">std::shared_future</span></code>, as its <code class="docutils literal notranslate"><span class="pre">get()</span></code> method returns a <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">&amp;</span></code>.
 Example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="n">do_something_with_response</span><span class="p">(</span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">do_something_with_response</span><span class="p">(</span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="p">...</span>
 <span class="n">do_something_else_with_response</span><span class="p">(</span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w">  </span><span class="c1">// this will throw an exception now!!</span>
 </pre></div>
 </div>
 <p>should be updated to:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
-<span class="n">do_something_with_response</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="n">do_something_else_with_response</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="n">do_something_with_response</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">do_something_else_with_response</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>If a shared future is needed, the <code class="docutils literal notranslate"><span class="pre">std::future::share()</span></code> method can be used.</p>
@@ -930,10 +930,10 @@ Example:</p>
 <p>This new method will block until all messages in the publisher queue are acked by the matching subscriptions or the specified timeout expires.
 It is only useful for reliable publishers, as in the case of best effort QoS there’s no acking.
 Examples:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(...);</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="n">pub</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">my_msg</span><span class="p">);</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">pub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(...);</span>
+<span class="p">...</span>
+<span class="n">pub</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">my_msg</span><span class="p">);</span>
+<span class="p">...</span>
 <span class="n">pub</span><span class="o">-&gt;</span><span class="n">wait_for_all_acked</span><span class="p">();</span><span class="w"> </span><span class="c1">// or pub-&gt;wait_for_all_acked(timeout)</span>
 </pre></div>
 </div>
@@ -1033,13 +1033,13 @@ This is particularly unexpected when using a reliable qos profile.</p>
 <div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">--print</span></code> option for dump command was <a class="reference external" href="https://github.com/ros2/ros2cli/pull/638">deprecated</a>.</p>
 <p>It prints to stdout by default:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 param dump /my_node_name
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>param<span class="w"> </span>dump<span class="w"> </span>/my_node_name
 </pre></div>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--output-dir</span></code> option for dump command was <a class="reference external" href="https://github.com/ros2/ros2cli/pull/638">deprecated</a>.</p>
 <p>To dump parameters to a file, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 param dump /my_node_name &gt; my_node_name.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>param<span class="w"> </span>dump<span class="w"> </span>/my_node_name<span class="w"> </span>&gt;<span class="w"> </span>my_node_name.yaml
 </pre></div>
 </div>
 </li>

@@ -410,141 +410,141 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src</spa
 </div>
 </div></div>
 <p>Open the file using your preferred text editor.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/twist.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/exceptions.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/transform_listener.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/buffer.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;turtlesim/srv/spawn.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/twist.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2/exceptions.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/transform_listener.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/buffer.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;turtlesim/srv/spawn.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">FrameListener</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">FrameListener</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;turtle_tf2_frame_listener&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">turtle_spawning_service_ready_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">turtle_spawned_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FrameListener</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">FrameListener</span><span class="p">()</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;turtle_tf2_frame_listener&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">turtle_spawning_service_ready_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+<span class="w">    </span><span class="n">turtle_spawned_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Declare and acquire `target_frame` parameter</span>
-<span class="w">    </span><span class="n">target_frame_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;target_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;turtle1&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">target_frame_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;target_frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;turtle1&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">tf_buffer_</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="n">tf_listener_</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf_buffer_</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">tf_buffer_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">());</span>
+<span class="w">    </span><span class="n">tf_listener_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf_buffer_</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create a client to spawn a turtle</span>
-<span class="w">    </span><span class="n">spawner_</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;spawn&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">spawner_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;spawn&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create turtle2 velocity publisher</span>
-<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;turtle2/cmd_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;turtle2/cmd_vel&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Call on_timer function every second</span>
-<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="mi">1</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">FrameListener</span><span class="o">::</span><span class="n">on_timer</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+<span class="w">      </span><span class="mi">1</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">FrameListener</span><span class="o">::</span><span class="n">on_timer</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">on_timer</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">on_timer</span><span class="p">()</span>
+<span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Store frame names in variables that will be used to</span>
 <span class="w">    </span><span class="c1">// compute transformations</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_frame_</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">toFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_frame_</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">toFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turtle_spawning_service_ready_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turtle_spawned_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turtle_spawning_service_ready_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">turtle_spawned_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// Look up for the transformation between target_frame and turtle2 frames</span>
 <span class="w">        </span><span class="c1">// and send velocity commands for turtle2 to reach target_frame</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf2</span><span class="o">::</span><span class="n">TransformException</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Could not transform %s to %s: %s&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="n">toFrameRel</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
-<span class="w">          </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">            </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">            </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf2</span><span class="o">::</span><span class="n">TransformException</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="n">RCLCPP_INFO</span><span class="p">(</span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Could not transform %s to %s: %s&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">toFrameRel</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">          </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span>
 
-<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">scaleRotationRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">msg</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scaleRotationRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">scaleRotationRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">msg</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scaleRotationRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span>
+<span class="w">          </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+<span class="w">          </span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
 
-<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">scaleForwardSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">msg</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scaleForwardSpeed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="n">pow</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
-<span class="w">          </span><span class="n">pow</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">scaleForwardSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">msg</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scaleForwardSpeed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span>
+<span class="w">          </span><span class="n">pow</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">          </span><span class="n">pow</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">translation</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
 
-<span class="w">        </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Successfully spawned&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">turtle_spawned_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Successfully spawned&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">turtle_spawned_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// Check if the service is ready</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">spawner_</span><span class="o">-&gt;</span><span class="n">service_is_ready</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">spawner_</span><span class="o">-&gt;</span><span class="n">service_is_ready</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Initialize request with turtle name and coordinates</span>
 <span class="w">        </span><span class="c1">// Note that x, y and theta are defined as floats in turtlesim/srv/Spawn</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// Call request</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">ServiceResponseFuture</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">          </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;::</span><span class="n">SharedFuture</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">response_received_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="n">ServiceResponseFuture</span><span class="w"> </span><span class="n">future</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">result</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="n">turtle_spawning_service_ready_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Service callback result mismatch&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">          </span><span class="p">};</span><span class="w"></span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawner_</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response_received_callback</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Service is not ready&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">ServiceResponseFuture</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;::</span><span class="n">SharedFuture</span><span class="p">;</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">response_received_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="n">ServiceResponseFuture</span><span class="w"> </span><span class="n">future</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">result</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="n">turtle_spawning_service_ready_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Service callback result mismatch&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">};</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawner_</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response_received_callback</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Service is not ready&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// Boolean values to store the information</span>
 <span class="w">  </span><span class="c1">// if the service for spawning turtle is available</span>
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">turtle_spawning_service_ready_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">turtle_spawning_service_ready_</span><span class="p">;</span>
 <span class="w">  </span><span class="c1">// if the turtle was successfully spawned</span>
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">turtle_spawned_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">spawner_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_listener_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">target_frame_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">turtle_spawned_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Spawn</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">spawner_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_listener_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">};</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">target_frame_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">FrameListener</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">FrameListener</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
@@ -552,12 +552,12 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src</spa
 <p>To understand how the service behind spawning turtle works, please refer to <a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html"><span class="doc">writing a simple service and client (C++)</span></a> tutorial.</p>
 <p>Now, let’s take a look at the code that is relevant to get access to frame transformations.
 The <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> contains a <code class="docutils literal notranslate"><span class="pre">TransformListener</span></code> header file implementation that makes the task of receiving transforms easier.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/transform_listener.h&quot;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/transform_listener.h&quot;</span>
 </pre></div>
 </div>
 <p>Here, we create a <code class="docutils literal notranslate"><span class="pre">TransformListener</span></code> object. Once the listener is created, it starts receiving tf2 transformations over the wire, and buffers them for up to 10 seconds.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_listener_</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf_buffer_</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">tf_listener_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformListener</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">tf_buffer_</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Finally, we query the listener for a specific transformation. We call <code class="docutils literal notranslate"><span class="pre">lookup_transform</span></code> method with following arguments:</p>
@@ -568,9 +568,9 @@ The <code class="docutils literal notranslate"><span class="pre">tf2_ros</span><
 </ol>
 <p>Providing <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero()</span></code> will just get us the latest available transform.
 All this is wrapped in a try-catch block to handle possible exceptions.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span>
+<span class="w">  </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"> </span><span class="n">fromFrameRel</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

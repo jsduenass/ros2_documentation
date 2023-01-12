@@ -386,14 +386,14 @@ If not, please update your installation to include that package (use <code class
 Here’s about as simple as a urdf as you can make.
 <a class="reference external" href="https://github.com/ros/urdf_tutorial/blob/ros2/urdf/01-myfirst.urdf">[Source: 01-myfirst.urdf]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;myfirst&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.6&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;myfirst&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.6&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
 </div>
@@ -439,27 +439,27 @@ Joint elements can refer to both flexible and inflexible joints.
 We’ll start with inflexible, or fixed joints.
 <a class="reference external" href="https://github.com/ros/urdf_tutorial/blob/ros2/urdf/02-multipleshapes.urdf">[Source: 02-multipleshapes.urdf]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;multipleshapes&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.6&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;multipleshapes&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.6&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
@@ -485,29 +485,29 @@ Also, it doesn’t attach to the middle of the leg, it attaches to the upper par
 We also rotate the leg so it is upright.
 <a class="reference external" href="https://github.com/ros/urdf_tutorial/blob/ros2/urdf/03-origins.urdf">[Source: 03-origins.urdf]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;origins&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.6&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;origins&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.6&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
@@ -542,56 +542,56 @@ That’s a good point.
 Let’s take a look at the material tag.
 <a class="reference external" href="https://github.com/ros/urdf_tutorial/blob/ros2/urdf/04-materials.urdf">[Source: 04-materials.urdf]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;materials&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;materials&quot;</span><span class="nt">&gt;</span>
 
-  <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 0 0.8 1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/material&gt;</span>
+<span class="w">  </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 0 0.8 1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/material&gt;</span>
 
-  <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;1 1 1 1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/material&gt;</span>
+<span class="w">  </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;1 1 1 1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/material&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.6&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.6&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_left_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0.22 0.25&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_left_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0.22 0.25&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
@@ -618,249 +618,249 @@ Most notably, we add a sphere and a some meshes.
 We’ll also add few other pieces that we’ll use later.
 <a class="reference external" href="https://github.com/ros/urdf_tutorial/blob/ros2/urdf/05-visual.urdf">[Source: 05-visual.urdf]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;robot</span> <span class="na">name=</span><span class="s">&quot;visual&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;visual&quot;</span><span class="nt">&gt;</span>
 
-  <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 0 0.8 1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/material&gt;</span>
-  <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;0 0 0 1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/material&gt;</span>
-  <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;color</span> <span class="na">rgba=</span><span class="s">&quot;1 1 1 1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/material&gt;</span>
+<span class="w">  </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 0 0.8 1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">  </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 0 0 1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/material&gt;</span>
+<span class="w">  </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;1 1 1 1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/material&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.6&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.6&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_right_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 -0.22 0.25&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_base&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.4 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_base&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.4 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;right_base_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.6&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_base_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.6&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_front_wheel&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.1&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;right_front_wheel_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_front_wheel&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_front_wheel&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_front_wheel_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_front_wheel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_back_wheel&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.1&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;right_back_wheel_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_back_wheel&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;-0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_back_wheel&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_back_wheel_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_back_wheel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;-0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.6 0.1 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;base_to_left_leg&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0.22 0.25&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_to_left_leg&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0.22 0.25&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_base&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.4 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_base&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.4 0.1 0.1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_base_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 -0.6&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_base_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_leg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 -0.6&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_front_wheel&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.1&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_front_wheel_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_front_wheel&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_front_wheel&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_front_wheel_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_front_wheel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_back_wheel&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.1&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_back_wheel_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_back_wheel&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;-0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_back_wheel&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;1.57075 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.035&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;black&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_back_wheel_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_base&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_back_wheel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;-0.133333333333 0 -0.085&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;gripper_extension&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.19 0 0.2&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gripper_extension&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.19 0 0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;cylinder</span> <span class="na">length=</span><span class="s">&quot;0.2&quot;</span> <span class="na">radius=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 1.57075 0 &quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.1 0 0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cylinder</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.2&quot;</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 1.57075 0 &quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.1 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_gripper_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.2 0.01 0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_gripper_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.2 0.01 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mesh</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_tip_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;left_tip&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_tip_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;left_tip&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_tip&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.09137 0.00495 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger_tip.dae&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;right_gripper_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.2 -0.01 0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_tip&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.09137 0.00495 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mesh</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger_tip.dae&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_gripper_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.2 -0.01 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;-3.1415 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;-3.1415 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mesh</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;right_tip_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;right_tip&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_tip_joint&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_gripper&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;right_tip&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;right_tip&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;-3.1415 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0.09137 0.00495 0&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger_tip.dae&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_tip&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;-3.1415 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.09137 0.00495 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mesh</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger_tip.dae&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;head_swivel&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;head&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0.3&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sphere</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;head_swivel&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;head&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0.3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box</span> <span class="na">size=</span><span class="s">&quot;0.08 0.08 0.08&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
+<span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">      </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.08 0.08 0.08&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/link&gt;</span>
 
-  <span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;tobox&quot;</span> <span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;head&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;box&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">xyz=</span><span class="s">&quot;0.1814 0 0.1414&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/joint&gt;</span>
+<span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tobox&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;head&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;box&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0.1814 0 0.1414&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
 <span class="nt">&lt;/robot&gt;</span>
 </pre></div>
 </div>
@@ -869,13 +869,13 @@ We’ll also add few other pieces that we’ll use later.
 </div>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/ros/urdf_tutorial/ros2/images/visual.png"><img alt="Visual Screenshot" src="https://raw.githubusercontent.com/ros/urdf_tutorial/ros2/images/visual.png" style="width: 800px;" /></a>
 <p>How to add the sphere should be fairly self explanatory:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;visual&gt;</span>
-    <span class="nt">&lt;geometry&gt;</span>
-      <span class="nt">&lt;sphere</span> <span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/geometry&gt;</span>
-    <span class="nt">&lt;material</span> <span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/visual&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;sphere</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">    </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
 <span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>
@@ -883,13 +883,13 @@ We’ll also add few other pieces that we’ll use later.
 They are separate files which you have to specify the path for.
 You should use the <code class="docutils literal notranslate"><span class="pre">package://NAME_OF_PACKAGE/path</span></code> notation.
 The meshes for this tutorial are located within the <code class="docutils literal notranslate"><span class="pre">urdf_tutorial</span></code> package, in a folder called meshes.</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;visual&gt;</span>
-    <span class="nt">&lt;origin</span> <span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span> <span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;geometry&gt;</span>
-      <span class="nt">&lt;mesh</span> <span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/geometry&gt;</span>
-  <span class="nt">&lt;/visual&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_gripper&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;visual&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0.0 0 0&quot;</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">      </span><span class="nt">&lt;mesh</span><span class="w"> </span><span class="na">filename=</span><span class="s">&quot;package://urdf_tutorial/meshes/l_finger.dae&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/visual&gt;</span>
 <span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>

@@ -366,7 +366,7 @@
 <p>All ROS nodes take a set of arguments that allow various properties to be reconfigured.
 Examples include configuring the name/namespace of the node, topic/service names used, and parameters on the node.
 All ROS-specific arguments have to be specified after a <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> flag:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run my_package node_executable --ros-args ...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>my_package<span class="w"> </span>node_executable<span class="w"> </span>--ros-args<span class="w"> </span>...
 </pre></div>
 </div>
 <p>For more details, see <a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html">this design doc</a>.</p>
@@ -381,18 +381,18 @@ The name/namespace of the node itself can be remapped using <code class="docutil
 <h3>Example<a class="headerlink" href="#example" title="Enlazar permanentemente con este título"></a></h3>
 <p>The following invocation will cause the <code class="docutils literal notranslate"><span class="pre">talker</span></code> node to be started under the node name <code class="docutils literal notranslate"><span class="pre">my_talker</span></code>, publishing on the topic named <code class="docutils literal notranslate"><span class="pre">my_topic</span></code> instead of the default of <code class="docutils literal notranslate"><span class="pre">chatter</span></code>.
 The namespace, which must start with a forward slash, is set to <code class="docutils literal notranslate"><span class="pre">/demo</span></code>, which means that topics are created in that namespace (<code class="docutils literal notranslate"><span class="pre">/demo/my_topic</span></code>), as opposed to globally (<code class="docutils literal notranslate"><span class="pre">/my_topic</span></code>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args -r __ns:<span class="o">=</span>/demo -r __node:<span class="o">=</span>my_talker -r chatter:<span class="o">=</span>my_topic
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>-r<span class="w"> </span>__ns:<span class="o">=</span>/demo<span class="w"> </span>-r<span class="w"> </span>__node:<span class="o">=</span>my_talker<span class="w"> </span>-r<span class="w"> </span>chatter:<span class="o">=</span>my_topic
 </pre></div>
 </div>
 <div class="section" id="passing-remapping-arguments-to-specific-nodes">
 <h4>Passing remapping arguments to specific nodes<a class="headerlink" href="#passing-remapping-arguments-to-specific-nodes" title="Enlazar permanentemente con este título"></a></h4>
 <p>If multiple nodes are being run within a single process (e.g. using <a class="reference internal" href="../Concepts/About-Composition.html"><span class="doc">Composition</span></a>), remapping arguments can be passed to a specific node using its name as a prefix.
 For example, the following will pass the remapping arguments to the specified nodes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run composition manual_composition --ros-args -r talker:__node:<span class="o">=</span>my_talker -r listener:__node:<span class="o">=</span>my_listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>composition<span class="w"> </span>manual_composition<span class="w"> </span>--ros-args<span class="w"> </span>-r<span class="w"> </span>talker:__node:<span class="o">=</span>my_talker<span class="w"> </span>-r<span class="w"> </span>listener:__node:<span class="o">=</span>my_listener
 </pre></div>
 </div>
 <p>The following example will both change the node name and remap a topic (node and namespace changes are always applied <em>before</em> topic remapping):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run composition manual_composition --ros-args -r talker:__node:<span class="o">=</span>my_talker -r my_talker:chatter:<span class="o">=</span>my_topic -r listener:__node:<span class="o">=</span>my_listener -r my_listener:chatter:<span class="o">=</span>my_topic
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>composition<span class="w"> </span>manual_composition<span class="w"> </span>--ros-args<span class="w"> </span>-r<span class="w"> </span>talker:__node:<span class="o">=</span>my_talker<span class="w"> </span>-r<span class="w"> </span>my_talker:chatter:<span class="o">=</span>my_topic<span class="w"> </span>-r<span class="w"> </span>listener:__node:<span class="o">=</span>my_listener<span class="w"> </span>-r<span class="w"> </span>my_listener:chatter:<span class="o">=</span>my_topic
 </pre></div>
 </div>
 </div>
@@ -407,15 +407,15 @@ For example, the following will pass the remapping arguments to the specified no
 <div class="section" id="setting-parameters-directly-from-the-command-line">
 <span id="nodeargsparameters"></span><h3>Setting parameters directly from the command line<a class="headerlink" href="#setting-parameters-directly-from-the-command-line" title="Enlazar permanentemente con este título"></a></h3>
 <p>You can set parameters directly from the command line using the following syntax:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run package_name executable_name --ros-args -p param_name:<span class="o">=</span>param_value
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>package_name<span class="w"> </span>executable_name<span class="w"> </span>--ros-args<span class="w"> </span>-p<span class="w"> </span>param_name:<span class="o">=</span>param_value
 </pre></div>
 </div>
 <p>As an example, you can run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp parameter_blackboard --ros-args -p some_int:<span class="o">=</span><span class="m">42</span> -p <span class="s2">&quot;a_string:=Hello world&quot;</span> -p <span class="s2">&quot;some_lists.some_integers:=[1, 2, 3, 4]&quot;</span> -p <span class="s2">&quot;some_lists.some_doubles:=[3.14, 2.718]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>parameter_blackboard<span class="w"> </span>--ros-args<span class="w"> </span>-p<span class="w"> </span>some_int:<span class="o">=</span><span class="m">42</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;a_string:=Hello world&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;some_lists.some_integers:=[1, 2, 3, 4]&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;some_lists.some_doubles:=[3.14, 2.718]&quot;</span>
 </pre></div>
 </div>
 <p>Other nodes will be able to retrieve the parameter values, e.g.:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 param list parameter_blackboard
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>parameter_blackboard
 a_string
 qos_overrides./parameter_events.publisher.depth
 qos_overrides./parameter_events.publisher.durability
@@ -433,22 +433,22 @@ use_sim_time
 <p>Parameters can be set from the command-line in the form of yaml files.</p>
 <p><a class="reference external" href="https://github.com/ros2/rcl/tree/rolling/rcl_yaml_param_parser">See here</a> for examples of the yaml file syntax.</p>
 <p>As an example, save the following as <code class="docutils literal notranslate"><span class="pre">demo_params.yaml</span></code>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_blackboard</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">some_int</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span><span class="w"></span>
-<span class="w">        </span><span class="nt">a_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">world&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">some_lists</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">some_integers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">            </span><span class="nt">some_doubles </span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.14</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.718</span><span class="p p-Indicator">]</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_blackboard</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">some_int</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="w">        </span><span class="nt">a_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<span class="w">        </span><span class="nt">some_lists</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">some_integers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">some_doubles </span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.14</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.718</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>Then either declare the parameters within your node with <code class="docutils literal notranslate"><span class="pre">declare_parameter</span></code>  or <code class="docutils literal notranslate"><span class="pre">declare_parameters</span></code> (see <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1Node.html#a095ea977b26e7464d9371efea5f36c42">documentation</a> for function signatures), or <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1NodeOptions.html#a094ceb7af7c9b358ec007a4b8e14d40d">set the node to automatically declare parameters</a> if they were passed in via a command line override.</p>
 <p>Then run the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp parameter_blackboard --ros-args --params-file demo_params.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>parameter_blackboard<span class="w"> </span>--ros-args<span class="w"> </span>--params-file<span class="w"> </span>demo_params.yaml
 </pre></div>
 </div>
 <p>Other nodes will be able to retrieve the parameter values, e.g.:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 param list parameter_blackboard
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>param<span class="w"> </span>list<span class="w"> </span>parameter_blackboard
 a_string
 qos_overrides./parameter_events.publisher.depth
 qos_overrides./parameter_events.publisher.durability

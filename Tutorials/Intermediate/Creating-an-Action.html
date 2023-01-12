@@ -390,19 +390,19 @@ with the action server and action client you will write in the next tutorial.</p
 <p>Set up a <a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">workspace</span></a> and create a package named <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code>:</p>
 <p>(Remember to <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source your ROS 2 installation</span></a> first.)</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ros2_ws/src <span class="c1">#you can reuse existing workspace with this naming convention</span>
-<span class="nb">cd</span> ros2_ws/src
-ros2 pkg create action_tutorials_interfaces
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>ros2_ws/src<span class="w"> </span><span class="c1">#you can reuse existing workspace with this naming convention</span>
+<span class="nb">cd</span><span class="w"> </span>ros2_ws/src
+ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>action_tutorials_interfaces
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ros2_ws/src
-<span class="nb">cd</span> ros2_ws/src
-ros2 pkg create action_tutorials_interfaces
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>ros2_ws/src
+<span class="nb">cd</span><span class="w"> </span>ros2_ws/src
+ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>action_tutorials_interfaces
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>md ros2_ws<span class="se">\s</span>rc
-<span class="nb">cd</span> ros2_ws<span class="se">\s</span>rc
-ros2 pkg create action_tutorials_interfaces
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>md<span class="w"> </span>ros2_ws<span class="se">\s</span>rc
+<span class="nb">cd</span><span class="w"> </span>ros2_ws<span class="se">\s</span>rc
+ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>action_tutorials_interfaces
 </pre></div>
 </div>
 </div></div>
@@ -429,16 +429,16 @@ ros2 pkg create action_tutorials_interfaces
 <p>Say we want to define a new action «Fibonacci» for computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci sequence</a>.</p>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">action</span></code> directory in our ROS 2 package <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code>:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> action_tutorials_interfaces
-mkdir action
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>action_tutorials_interfaces
+mkdir<span class="w"> </span>action
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> action_tutorials_interfaces
-mkdir action
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>action_tutorials_interfaces
+mkdir<span class="w"> </span>action
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> action_tutorials_interfaces
-md action
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>action_tutorials_interfaces
+md<span class="w"> </span>action
 </pre></div>
 </div>
 </div></div>
@@ -471,9 +471,9 @@ md action
 </div>
 <p>We should now be able to build the package containing the <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code> action definition:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change to the root of the workspace</span>
-<span class="nb">cd</span> ~/ros2_ws
+<span class="nb">cd</span><span class="w"> </span>~/ros2_ws
 <span class="c1"># Build</span>
-colcon build
+colcon<span class="w"> </span>build
 </pre></div>
 </div>
 <p>We’re done!</p>
@@ -482,9 +482,9 @@ So when we want to refer to our new action, it will have the full name <code cla
 <p>We can check that our action built successfully with the command line tool:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source our workspace</span>
 <span class="c1"># On Windows: call install/setup.bat</span>
-. install/setup.bash
+.<span class="w"> </span>install/setup.bash
 <span class="c1"># Check that our action definition exists</span>
-ros2 interface show action_tutorials_interfaces/action/Fibonacci
+ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>action_tutorials_interfaces/action/Fibonacci
 </pre></div>
 </div>
 <p>You should see the Fibonacci action definition printed to the screen.</p>

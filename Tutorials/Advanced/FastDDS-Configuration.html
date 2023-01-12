@@ -439,83 +439,83 @@ However, this mode typically yields higher throughput rates at lower latencies, 
 </div></div>
 <p>Then, add a file named <code class="docutils literal notranslate"><span class="pre">src/sync_async_writer.cpp</span></code> to the package, with the following content.
 Note that the synchronous publisher will be publishing on topic <code class="docutils literal notranslate"><span class="pre">sync_topic</span></code>, while the asynchronous one will be publishing on topic <code class="docutils literal notranslate"><span class="pre">async_topic</span></code>.</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">SyncAsyncPublisher</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">SyncAsyncPublisher</span><span class="p">()</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Create the synchronous publisher on topic &#39;sync_topic&#39;</span>
-<span class="w">        </span><span class="n">sync_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">sync_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Create the asynchronous publisher on topic &#39;async_topic&#39;</span>
-<span class="w">        </span><span class="n">async_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">async_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// This timer will trigger the publication of new data every half a second</span>
-<span class="w">        </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
-<span class="w">                </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+<span class="w">                </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="cm">/**</span>
 <span class="cm">     * Actions to run every time the timer expires</span>
-<span class="cm">     */</span><span class="w"></span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Create a new message to be sent</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">sync_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">sync_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="w">        </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Log the message to the console to show progress</span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Synchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Synchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 
 <span class="w">        </span><span class="c1">// Publish the message using the synchronous publisher</span>
-<span class="w">        </span><span class="n">sync_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">sync_message</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">sync_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">sync_message</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Create a new message to be sent</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">async_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ASYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">async_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="w">        </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ASYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Log the message to the console to show progress</span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Asynchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Asynchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 
 <span class="w">        </span><span class="c1">// Publish the message using the asynchronous publisher</span>
-<span class="w">        </span><span class="n">async_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">async_message</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">async_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">async_message</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Prepare the count for the next message</span>
-<span class="w">        </span><span class="n">count_</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">count_</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// This timer will trigger the publication of new data every half a second</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// A publisher that publishes asynchronously</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_publisher_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_publisher_</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// A publisher that publishes synchronously</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_publisher_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_publisher_</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Number of messages sent so far</span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncPublisher</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncPublisher</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Now open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file and add a new executable and name it <code class="docutils literal notranslate"><span class="pre">SyncAsyncWriter</span></code> so you can run your node using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>:</p>
@@ -563,34 +563,34 @@ The default publication mode configuration can be changed in runtime during the 
 <h3><a class="toc-backref" href="#id5">Create the XML file with the profile configuration</a><a class="headerlink" href="#create-the-xml-file-with-the-profile-configuration" title="Enlazar permanentemente con este título"></a></h3>
 <p>Create a file with name <code class="docutils literal notranslate"><span class="pre">SyncAsync.xml</span></code> and the following content:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
-<span class="nt">&lt;profiles</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;profiles</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
 
-    <span class="cm">&lt;!-- default publisher profile --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- default publisher profile --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span><span class="w"> </span><span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
-    <span class="cm">&lt;!-- publisher profile for topic sync_topic --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-        <span class="nt">&lt;qos&gt;</span>
-            <span class="nt">&lt;publishMode&gt;</span>
-                <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-            <span class="nt">&lt;/publishMode&gt;</span>
-        <span class="nt">&lt;/qos&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- publisher profile for topic sync_topic --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">        </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">            </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/qos&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
-    <span class="cm">&lt;!-- publisher profile for topic async_topic --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-        <span class="nt">&lt;qos&gt;</span>
-            <span class="nt">&lt;publishMode&gt;</span>
-                <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-            <span class="nt">&lt;/publishMode&gt;</span>
-        <span class="nt">&lt;/qos&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- publisher profile for topic async_topic --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">        </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">            </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/qos&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
- <span class="nt">&lt;/profiles&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/profiles&gt;</span>
 </pre></div>
 </div>
 <p>Note that several publisher profiles are defined.
@@ -638,56 +638,56 @@ Note also that all profiles specify a <code class="docutils literal notranslate"
 <h3><a class="toc-backref" href="#id7">Create a node with the subscribers</a><a class="headerlink" href="#create-a-node-with-the-subscribers" title="Enlazar permanentemente con este título"></a></h3>
 <p>Next, a new node with the subscribers that will listen to the <code class="docutils literal notranslate"><span class="pre">sync_topic</span></code> and <code class="docutils literal notranslate"><span class="pre">async_topic</span></code> publications is going to be created.
 In a new source file named <code class="docutils literal notranslate"><span class="pre">src/sync_async_reader.cpp</span></code> write the following content:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncSubscriber</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncSubscriber</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
 
-<span class="w">    </span><span class="n">SyncAsyncSubscriber</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_subscriber&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">SyncAsyncSubscriber</span><span class="p">()</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_subscriber&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Create the synchronous subscriber on topic &#39;sync_topic&#39;</span>
 <span class="w">        </span><span class="c1">// and tie it to the topic_callback</span>
-<span class="w">        </span><span class="n">sync_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">sync_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span>
 
 <span class="w">        </span><span class="c1">// Create the asynchronous subscriber on topic &#39;async_topic&#39;</span>
 <span class="w">        </span><span class="c1">// and tie it to the topic_callback</span>
-<span class="w">        </span><span class="n">async_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">async_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
 
 <span class="w">    </span><span class="cm">/**</span>
 <span class="cm">     * Actions to run every time a new message is received</span>
-<span class="cm">     */</span><span class="w"></span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// A subscriber that listens to topic &#39;sync_topic&#39;</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_subscription_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_subscription_</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// A subscriber that listens to topic &#39;async_topic&#39;</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_subscription_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_subscription_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncSubscriber</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncSubscriber</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file and add a new executable and name it <code class="docutils literal notranslate"><span class="pre">SyncAsyncReader</span></code> under the previous <code class="docutils literal notranslate"><span class="pre">SyncAsyncWriter</span></code>:</p>
@@ -707,8 +707,8 @@ For the moment, only the default profile will be set.
 The subscriber profiles will be extended later on.
 Open the <code class="docutils literal notranslate"><span class="pre">SyncAsync.xml</span></code> file and add the following profiles inside the <code class="docutils literal notranslate"><span class="pre">&lt;profiles&gt;</span></code> tag:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- subscriber profile for topic sync_topic --&gt;</span>
-<span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="nt">&lt;subscriber</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span><span class="w"> </span><span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
 <span class="nt">&lt;/subscriber&gt;</span>
 </pre></div>
 </div>
@@ -791,18 +791,18 @@ Please refer to <a class="reference external" href="https://fast-dds.docs.eprosi
 <p>Add a maximum number of matched subscribers to the <code class="docutils literal notranslate"><span class="pre">/async_topic</span></code> publisher profile.
 It should look like this:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- publisher profile for topic async_topic --&gt;</span>
-<span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;qos&gt;</span>
-        <span class="nt">&lt;publishMode&gt;</span>
-            <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-        <span class="nt">&lt;/publishMode&gt;</span>
-    <span class="nt">&lt;/qos&gt;</span>
-    <span class="nt">&lt;matchedSubscribersAllocation&gt;</span>
-        <span class="nt">&lt;initial&gt;</span>0<span class="nt">&lt;/initial&gt;</span>
-        <span class="nt">&lt;maximum&gt;</span>1<span class="nt">&lt;/maximum&gt;</span>
-        <span class="nt">&lt;increment&gt;</span>1<span class="nt">&lt;/increment&gt;</span>
-    <span class="nt">&lt;/matchedSubscribersAllocation&gt;</span>
+<span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">        </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">            </span><span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/qos&gt;</span>
+<span class="w">    </span><span class="nt">&lt;matchedSubscribersAllocation&gt;</span>
+<span class="w">        </span><span class="nt">&lt;initial&gt;</span>0<span class="nt">&lt;/initial&gt;</span>
+<span class="w">        </span><span class="nt">&lt;maximum&gt;</span>1<span class="nt">&lt;/maximum&gt;</span>
+<span class="w">        </span><span class="nt">&lt;increment&gt;</span>1<span class="nt">&lt;/increment&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/matchedSubscribersAllocation&gt;</span>
 <span class="nt">&lt;/publisher&gt;</span>
 </pre></div>
 </div>
@@ -830,30 +830,30 @@ However, a single publisher can share the same data sample over different partit
 <p>Let us change the <code class="docutils literal notranslate"><span class="pre">/sync_topic</span></code> publisher to partition <code class="docutils literal notranslate"><span class="pre">part1</span></code> and create a new <code class="docutils literal notranslate"><span class="pre">/sync_topic</span></code> subscriber which uses partition <code class="docutils literal notranslate"><span class="pre">part2</span></code>.
 Their profiles should now look like this:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- publisher profile for topic sync_topic --&gt;</span>
-<span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;qos&gt;</span>
-        <span class="nt">&lt;publishMode&gt;</span>
-            <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-        <span class="nt">&lt;/publishMode&gt;</span>
-        <span class="nt">&lt;partition&gt;</span>
-            <span class="nt">&lt;names&gt;</span>
-                <span class="nt">&lt;name&gt;</span>part1<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;/names&gt;</span>
-        <span class="nt">&lt;/partition&gt;</span>
-    <span class="nt">&lt;/qos&gt;</span>
+<span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">        </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">            </span><span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;partition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;names&gt;</span>
+<span class="w">                </span><span class="nt">&lt;name&gt;</span>part1<span class="nt">&lt;/name&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/names&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/partition&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/qos&gt;</span>
 <span class="nt">&lt;/publisher&gt;</span>
 
 <span class="cm">&lt;!-- subscriber profile for topic sync_topic --&gt;</span>
-<span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;qos&gt;</span>
-        <span class="nt">&lt;partition&gt;</span>
-            <span class="nt">&lt;names&gt;</span>
-                <span class="nt">&lt;name&gt;</span>part2<span class="nt">&lt;/name&gt;</span>
-            <span class="nt">&lt;/names&gt;</span>
-        <span class="nt">&lt;/partition&gt;</span>
-    <span class="nt">&lt;/qos&gt;</span>
+<span class="nt">&lt;subscriber</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">        </span><span class="nt">&lt;partition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;names&gt;</span>
+<span class="w">                </span><span class="nt">&lt;name&gt;</span>part2<span class="nt">&lt;/name&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/names&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/partition&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/qos&gt;</span>
 <span class="nt">&lt;/subscriber&gt;</span>
 </pre></div>
 </div>
@@ -887,92 +887,92 @@ The same can be done for clients creating a pair named <code class="docutils lit
 <h3><a class="toc-backref" href="#id15">Create the nodes with the service and client</a><a class="headerlink" href="#create-the-nodes-with-the-service-and-client" title="Enlazar permanentemente con este título"></a></h3>
 <p>Start creating the node with the service.
 Add a new source file named <code class="docutils literal notranslate"><span class="pre">src/ping_service.cpp</span></code> on your package with the following content:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * Service action: responds with success=true and prints the request on the console</span>
-<span class="cm"> */</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">ping</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ping</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">,</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// The request data is unused</span>
-<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="n">request</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Build the response</span>
-<span class="w">    </span><span class="n">response</span><span class="o">-&gt;</span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">response</span><span class="o">-&gt;</span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Log to the console</span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Incoming request&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending back response&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Incoming request&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending back response&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create the node and the service</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ping</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ping</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Log that the service is ready</span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Ready to serve.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Ready to serve.&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// run the node</span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Create the client in a file named <code class="docutils literal notranslate"><span class="pre">src/ping_client.cpp</span></code> with the following content:</p>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create the node and the client</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Create a request</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// Wait for the service to be available</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">wait_for_service</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Interrupted while waiting for the service. Exiting.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Service not available, waiting again...&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">wait_for_service</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Interrupted while waiting for the service. Exiting.&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Service not available, waiting again...&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Now that the service is available, send the request</span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending request&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending request&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Wait for the result and log it to the console</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"></span>
-<span class="w">        </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">FutureReturnCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Response received&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Failed to call service ping&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">FutureReturnCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Response received&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Failed to call service ping&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file and add two new executables <code class="docutils literal notranslate"><span class="pre">ping_service</span></code> and <code class="docutils literal notranslate"><span class="pre">ping_client</span></code>:</p>
@@ -999,37 +999,37 @@ Add a new source file named <code class="docutils literal notranslate"><span cla
 <h3><a class="toc-backref" href="#id16">Create the XML profiles for the service and client</a><a class="headerlink" href="#create-the-xml-profiles-for-the-service-and-client" title="Enlazar permanentemente con este título"></a></h3>
 <p>Create a file with name <code class="docutils literal notranslate"><span class="pre">ping.xml</span></code> with the following content:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
-<span class="nt">&lt;profiles</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;profiles</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
 
-    <span class="cm">&lt;!-- default publisher profile --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- default publisher profile --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span><span class="w"> </span><span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
-    <span class="cm">&lt;!-- default subscriber profile --&gt;</span>
-    <span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-    <span class="nt">&lt;/subscriber&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- default subscriber profile --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;subscriber</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span><span class="w"> </span><span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/subscriber&gt;</span>
 
-    <span class="cm">&lt;!-- service publisher is SYNC --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;service&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-        <span class="nt">&lt;qos&gt;</span>
-            <span class="nt">&lt;publishMode&gt;</span>
-                <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-            <span class="nt">&lt;/publishMode&gt;</span>
-        <span class="nt">&lt;/qos&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- service publisher is SYNC --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;service&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">        </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">            </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/qos&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
-    <span class="cm">&lt;!-- client publisher is ASYNC --&gt;</span>
-    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;client&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
-        <span class="nt">&lt;qos&gt;</span>
-            <span class="nt">&lt;publishMode&gt;</span>
-                <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
-            <span class="nt">&lt;/publishMode&gt;</span>
-        <span class="nt">&lt;/qos&gt;</span>
-    <span class="nt">&lt;/publisher&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- client publisher is ASYNC --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;publisher</span><span class="w"> </span><span class="na">profile_name=</span><span class="s">&quot;client&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+<span class="w">        </span><span class="nt">&lt;qos&gt;</span>
+<span class="w">            </span><span class="nt">&lt;publishMode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/publishMode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/qos&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/publisher&gt;</span>
 
 <span class="nt">&lt;/profiles&gt;</span>
 </pre></div>

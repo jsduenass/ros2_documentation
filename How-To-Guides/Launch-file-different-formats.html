@@ -483,104 +483,104 @@ Each launch file performs the following actions:</p>
 
 <span class="nt">&lt;launch&gt;</span>
 
-  <span class="cm">&lt;!-- args that can be set from the command line or a default will be used --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;background_r&quot;</span> <span class="na">default=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;background_g&quot;</span> <span class="na">default=</span><span class="s">&quot;255&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;background_b&quot;</span> <span class="na">default=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;chatter_ns&quot;</span> <span class="na">default=</span><span class="s">&quot;my/chatter/ns&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- args that can be set from the command line or a default will be used --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_r&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_g&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;255&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_b&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;chatter_ns&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;my/chatter/ns&quot;</span><span class="nt">/&gt;</span>
 
-  <span class="cm">&lt;!-- include another launch file --&gt;</span>
-  <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find-pkg-share demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="nt">/&gt;</span>
-  <span class="cm">&lt;!-- include another launch file in the chatter_ns namespace--&gt;</span>
-  <span class="nt">&lt;group&gt;</span>
-    <span class="cm">&lt;!-- push_ros_namespace to set namespace of included nodes --&gt;</span>
-    <span class="nt">&lt;push_ros_namespace</span> <span class="na">namespace=</span><span class="s">&quot;$(var chatter_ns)&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find-pkg-share demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- include another launch file --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find-pkg-share demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- include another launch file in the chatter_ns namespace--&gt;</span>
+<span class="w">  </span><span class="nt">&lt;group&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- push_ros_namespace to set namespace of included nodes --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;push_ros_namespace</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;$(var chatter_ns)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find-pkg-share demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/group&gt;</span>
 
-  <span class="cm">&lt;!-- start a turtlesim_node in the turtlesim1 namespace --&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
-  <span class="cm">&lt;!-- start another turtlesim_node in the turtlesim2 namespace</span>
+<span class="w">  </span><span class="cm">&lt;!-- start a turtlesim_node in the turtlesim1 namespace --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- start another turtlesim_node in the turtlesim2 namespace</span>
 <span class="cm">      and use args to set parameters --&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span> <span class="na">name=</span><span class="s">&quot;sim&quot;</span> <span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;background_r&quot;</span> <span class="na">value=</span><span class="s">&quot;$(var background_r)&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;background_g&quot;</span> <span class="na">value=</span><span class="s">&quot;$(var background_g)&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;background_b&quot;</span> <span class="na">value=</span><span class="s">&quot;$(var background_b)&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/node&gt;</span>
-  <span class="cm">&lt;!-- perform remap so both turtles listen to the same command topic --&gt;</span>
-  <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span> <span class="na">exec=</span><span class="s">&quot;mimic&quot;</span> <span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span> <span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/node&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sim&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;turtlesim2&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_r&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(var background_r)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_g&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(var background_g)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;background_b&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(var background_b)&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/node&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- perform remap so both turtles listen to the same command topic --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlesim&quot;</span><span class="w"> </span><span class="na">exec=</span><span class="s">&quot;mimic&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mimic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/input/pose&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;remap</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/node&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># example.launch.yaml</span><span class="w"></span>
+</div><div aria-labelledby="tab-0-WUFNTA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-WUFNTA==" name="WUFNTA==" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># example.launch.yaml</span>
 
-<span class="nt">launch</span><span class="p">:</span><span class="w"></span>
+<span class="nt">launch</span><span class="p">:</span>
 
-<span class="c1"># args that can be set from the command line or a default will be used</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_r&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_g&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255&quot;</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_b&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chatter_ns&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my/chatter/ns&quot;</span><span class="w"></span>
+<span class="c1"># args that can be set from the command line or a default will be used</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_r&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_g&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_b&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chatter_ns&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my/chatter/ns&quot;</span>
 
 
-<span class="c1"># include another launch file</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">include</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(find-pkg-share</span><span class="nv"> </span><span class="s">demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="w"></span>
+<span class="c1"># include another launch file</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(find-pkg-share</span><span class="nv"> </span><span class="s">demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span>
 
-<span class="c1"># include another launch file in the chatter_ns namespace</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">push_ros_namespace</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">chatter_ns)&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">include</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(find-pkg-share</span><span class="nv"> </span><span class="s">demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span><span class="w"></span>
+<span class="c1"># include another launch file in the chatter_ns namespace</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">push_ros_namespace</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">chatter_ns)&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(find-pkg-share</span><span class="nv"> </span><span class="s">demo_nodes_cpp)/launch/topics/talker_listener.launch.py&quot;</span>
 
-<span class="c1"># start a turtlesim_node in the turtlesim1 namespace</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span><span class="w"></span>
+<span class="c1"># start a turtlesim_node in the turtlesim1 namespace</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim1&quot;</span>
 
-<span class="c1"># start another turtlesim_node in the turtlesim2 namespace and use args to set parameters</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">param</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_r&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_r)&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_g&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_g)&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_b&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_b)&quot;</span><span class="w"></span>
+<span class="c1"># start another turtlesim_node in the turtlesim2 namespace and use args to set parameters</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim_node&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim2&quot;</span>
+<span class="w">    </span><span class="nt">param</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_r&quot;</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_r)&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_g&quot;</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_g)&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background_b&quot;</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$(var</span><span class="nv"> </span><span class="s">background_b)&quot;</span>
 
-<span class="c1"># perform remap so both turtles listen to the same command topic</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">remap</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"></span>
-<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span><span class="w"></span>
+<span class="c1"># perform remap so both turtles listen to the same command topic</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pkg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;turtlesim&quot;</span>
+<span class="w">    </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mimic&quot;</span>
+<span class="w">    </span><span class="nt">remap</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/input/pose&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim1/turtle1/pose&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span>
+<span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/output/cmd_vel&quot;</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/turtlesim2/turtle1/cmd_vel&quot;</span>
 </pre></div>
 </div>
 </div></div>

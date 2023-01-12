@@ -381,13 +381,13 @@ We need to move some keys from <code class="docutils literal notranslate"><span 
 <h2><a class="toc-backref" href="#id2">Create the second keystore</a><a class="headerlink" href="#create-the-second-keystore" title="Enlazar permanentemente con este título"></a></h2>
 <p>Begin by creating an empty keystore on <code class="docutils literal notranslate"><span class="pre">Bob</span></code>; the keystore is actually just an empty directory:</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh Bob
-mkdir ~/sros2_demo
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>Bob
+mkdir<span class="w"> </span>~/sros2_demo
 <span class="nb">exit</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh Bob
-mkdir ~/sros2_demo
+</div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>Bob
+mkdir<span class="w"> </span>~/sros2_demo
 <span class="nb">exit</span>
 </pre></div>
 </div>
@@ -403,12 +403,12 @@ mkdir ~/sros2_demo
 <p>Next copy the keys and certificates for the <code class="docutils literal notranslate"><span class="pre">talker</span></code> program from <code class="docutils literal notranslate"><span class="pre">Alice</span></code> to <code class="docutils literal notranslate"><span class="pre">Bob</span></code>.
 Since the keys are just text files, we can use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to copy them.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sros2_demo/demo_keystore
-scp -r talker USERNAME@Bob:~/sros2_demo/demo_keystore
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-TWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="-1">MacOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/sros2_demo/demo_keystore
+scp<span class="w"> </span>-r<span class="w"> </span>talker<span class="w"> </span>USERNAME@Bob:~/sros2_demo/demo_keystore
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/sros2_demo/demo_keystore
-scp -r talker USERNAME@Bob:~/sros2_demo/demo_keystore
+</div><div aria-labelledby="tab-1-TWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/sros2_demo/demo_keystore
+scp<span class="w"> </span>-r<span class="w"> </span>talker<span class="w"> </span>USERNAME@Bob:~/sros2_demo/demo_keystore
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> C:\dev\ros2\sros2_demo\demo_keystore
@@ -422,11 +422,11 @@ Now, we’re ready to run a multi-machine talker/listener demo!</p>
 <div class="section" id="launch-the-nodes">
 <h2><a class="toc-backref" href="#id4">Launch the nodes</a><a class="headerlink" href="#launch-the-nodes" title="Enlazar permanentemente con este título"></a></h2>
 <p>Once the environment is set up, run the talker on <code class="docutils literal notranslate"><span class="pre">Bob</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args --enclave /talker_listener/talker
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/talker
 </pre></div>
 </div>
 <p>and launch the listener on <code class="docutils literal notranslate"><span class="pre">Alice</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener --ros-args --enclave /talker_listener/listener
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener<span class="w"> </span>--ros-args<span class="w"> </span>--enclave<span class="w"> </span>/talker_listener/listener
 </pre></div>
 </div>
 <p>Alice will now be receiving encrypted messages from Bob.</p>
