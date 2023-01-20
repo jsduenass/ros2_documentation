@@ -91,11 +91,12 @@ Make sure to create a ``launch`` directory at the top-level of the package you c
 
       src/
         py_launch_example/
+          launch_merge_conflict/
           package.xml
           py_launch_example/
           resource/
-          setup.py
           setup.cfg
+          setup_merge_conflict.py
           test/
 
     In order for colcon to find the launch files, we need to inform Python's setup tools of our launch files using the ``data_files`` parameter of ``setup``.
