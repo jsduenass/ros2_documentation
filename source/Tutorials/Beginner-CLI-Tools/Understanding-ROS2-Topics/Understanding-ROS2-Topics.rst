@@ -37,7 +37,11 @@ Requisitos previos
 
 El :doc:`tutorial previo <../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes>` proporciona información básica sobre los nodos que se construyen aquí.
 
+<<<<<<< HEAD
 Como siempre, no olvides ejecutar `source` con el archivo de setup :doc:`en cada nueva terminal<../Configuring-ROS2-Environment>`.
+=======
+As always, don't forget to source ROS 2 in :doc:`every new terminal you open <../Configuring-ROS2-Environment>`.
+>>>>>>> og
 
 Tareas
 ------
@@ -87,8 +91,13 @@ El nodo ``/teleop_turtle`` está publicando datos (las pulsaciones de teclas que
 
 La característica de resaltado de rqt_graph es muy útil cuando se examinan sistemas más complejos con muchos nodos y topics conectados de muchas maneras diferentes.
 
+<<<<<<< HEAD
 Como vimos recién, rqt_graph es una herramienta gráfica de inspección.
 Ahora veremos algunas herramientas de línea de comandos para la inspección de topics.
+=======
+rqt_graph is a graphical introspection tool.
+Now we'll look at some command line tools for introspecting topics.
+>>>>>>> og
 
 
 3 ros2 topic list
@@ -114,9 +123,15 @@ Ejecuta el comando ``ros2 topic list`` en una nueva terminal para obtener una li
   /turtle1/color_sensor [turtlesim/msg/Color]
   /turtle1/pose [turtlesim/msg/Pose]
 
+<<<<<<< HEAD
 Estos atributos, particularmente el tipo, son la forma en que los nodos saben que están hablando de la misma información a medida que se mueve sobre los topics.
 
 Si te preguntas dónde están todos estos topics en rqt_graph, puedes desmarcar todas las casillas debajo de **Hide**:
+=======
+These attributes, particularly the type, are how nodes know they're talking about the same information as it moves over topics.
+
+If you're wondering where all these topics are in rqt_graph, you can uncheck all the boxes under **Hide:**
+>>>>>>> og
 
 .. image:: images/unhide.png
 
@@ -131,17 +146,29 @@ Para ver los datos que se publican sobre un topic, utiliza:
 
     ros2 topic echo <topic_name>
 
+<<<<<<< HEAD
 Como sabemos que ``/teleop_turtle`` publica datos en ``/turtlesim`` sobre el topic ``/turtle1/cmd_vel``, utilizaremos ``echo`` para hacer una inspección sobre ese topic:
+=======
+Since we know that ``/teleop_turtle`` publishes data to ``/turtlesim`` over the ``/turtle1/cmd_vel`` topic, let's use ``echo`` to introspect that topic:
+>>>>>>> og
 
 .. code-block:: console
 
     ros2 topic echo /turtle1/cmd_vel
 
+<<<<<<< HEAD
 Al principio, este comando no devolverá ningún dato.
 Eso es porque está esperando que ``/teleop_turtle`` publique algo.
 
 Regresa a la terminal donde se está ejecutando ``turtle_teleop_key`` y usa las flechas para mover la tortuga.
 Si observas la terminal donde se ejecuta el comando ``echo``, verás que se publican los datos de posición para cada movimiento que realice:
+=======
+At first, this command won't return any data.
+That's because it's waiting for ``/teleop_turtle`` to publish something.
+
+Return to the terminal where ``turtle_teleop_key`` is running and use the arrows to move the turtle around.
+Watch the terminal where your ``echo`` is running at the same time, and you'll see position data being published for every movement you make:
+>>>>>>> og
 
 .. code-block:: console
 
@@ -159,13 +186,22 @@ Ahora regresa a rqt_graph y desmarque la casilla **Debug**.
 
 .. image:: images/debug.png
 
+<<<<<<< HEAD
 ``/_ros2cli_26646`` es el nodo creado por el ``echo`` que acabamos de ejecutar (el número puede ser diferente).
 Ahora puedes ver que el editor está publicando datos sobre el topic ``cmd_vel`` y que hay dos suscriptores suscritos.
+=======
+``/_ros2cli_26646`` is the node created by the ``echo`` command we just ran (the number might be different).
+Now you can see that the publisher is publishing data over the ``cmd_vel`` topic, and two subscribers are subscribed to it.
+>>>>>>> og
 
 5 ros2 topic info
 ^^^^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 Los topics no tienen que ser solo comunicación punto a punto; puede ser de uno a muchos, de muchos a uno o de muchos a muchos.
+=======
+Topics don't have to only be one-to-one communication; they can be one-to-many, many-to-one, or many-to-many.
+>>>>>>> og
 
 Otra forma de ver esto es ejecutando:
 
@@ -196,7 +232,12 @@ Recuerda que el topic ``cmd_vel`` tiene el tipo:
 
 Esto significa que en el paquete ``geometric_msgs`` hay un ``mensaje`` llamado ``Twist``.
 
+<<<<<<< HEAD
 Ahora podemos ejecutar ``ros2 interface show <msg type>`` con el tipo de mensaje anterio para conocer sus detalles, específicamente, qué estructura de datos espera el mensaje.
+=======
+Now we can run ``ros2 interface show <msg type>`` on this type to learn its details.
+Specifically, what structure of data the message expects.
+>>>>>>> og
 
 .. code-block:: console
 
@@ -217,8 +258,13 @@ Para el tipo de mensaje de arriba, produce:
               float64 y
               float64 z
 
+<<<<<<< HEAD
 Esto indica que el nodo ``/turtlesim`` está esperando un mensaje con dos vectores, ``linear`` y ``angular``, de tres elementos cada uno.
 Si recuerdas los datos que vimos pasar de ``/teleop_turtle`` a ``/turtlesim`` con el comando ``echo``, utilizan la misma estructura:
+=======
+This tells you that the ``/turtlesim`` node is expecting a message with two vectors, ``linear`` and ``angular``, of three elements each.
+If you recall the data we saw ``/teleop_turtle`` passing to ``/turtlesim`` with the ``echo`` command, it's in the same structure:
+>>>>>>> og
 
 .. code-block:: console
 
@@ -241,10 +287,17 @@ Ahora que tienes la estructura del mensaje, puedes publicar datos en un topic di
 
     ros2 topic pub <topic_name> <msg_type> '<args>'
 
+<<<<<<< HEAD
 El argumento ``'<args>'`` son los datos que pasarán al topic, en la estructura que acabas de utilizar en la sección anterior.
 
 Es importante tener en cuenta que este argumento se debe introducir utilizando la sintaxis YAML.
 Ingrese el comando completo así:
+=======
+The ``'<args>'`` argument is the actual data you'll pass to the topic, in the structure you just discovered in the previous section.
+
+It's important to note that this argument needs to be input in YAML syntax.
+Input the full command like so:
+>>>>>>> og
 
 .. code-block:: console
 
@@ -252,7 +305,11 @@ Ingrese el comando completo así:
 
 ``--once`` es un argumento opcional que significa "publicar un mensaje y luego salir".
 
+<<<<<<< HEAD
 Recibirás el siguiente mensaje en la terminal:
+=======
+You will see the following output in the terminal:
+>>>>>>> og
 
 .. code-block:: console
 
@@ -274,8 +331,13 @@ La diferencia aquí es la eliminación de la opción ``--once`` y la adición de
 
 .. image:: images/pub_stream.png
 
+<<<<<<< HEAD
 Puedes actualizar rqt_graph para ver lo que sucede gráficamente.
 Verás que el nodo ``ros 2 topic pub ...`` (``/_ros2cli_30358``) se está publicando sobre el topic ``/turtle1/cmd_vel``, y lo está recibiendo tanto el nodo ``ros2 topic echo ...`` (``/_ros2cli_26646``) como el nodo ``/turtlesim``.
+=======
+You can refresh rqt_graph to see what's happening graphically.
+You will see that the ``ros2 topic pub ...`` node (``/_ros2cli_30358``) is publishing over the ``/turtle1/cmd_vel`` topic, which is being received by both the ``ros2 topic echo ...`` node (``/_ros2cli_26646``) and the ``/turtlesim`` node now.
+>>>>>>> og
 
 .. image:: images/rqt_graph2.png
 
@@ -287,7 +349,11 @@ Finalmente, puedes ejecutar ``echo`` en el topic de ``pose`` y volver a verifica
 
 .. image:: images/rqt_graph3.png
 
+<<<<<<< HEAD
 Puedes ver que el nodo ``/turtlesim`` también está publicando en el topic de ``pose``, al que está suscrito el nuevo nodo de ``echo``.
+=======
+You can see that the ``/turtlesim`` node is also publishing to the ``pose`` topic, which the new ``echo`` node has subscribed to.
+>>>>>>> og
 
 8 ros2 topic hz
 ^^^^^^^^^^^^^^^
@@ -315,8 +381,13 @@ Si ejecutas el comando anterior con ``turtle1/cmd_vel`` en lugar de ``turtle1/po
 9 Limpieza
 ^^^^^^^^^^
 
+<<<<<<< HEAD
 En este punto, tendrás muchos nodos en ejecución.
 No olvides detenerlos introduciendo ``Ctrl+C`` en cada terminal.
+=======
+At this point you'll have a lot of nodes running.
+Don't forget to stop them by entering ``Ctrl+C`` in each terminal.
+>>>>>>> og
 
 Resumen
 -------
@@ -328,4 +399,8 @@ Ahora deberías tener una buena idea de cómo se mueven los datos en un sistema 
 Pasos siguientes
 ----------------
 
+<<<<<<< HEAD
 A continuación, aprenderás sobre otro tipo de comunicación en el grafo ROS con el tutorial :doc:`../Understanding-ROS2-Services/Understanding-ROS2-Services`
+=======
+Next you'll learn about another communication type in the ROS graph with the tutorial :doc:`../Understanding-ROS2-Services/Understanding-ROS2-Services`.
+>>>>>>> og
