@@ -44,13 +44,8 @@ Después de obtener una licencia, muévela a la siguiente ubicación.
 Instalar paquetes
 -----------------
 
-<<<<<<< HEAD
 La forma más fácil es instalar desde el repositorio apt de ROS 2.
-Cuando se instala ros-{DISTRO}-rmw-gurumdds-cpp, también se instala gutumdds-2.7.
-=======
-The easiest way is to install from ROS 2 apt repository.
-When ros-{DISTRO}-rmw-gurumdds-cpp is installed, gurumdds-2.8 is also installed.
->>>>>>> og
+Cuando se instala ros-{DISTRO}-rmw-gurumdds-cpp, también se instala gutumdds-2.8 .
 
 .. code-block:: bash
 
@@ -61,11 +56,7 @@ Compilar a partir del código fuente
 
 Compilar a partir del código fuente también es otra forma de instalar.
 
-<<<<<<< HEAD
-Primero, clona rosidl_typesupport_gurumdds y rmw_gurumdds en el directorio src del espacio de trabajo de ROS 2.
-=======
-First, clone rmw_gurumdds in the ROS 2 workspace source directory.
->>>>>>> og
+Primero, clona rmw_gurumdds en el directorio src del espacio de trabajo de ROS 2.
 
 .. code-block:: bash
 
