@@ -12,7 +12,7 @@ env:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25/45 * * * *'
+    - cron: '20/5 * * * *'
   push:
     branches:
       - dev/sync-docs
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync and merge  documentation
-        uses: fmrico/sync-docs@v0.1.2
+        uses: jsduenass/sync-docs@v0.1.2
         with:
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
