@@ -11,11 +11,12 @@ env:
   SPAWN_LOGS: "false" # "true" or "false"
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '20/5 * * * *'
   push:
     branches:
       - dev/sync-docs
+  schedule:
+    - cron: '20/5 * * * *'
+  
 jobs:
   sync:
     runs-on: ubuntu-22.04
