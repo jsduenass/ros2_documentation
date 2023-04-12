@@ -15,7 +15,7 @@ on:
     - cron: '20 * * * *'
   push:
     branches:
-      - rolling
+      - dev/sync-docs
 jobs:
   sync:
     runs-on: ubuntu-22.04
