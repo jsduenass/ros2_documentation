@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Sync and merge  documentation
         if: github.event.schedule != '10/20 * * * *' # not every 20 minutes
-        uses: fmrico/sync-docs@v0.1.2
+        uses: jsduenass/sync-docs@v0.alpha
         with:
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
