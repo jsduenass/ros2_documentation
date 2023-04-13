@@ -23,7 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync and merge  documentation
-        if: ! (github.event.issue.labels.*.name, 'automatic-sync-merge') # do not run if there is a active sync merge issue        uses: jsduenass/sync-docs@v0.alpha
+        if: ! (github.event.issue.labels.*.name, 'automatic-sync-merge') # do not run if there is a active sync merge issue        
+        uses: jsduenass/sync-docs@v0.alpha
         with:
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
