@@ -15,7 +15,7 @@ on:
     branches:
       - rolling
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '10/5 * * * *'
   
 jobs:
   sync:
@@ -23,7 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync and merge  documentation
-        uses: jsduenass/sync-docs@v0.1.2
+        if: github.event.schedule != '10/20 * * * *' # not every 20 minutes
+        uses: jsduenass/sync-docs@v0.alpha
         with:
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}
