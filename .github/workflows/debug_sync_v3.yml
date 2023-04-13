@@ -18,7 +18,12 @@ on:
     - cron: '8/5 * * * *'
   
 jobs:
-  sync:
+  debug:
+    runs-on: ubuntu-22.04
+    steps:
+    run:  x=${{ toJson(github.event.issue.labels) }} && echo $x
+
+  sync:    
     if: ! (github.event.issue.labels.*.name, 'automatic-sync-merge') # do not run if there is a active sync merge issue        
     runs-on: ubuntu-22.04
     steps:
