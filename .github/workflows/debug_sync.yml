@@ -1,4 +1,4 @@
-name: Sync Rolling
+name: Debug Sync
 
 env:
   UPSTREAM_URL: "https://github.com/ros2/ros2_documentation.git"
@@ -12,17 +12,18 @@ env:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '8/5 * * * *'
   push:
     branches:
       - rolling
+ 
 jobs:
-  sync:
+  sync:    
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
-      - name: Sync and merge Official PlanSys2 documentation
-        uses: fmrico/sync-docs@v0.1.2
+      - name: Sync and merge  documentation
+        uses: jsduenass/sync-docs@v0.alpha
         with:
           upstream_repo: ${{ env.UPSTREAM_URL }}
           upstream_branch: ${{ env.UPSTREAM_BRANCH }}

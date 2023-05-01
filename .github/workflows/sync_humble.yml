@@ -11,8 +11,8 @@ env:
   SPAWN_LOGS: "false" # "true" or "false"
 on:
   workflow_dispatch:
-    schedule:
-      - cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
   push:
     branches:
       - humble
