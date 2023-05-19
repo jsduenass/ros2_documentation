@@ -103,7 +103,7 @@ intersphinx_mapping = {
 #
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
-    'analytics_id': 'UA-17821189-2',
+    'analytics_id': 'G-EVD5Z6G6NH',
     'collapse_navigation': False,
     'sticky_navigation': True,
     'navigation_depth': -1,
@@ -122,7 +122,7 @@ templates_path = [
 
 # smv_tag_whitelist = None
 
-smv_branch_whitelist = r'^(rolling|humble|galactic|foxy|eloquent|dashing|crystal)$'
+smv_branch_whitelist = r'^(rolling|iron|humble|galactic|foxy|eloquent|dashing|crystal)$'
 
 
 smv_released_pattern = r'^refs/(heads|remotes/[^/]+)/(humble|galactic|foxy|eloquent|dashing|crystal).*$'
@@ -137,6 +137,7 @@ distro_full_names = {
     'foxy': 'Foxy Fitzroy',
     'galactic': 'Galactic Geochelone',
     'humble': 'Humble Hawksbill',
+    'iron': 'Iron Irwini',
     'rolling': 'Rolling Ridley',
 }
 

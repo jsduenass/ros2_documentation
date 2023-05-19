@@ -12,5 +12,4 @@ Una lista de formas alternativas de instalar ROS 2, ya sea compilando desde el c
    Alternatives/RHEL-Development-Setup
    Alternatives/RHEL-Install-Binary
    Alternatives/macOS-Development-Setup
-   Alternatives/Fedora-Development-Setup
    Alternatives/Latest-Development-Setup
